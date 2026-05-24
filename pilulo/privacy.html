@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilulo — Politique de confidentialité</title>
+  <style>
+    :root {
+      --green:      #5BB65A;
+      --green-dark: #3D8C3C;
+      --text:       #212121;
+      --muted:      #757575;
+      --bg:         #F5FBF5;
+      --card:       #FFFFFF;
+      --radius:     12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      padding: 0 0 60px;
+    }
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p  { margin-top: 6px; opacity: .88; font-size: .95rem; }
+    main {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 24px;
+    }
+    .lang-switch a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .9rem;
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .lang-switch a:hover { background: var(--green); color: #fff; }
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--bg);
+    }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: #E8F5E9;
+      border-left: 4px solid var(--green);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-weight: 500;
+    }
+    .muted { color: var(--muted); font-size: .9rem; }
+    a { color: var(--green-dark); }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    /* ── Section anglaise ── */
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+    body.show-en header p.fr-sub { display: none; }
+    body.show-en header p.en-sub { display: block !important; }
+    header p.en-sub { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🟢 Pilulo</h1>
+  <p class="fr-sub">Politique de confidentialité</p>
+  <p class="en-sub">Privacy Policy</p>
+</header>
+
+<main>
+  <div class="lang-switch">
+    <a href="#" onclick="toggleLang(event)">English version ↓</a>
+  </div>
+
+  <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
+  <div class="fr">
+
+    <section>
+      <h2>📋 En résumé</h2>
+      <div class="highlight">
+        Pilulo ne collecte aucune donnée sur un serveur. Tout ce que vous saisissez
+        (noms de médicaments, doses, horaires) reste <strong>uniquement sur votre téléphone</strong>.
+        Nous n'y avons aucun accès.
+      </div>
+      <p class="muted">Dernière mise à jour : 24 mai 2026 — Version 1.0</p>
+    </section>
+
+    <section>
+      <h2>1. Qui est responsable du traitement ?</h2>
+      <p>Pilulo est développée par :</p>
+      <ul>
+        <li><strong>Boutch Software</strong> (alias Boutch Software)</li>
+        <li>Contact : <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></li>
+        <li>France</li>
+      </ul>
+      <p>Pour toute question relative à vos données, écrivez à l'adresse ci-dessus.
+         Nous nous engageons à répondre dans un délai de 30 jours.</p>
+    </section>
+
+    <section>
+      <h2>2. Quelles données sont traitées ?</h2>
+
+      <p><strong>Données stockées sur votre appareil uniquement :</strong></p>
+      <ul>
+        <li>Noms des médicaments ou soins que vous saisissez</li>
+        <li>Doses et horaires de rappel</li>
+        <li>Historique de prises confirmées</li>
+        <li>Préférences de l'application (thème, langue, volume des alarmes)</li>
+      </ul>
+
+      <div class="highlight">
+        Ces données sont des <strong>données de santé</strong> au sens du RGPD.
+        Elles sont stockées uniquement dans la mémoire interne de votre appareil,
+        chiffrée par Android. Le développeur n'y a <strong>aucun accès</strong>.
+      </div>
+
+      <p><strong>Données que nous ne collectons PAS :</strong></p>
+      <ul>
+        <li>Aucun compte utilisateur, aucune adresse e-mail</li>
+        <li>Aucune donnée de localisation</li>
+        <li>Aucune donnée de navigation ou d'usage (pas de Firebase Analytics)</li>
+        <li>Aucun rapport de plantage automatique envoyé à nos serveurs</li>
+        <li>Aucun identifiant publicitaire</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Abonnement et paiement</h2>
+      <p>
+        L'abonnement Pilulo (0,99 €/mois) est géré exclusivement par
+        <strong>Google Play Billing</strong>. Le développeur ne reçoit, ne voit,
+        ni ne stocke aucune donnée de paiement (numéro de carte, RIB, etc.).
+      </p>
+      <p>
+        Google agit en tant que marchand ("Merchant of Record") et applique
+        sa propre politique de confidentialité :
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Services tiers</h2>
+      <p>
+        Pilulo utilise <strong>Google Play Services</strong>, présent sur tous les appareils
+        Android. Google peut collecter des données de diagnostic (crashs système, performances)
+        indépendamment de l'application. Cette collecte est soumise à la politique de
+        Google et est hors du contrôle du développeur.
+      </p>
+      <p>Aucun autre SDK tiers n'est intégré dans Pilulo.</p>
+    </section>
+
+    <section>
+      <h2>5. Vos droits (RGPD)</h2>
+      <p>En tant que résident de l'Union européenne, vous disposez des droits suivants :</p>
+      <ul>
+        <li><strong>Droit d'accès :</strong> vos données sont sur votre appareil, directement accessibles dans l'application.</li>
+        <li><strong>Droit à la portabilité :</strong> utilisez la fonction <em>Exporter mes données</em> (Paramètres → Données).</li>
+        <li><strong>Droit à l'effacement :</strong> utilisez la fonction <em>Tout effacer</em> (Paramètres → Données) — suppression immédiate et définitive.</li>
+        <li><strong>Droit de rectification :</strong> modifiez directement vos médicaments dans l'application.</li>
+        <li><strong>Droit à la limitation :</strong> contactez-nous à <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.</li>
+      </ul>
+      <p>
+        Vous pouvez également adresser une réclamation à la
+        <strong>CNIL</strong> (<a href="https://www.cnil.fr" target="_blank">cnil.fr</a>)
+        si vous estimez que vos droits ne sont pas respectés.
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Durée de conservation</h2>
+      <p>
+        Vos données sont conservées sur votre appareil aussi longtemps que vous utilisez
+        l'application. Elles sont supprimées définitivement si vous :
+      </p>
+      <ul>
+        <li>Utilisez la fonction <em>Tout effacer</em> dans les paramètres</li>
+        <li>Désinstallez l'application</li>
+        <li>Effectuez une réinitialisation d'usine de votre appareil</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Sécurité</h2>
+      <p>
+        Les données sont stockées dans le stockage interne privé de l'application
+        sous Android, protégé par le chiffrement natif du système d'exploitation.
+        Aucune autre application ne peut y accéder sans les droits root.
+      </p>
+    </section>
+
+    <section>
+      <h2>8. Avertissement médical</h2>
+      <div class="highlight">
+        Pilulo est un <strong>outil d'aide-mémoire</strong>. Il ne remplace pas
+        l'avis d'un médecin, d'un pharmacien, ni la surveillance d'un aidant.
+        Les rappels peuvent ne pas fonctionner si l'appareil est éteint, sans batterie,
+        ou si les notifications sont désactivées.
+      </div>
+    </section>
+
+    <section>
+      <h2>9. Modifications</h2>
+      <p>
+        Cette politique peut être mise à jour. En cas de modification substantielle,
+        une notification sera affichée dans l'application. La date de dernière mise
+        à jour est indiquée en haut de ce document.
+      </p>
+      <p>
+        Contact : <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
+      </p>
+    </section>
+
+  </div><!-- /.fr -->
+
+  <!-- ═══════════════ ENGLISH VERSION ═══════════════ -->
+  <div class="en">
+
+    <section>
+      <h2>📋 Summary</h2>
+      <div class="highlight">
+        Pilulo collects no data on any server. Everything you enter
+        (medication names, doses, schedules) stays <strong>only on your phone</strong>.
+        We have zero access to it.
+      </div>
+      <p class="muted">Last updated: May 24, 2026 — Version 1.0</p>
+    </section>
+
+    <section>
+      <h2>1. Data Controller</h2>
+      <p>Pilulo is developed by:</p>
+      <ul>
+        <li><strong>Boutch Software</strong> (Boutch Software)</li>
+        <li>Contact: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></li>
+        <li>France</li>
+      </ul>
+      <p>For any privacy-related question, email the address above. We will respond within 30 days.</p>
+    </section>
+
+    <section>
+      <h2>2. What data is processed?</h2>
+      <p><strong>Data stored on your device only:</strong></p>
+      <ul>
+        <li>Medication or care names you enter</li>
+        <li>Doses and reminder times</li>
+        <li>History of confirmed doses</li>
+        <li>App preferences (theme, language, alarm volume)</li>
+      </ul>
+      <div class="highlight">
+        This data qualifies as <strong>health data</strong> under GDPR.
+        It is stored only in your device's internal storage, encrypted by Android.
+        The developer has <strong>no access</strong> to it whatsoever.
+      </div>
+      <p><strong>Data we do NOT collect:</strong></p>
+      <ul>
+        <li>No user account, no email address</li>
+        <li>No location data</li>
+        <li>No analytics or usage tracking (no Firebase Analytics)</li>
+        <li>No automatic crash reports sent to our servers</li>
+        <li>No advertising identifiers</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>3. Subscription and payment</h2>
+      <p>
+        The Pilulo subscription (€0.99/month) is managed exclusively by
+        <strong>Google Play Billing</strong>. The developer never receives,
+        sees, or stores any payment data.
+        Google acts as Merchant of Record and applies its own privacy policy:
+        <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>4. Third-party services</h2>
+      <p>
+        Pilulo uses <strong>Google Play Services</strong>, present on all Android devices.
+        Google may collect diagnostic data (crashes, performance) independently of the app.
+        No other third-party SDK is included in Pilulo.
+      </p>
+    </section>
+
+    <section>
+      <h2>5. Your rights (GDPR)</h2>
+      <ul>
+        <li><strong>Right of access:</strong> your data is on your device, directly visible in the app.</li>
+        <li><strong>Right to portability:</strong> use <em>Export my data</em> (Settings → Data).</li>
+        <li><strong>Right to erasure:</strong> use <em>Delete everything</em> (Settings → Data) — immediate and permanent.</li>
+        <li><strong>Right to rectification:</strong> edit your medications directly in the app.</li>
+      </ul>
+      <p>
+        You may also lodge a complaint with your national data protection authority
+        (France: <a href="https://www.cnil.fr" target="_blank">CNIL</a>).
+      </p>
+    </section>
+
+    <section>
+      <h2>6. Retention</h2>
+      <p>
+        Data is retained on your device until you delete it via the app settings,
+        uninstall the app, or reset your device.
+      </p>
+    </section>
+
+    <section>
+      <h2>7. Medical disclaimer</h2>
+      <div class="highlight">
+        Pilulo is a <strong>reminder tool only</strong>. It does not replace
+        medical advice, a pharmacist, or a caregiver's supervision.
+        Reminders may not function if the device is off, out of battery,
+        or if notifications are disabled.
+      </div>
+    </section>
+
+    <section>
+      <h2>8. Changes</h2>
+      <p>
+        This policy may be updated. Material changes will be notified within the app.
+        Contact: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
+      </p>
+    </section>
+
+  </div><!-- /.en -->
+
+  <footer>
+    <p>Pilulo · Boutch Software · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
+    <p style="margin-top:6px"><a href="terms.html">Conditions d'utilisation / Terms of Use</a></p>
+  </footer>
+</main>
+
+<script>
+  function toggleLang(e) {
+    e.preventDefault();
+    const isEn = document.body.classList.toggle('show-en');
+    e.target.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+  }
+</script>
+</body>
+</html>
