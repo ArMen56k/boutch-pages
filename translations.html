@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BoutchSoftware - Traductions</title>
+  <style>
+    :root {
+      --green: #5BB65A;
+      --green-dark: #3D8C3C;
+      --text: #212121;
+      --muted: #757575;
+      --bg: #F5FBF5;
+      --card: #FFFFFF;
+      --border: #D8E8D8;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      padding: 0 0 60px;
+    }
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 34px 24px 30px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; }
+    header p { margin-top: 8px; opacity: .92; }
+    main {
+      max-width: 820px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    h2 {
+      font-size: 1.18rem;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--bg);
+    }
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+    p { margin-bottom: 10px; }
+    ul { padding-left: 20px; margin: 8px 0 10px; }
+    li { margin-bottom: 6px; }
+    code {
+      background: #EEF7EE;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    .app-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      margin-top: 12px;
+    }
+    .muted { color: var(--muted); font-size: .92rem; }
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .button {
+      display: inline-block;
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      border: 1px solid var(--green-dark);
+      background: var(--green-dark);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .button.secondary {
+      background: #fff;
+      color: var(--green-dark);
+    }
+    a { color: var(--green-dark); }
+    footer {
+      text-align: center;
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>BoutchSoftware</h1>
+  <p>Aider à traduire nos applications</p>
+</header>
+
+<main>
+  <section>
+    <h2>Principe</h2>
+    <p>
+      Cette page regroupe les kits de traduction des applications BoutchSoftware.
+      Elle est conçue pour Pilulo aujourd'hui et pour les prochaines applications demain.
+    </p>
+    <p>
+      Les traductions proposées sont relues avant intégration. C'est indispensable pour éviter les erreurs,
+      surtout dans les textes liés à la santé, aux permissions Android et aux paiements.
+    </p>
+  </section>
+
+  <section>
+    <h2>Applications disponibles</h2>
+    <div class="app-card">
+      <h3>Pilulo</h3>
+      <p class="muted">Rappels quotidiens de médicaments et de soins.</p>
+      <p>
+        Le kit CSV contient les textes de l'application, leur version française de référence,
+        une colonne anglaise quand elle existe, puis des colonnes prévues pour la traduction proposée.
+      </p>
+      <div class="actions">
+        <a class="button" href="pilulo/translation-kit.csv" download>Télécharger le kit CSV</a>
+        <a class="button secondary" href="mailto:boutchsoftware@gmail.com?subject=Traduction%20BoutchSoftware%20-%20Pilulo">Envoyer une proposition</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Consignes importantes</h2>
+    <ul>
+      <li>Ne modifiez pas les clés techniques.</li>
+      <li>Conservez exactement les éléments comme <code>%1$s</code>, <code>%2$d</code>, <code>\n</code> et <code>%%</code>.</li>
+      <li>Gardez les noms <strong>Pilulo</strong>, <strong>BoutchSoftware</strong> et <strong>boutchsoftware@gmail.com</strong>.</li>
+      <li>Privilégiez des phrases courtes et simples.</li>
+      <li>Signalez les formulations incertaines dans la colonne de notes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      Pour proposer une langue, signaler une erreur ou envoyer un fichier traduit :
+      <a href="mailto:boutchsoftware@gmail.com?subject=Traduction%20BoutchSoftware">boutchsoftware@gmail.com</a>
+    </p>
+  </section>
+</main>
+
+<footer>
+  BoutchSoftware - Dernière mise à jour : 26 mai 2026
+</footer>
+</body>
+</html>
