@@ -50,6 +50,12 @@
       padding-bottom: 8px;
       border-bottom: 2px solid var(--bg);
     }
+    h3 {
+      font-size: 1rem;
+      color: var(--green-dark);
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
     p { margin-bottom: 10px; }
     p:last-child { margin-bottom: 0; }
     ul { padding-left: 20px; margin-bottom: 10px; }
@@ -90,228 +96,539 @@
 
   <section>
     <h2>📋 En bref</h2>
-    <p class="muted">Dernière mise à jour : 28 mai 2026 — Version 1.2</p>
+    <p class="muted">Dernière mise à jour : 28 mai 2026 — Version 1.3</p>
     <p>
-      Ces Conditions d'Utilisation régissent l'utilisation de l'application Pilulo,
-      développée par BoutchSoftware (France).
-      En installant ou utilisant Pilulo, vous acceptez ces conditions.
+      Les présentes Conditions d'Utilisation (« Conditions ») régissent l'utilisation
+      de l'application Pilulo (« l'Application » ou « Pilulo »), éditée par
+      <strong>BoutchSoftware</strong>. En installant ou utilisant Pilulo, l'utilisateur
+      reconnaît avoir pris connaissance des présentes Conditions et les accepter.
     </p>
   </section>
 
   <section>
-    <h2>1. Description du service</h2>
+    <h2>1. Mentions légales</h2>
     <p>
-      Pilulo est une application Android d'<strong>aide-mémoire pour médicaments et soins</strong>.
-      Elle permet de configurer des rappels locaux, de suivre les prises et d'exporter
-      ses données sur son appareil.
+      <strong>Éditeur :</strong> BoutchSoftware<br>
+      <strong>Forme juridique :</strong> Entreprise individuelle — micro-entreprise<br>
+      <strong>SIREN :</strong> en cours d'attribution (sera publié dès réception INSEE)<br>
+      <strong>Adresse postale :</strong> communiquée sur demande à l'adresse de contact ci-dessous<br>
+      <strong>Contact :</strong>
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a><br>
+      <strong>Directeur de la publication :</strong> le représentant légal de BoutchSoftware<br>
+      <strong>Hébergement du site légal :</strong> GitHub Pages (GitHub, Inc., 88 Colin P
+      Kelly Jr St, San Francisco, CA 94107, États-Unis)
+    </p>
+    <p class="muted">
+      BoutchSoftware exerce une activité d'édition et de commercialisation de logiciels
+      applicatifs et d'applications mobiles. La franchise en base de TVA s'applique en
+      dessous des seuils légaux : la TVA n'est pas facturée par BoutchSoftware (Google
+      Play, en qualité de revendeur, collecte la TVA applicable au consommateur final).
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Description du service</h2>
+    <p>
+      Pilulo est une application Android d'<strong>aide-mémoire personnel</strong>
+      permettant à l'utilisateur de programmer, sur son propre appareil, des rappels
+      locaux selon les informations qu'il saisit lui-même.
+    </p>
+    <p>
+      Pilulo <strong>ne détermine pas</strong> quel médicament prendre, <strong>ne
+      recommande aucune dose</strong>, <strong>ne modifie aucun traitement</strong>,
+      <strong>n'analyse aucune donnée médicale</strong>, <strong>ne surveille pas</strong>
+      l'état de santé de l'utilisateur et <strong>ne transmet aucune alerte</strong> à
+      un tiers ou à un professionnel de santé.
     </p>
     <div class="warning">
-      <strong>⚠️ Avertissement médical important</strong><br>
-      Pilulo est un outil d'aide-mémoire et <strong>n'est pas un dispositif médical</strong>. Il <strong>ne remplace pas</strong> :
-      <ul style="margin-top:8px">
-        <li>L'avis ou le suivi d'un médecin ou d'un pharmacien</li>
-        <li>Un pilulier sécurisé ou la surveillance d'un aidant</li>
-        <li>Tout dispositif médical certifié</li>
-      </ul>
+      <strong>⚠️ Avertissement médical important</strong>
       <p style="margin-top:8px">
-        Les rappels peuvent ne pas fonctionner si l'appareil est éteint, sans batterie,
-        en mode économie d'énergie, ou si les notifications sont désactivées.
-        En cas de doute sur votre traitement, consultez un professionnel de santé.
+        Pilulo ne porte pas le marquage CE au titre des dispositifs médicaux et n'est
+        pas destinée à être utilisée comme dispositif médical, logiciel de
+        télésurveillance, outil d'aide au diagnostic, outil d'aide à la prescription,
+        outil d'aide au traitement ou système de sécurité pour traitement critique.
       </p>
       <p style="margin-top:8px">
-        Pilulo n'est <strong>pas adapté</strong> à certains usages : voir la section
-        <a href="#usage">2. Usage prévu et restrictions d'usage</a>.
+        Pilulo <strong>ne remplace pas</strong> :
+      </p>
+      <ul style="margin-top:4px">
+        <li>l'avis ou le suivi d'un médecin ou d'un pharmacien ;</li>
+        <li>un pilulier sécurisé ou la surveillance d'un aidant ;</li>
+        <li>tout dispositif médical certifié.</li>
+      </ul>
+      <p style="margin-top:8px">
+        En cas de doute sur un traitement, consultez un professionnel de santé.
+        Pilulo n'est pas adaptée à certains usages : voir la section
+        <a href="#usage">3. Usage prévu et restrictions d'usage</a>.
       </p>
     </div>
   </section>
 
   <section id="usage">
-    <h2>2. Usage prévu et restrictions d'usage</h2>
+    <h2>3. Usage prévu et restrictions d'usage</h2>
     <p>
-      Cette section précise le périmètre d'usage prévu de Pilulo et les usages
-      pour lesquels Pilulo <strong>ne doit pas</strong> être utilisé.
+      La présente section précise le périmètre d'usage prévu de Pilulo et les usages
+      pour lesquels Pilulo <strong>ne doit pas</strong> être utilisée.
     </p>
 
     <div class="highlight">
-      <strong>2.1 — Usage prévu.</strong> Pilulo est un outil d'aide-mémoire destiné à
-      signaler des prises de médicaments ou de soins <strong>ne présentant pas de risque
-      vital en cas d'oubli ponctuel</strong> (par exemple : vitamines, compléments
-      alimentaires, traitements de confort, traitements de fond stabilisés).
+      <strong>3.1 — Usage prévu.</strong> Pilulo est un outil d'aide-mémoire destiné à
+      signaler des prises de médicaments ou de soins <strong>ne présentant pas de
+      risque vital en cas d'oubli ponctuel</strong> (par exemple : vitamines,
+      compléments alimentaires, traitements de confort, traitements de fond stabilisés).
     </div>
 
     <div class="warning">
-      <strong>2.2 — Usages exclus.</strong> L'utilisation de Pilulo comme système de rappel
-      <strong>unique ou principal</strong> est expressément <strong>exclue</strong> pour :
+      <strong>3.2 — Usages exclus.</strong> L'utilisation de Pilulo comme système de
+      rappel <strong>unique ou principal</strong> est expressément <strong>exclue</strong>
+      pour :
       <ul style="margin-top:8px">
         <li>tout traitement vital dont l'oubli peut engager le pronostic vital
-          (notamment : insuline, anticoagulants, antiarythmiques, antiépileptiques,
-          immunosuppresseurs, chimiothérapies orales) ;</li>
+          (notamment, à titre indicatif et non exhaustif : insuline, anticoagulants,
+          antiarythmiques, antiépileptiques, immunosuppresseurs, chimiothérapies orales) ;</li>
         <li>tout traitement à fenêtre thérapeutique étroite ;</li>
-        <li>tout soin dont l'oubli est susceptible d'entraîner des conséquences
-          graves sur la santé.</li>
+        <li>tout soin dont l'oubli, le retard, le doublement ou la mauvaise prise est
+          susceptible d'entraîner un risque grave pour la santé.</li>
       </ul>
+      <p style="margin-top:8px">
+        Les exemples ci-dessus sont donnés à titre indicatif et ne constituent pas
+        une liste exhaustive. D'une manière générale, Pilulo ne doit pas être
+        utilisée comme moyen principal ou unique de rappel pour tout traitement dont
+        l'oubli pourrait entraîner un risque grave pour la santé.
+      </p>
+      <p style="margin-top:8px">
+        L'utilisateur doit demander conseil à son médecin ou à son pharmacien pour
+        déterminer si son traitement nécessite un système de rappel sécurisé, une
+        surveillance humaine, un pilulier physique, un dispositif médical certifié
+        ou un accompagnement professionnel.
+      </p>
     </div>
 
     <p>
-      <strong>2.3 — Engagement de l'utilisateur.</strong> L'utilisateur reconnaît avoir
+      <strong>3.3 — Engagement de l'utilisateur.</strong> L'utilisateur reconnaît avoir
       pris connaissance des restrictions ci-dessus et s'engage à ne pas utiliser Pilulo
-      pour les usages exclus. Pour les traitements concernés par les usages exclus,
-      l'utilisateur s'engage à maintenir un suivi médical approprié et un système de
-      rappel secondaire fiable (pilulier physique, accompagnement d'un aidant ou d'un
-      professionnel de santé).
+      pour les usages exclus.
     </p>
 
     <p>
-      <strong>2.4 — Exclusion de responsabilité.</strong> BoutchSoftware ne saurait être
-      tenu pour responsable de tout dommage résultant d'une utilisation hors de l'usage
-      prévu défini au 2.1, ou de l'inobservation des engagements pris par l'utilisateur
-      au 2.3.
+      <strong>3.4 — Exclusion de responsabilité.</strong> Dans les limites permises par
+      la loi, BoutchSoftware ne saurait être tenue pour responsable des conséquences
+      d'une utilisation hors de l'usage prévu défini au 3.1, ou de l'inobservation des
+      engagements pris au 3.3.
     </p>
   </section>
 
   <section>
-    <h2>3. Achat et paiement</h2>
+    <h2>4. Obligation de rappel secondaire</h2>
+    <p>
+      L'utilisateur reconnaît que les notifications d'un smartphone peuvent échouer
+      pour des raisons techniques indépendantes de BoutchSoftware.
+    </p>
+    <div class="highlight">
+      Pour tout traitement important, régulier ou prescrit médicalement, l'utilisateur
+      s'engage à conserver un <strong>moyen de rappel secondaire adapté</strong> :
+      pilulier physique, ordonnance papier, alarme indépendante, aide d'un proche,
+      suivi par un professionnel de santé ou tout autre dispositif approprié.
+    </div>
+    <p>
+      Pilulo intervient comme rappel complémentaire et non comme système principal
+      de sécurité pour un traitement.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Conditions techniques de fonctionnement des rappels</h2>
+    <p>
+      Les rappels peuvent ne pas se déclencher, se déclencher en retard ou être
+      inaudibles, notamment dans les situations suivantes :
+    </p>
+    <ul>
+      <li>l'appareil est éteint, déchargé, redémarré ou verrouillé par le système ;</li>
+      <li>les notifications, alarmes exactes, sons, vibrations ou autorisations
+        nécessaires sont désactivés ;</li>
+      <li>le mode silencieux, « Ne pas déranger », économie d'énergie, économie de
+        batterie ou optimisation constructeur limite l'application ;</li>
+      <li>l'utilisateur ferme l'application, force son arrêt ou utilise un outil de
+        nettoyage automatique ;</li>
+      <li>l'heure, le fuseau horaire ou la date du téléphone sont incorrects ;</li>
+      <li>une mise à jour Android, constructeur ou Google Play modifie le
+        comportement des notifications ;</li>
+      <li>le téléphone est rooté, modifié ou utilise une ROM non standard ;</li>
+      <li>l'espace de stockage est insuffisant ou les données de l'application
+        sont supprimées.</li>
+    </ul>
+    <p>
+      Pilulo propose un écran « Vérifier la fiabilité » (Paramètres → Vérifier la
+      fiabilité) pour aider l'utilisateur à diagnostiquer les principales conditions
+      techniques requises.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Test de rappel obligatoire</h2>
+    <p>
+      Lors de la première utilisation, après toute mise à jour importante, après
+      changement de téléphone, après modification des paramètres de notification ou
+      après mise à jour Android, l'utilisateur s'engage à effectuer un <strong>test
+      de rappel</strong> afin de vérifier que les notifications fonctionnent
+      correctement sur son appareil.
+    </p>
+    <p>
+      L'utilisateur reconnaît qu'il dispose, par l'application et par l'écran
+      « Vérifier la fiabilité », des moyens nécessaires pour réaliser ce contrôle.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Utilisateurs mineurs ou vulnérables</h2>
+    <p>
+      Pilulo est destinée à être utilisée par des personnes capables de gérer
+      elles-mêmes leurs rappels ou sous la supervision d'un adulte responsable.
+    </p>
+    <p>
+      L'application n'est pas destinée à remplacer la surveillance d'un parent,
+      d'un tuteur, d'un aidant ou d'un professionnel de santé pour une personne
+      mineure, âgée, dépendante, vulnérable, ou présentant des troubles de mémoire,
+      de compréhension ou d'autonomie.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Interdiction d'usage professionnel médical</h2>
+    <p>
+      Pilulo est destinée à un <strong>usage personnel et domestique</strong>.
+    </p>
+    <p>
+      Elle n'est pas destinée à être utilisée par un professionnel de santé pour
+      suivre, surveiller, prescrire, adapter ou contrôler le traitement d'un patient.
+      Elle ne doit pas être utilisée dans un établissement de santé, un EHPAD,
+      un cabinet médical, une pharmacie ou tout autre cadre professionnel comme
+      outil de suivi patient, de télésurveillance ou de coordination de soins.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Achat, paiement et accès Premium</h2>
 
     <div class="highlight">
       <strong>Modèle :</strong> version gratuite limitée à <strong>3 rappels actifs</strong>
-      · <strong>Pilulo Premium</strong> pour des rappels illimités (achat unique).
+      · <strong>Pilulo Premium</strong> à <strong>4,99 €</strong> en achat unique pour
+      des rappels illimités.
     </div>
 
     <ul>
-      <li>Version gratuite : <strong>3 rappels actifs inclus</strong>, sans limite de durée</li>
-      <li>Pilulo Premium : <strong>4,99 €</strong> — achat unique, rappels illimités à vie</li>
-      <li>Aucun abonnement · Aucun frais récurrent · Aucune date d'expiration</li>
+      <li>Version gratuite : <strong>3 rappels actifs inclus</strong>, sans limite
+        de durée connue ;</li>
+      <li>Pilulo Premium : <strong>4,99 €</strong>, achat unique, sans abonnement,
+        sans frais récurrent.</li>
     </ul>
 
     <p>
-      Le paiement est géré par <strong>Google Play Billing</strong>.
-      Google agit en tant que marchand ("Merchant of Record") et collecte la TVA applicable.
-      BoutchSoftware ne traite aucune donnée de paiement.
+      Pilulo Premium est un achat unique qui débloque les rappels illimités dans
+      l'application, sans abonnement ni frais récurrent. Cet accès reste lié au
+      compte Google Play utilisé lors de l'achat et peut être restauré sur les
+      appareils compatibles connectés à ce même compte, <strong>sous réserve des
+      règles de Google Play, de la disponibilité de l'application et de la
+      compatibilité technique avec le système Android utilisé</strong>.
     </p>
 
     <p>
-      L'achat est lié à votre compte Google Play et peut être restauré
-      sur tout appareil connecté au même compte, via la fonction
-      « Restaurer un achat » dans l'application.
+      Le paiement, la facturation, la restauration d'achat et certaines demandes
+      de remboursement sont gérés par <strong>Google Play Billing</strong>.
+      Google agit en qualité de revendeur (« Merchant of Record ») et collecte la
+      TVA applicable au consommateur final. BoutchSoftware ne traite aucune donnée
+      de paiement.
     </p>
 
     <p>
-      En cas de litige de paiement, contactez d'abord Google Play.
-      Pour toute autre question, écrivez à
+      BoutchSoftware ne contrôle pas les décisions techniques ou commerciales
+      prises par Google concernant Google Play, Play Billing, la disponibilité de
+      l'application, les moyens de paiement ou les procédures de remboursement.
+    </p>
+
+    <p>
+      En cas de litige de paiement, l'utilisateur est invité à contacter d'abord
+      Google Play. Pour toute autre question, écrire à
       <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
     </p>
   </section>
 
   <section>
-    <h2>4. Droit de rétractation (UE)</h2>
+    <h2>10. Droit de rétractation</h2>
     <p>
-      Conformément à la directive européenne 2011/83/UE sur les droits des consommateurs,
-      vous disposez d'un droit de rétractation de <strong>14 jours</strong> à compter
-      de la date d'achat de Pilulo Premium.
+      Les achats intégrés sont traités par Google Play Billing. Les demandes de
+      remboursement doivent être effectuées selon les règles et procédures de
+      Google Play, <strong>sans préjudice des droits légaux dont dispose le
+      consommateur</strong>.
     </p>
     <p>
-      Cependant, si vous avez activé Pilulo Premium et commencé à utiliser les
-      fonctionnalités débloquées pendant ce délai, vous reconnaissez avoir
-      expressément demandé l'exécution immédiate du service et renoncé à votre
-      droit de rétractation pour la partie déjà exécutée
-      (article L221-28 du Code de la consommation français).
+      Lorsque la loi applicable le permet, l'accès immédiat aux fonctionnalités
+      numériques Premium peut entraîner la perte du droit de rétractation après
+      accord exprès de l'utilisateur et reconnaissance de cette perte, conformément
+      aux règles applicables aux contenus et services numériques (notamment
+      articles L221-28, L224-25-1 et suivants du Code de la consommation français,
+      transposant la directive (UE) 2019/770).
     </p>
     <p>
-      Pour exercer votre droit de rétractation, contactez Google Play directement
-      (politique de remboursement Google Play) ou écrivez à
-      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+      Les conditions et délais de remboursement effectifs sont définis par Google
+      Play. Ils peuvent dépendre du type d'achat, du délai écoulé, du moyen de
+      paiement et du pays de l'utilisateur.
     </p>
   </section>
 
   <section>
-    <h2>5. Données personnelles</h2>
+    <h2>11. Garantie légale de conformité</h2>
     <p>
-      L'utilisation de vos données personnelles est décrite dans notre
+      Les présentes Conditions ne limitent pas les droits légaux du consommateur,
+      notamment la <strong>garantie légale de conformité</strong> applicable aux
+      contenus et services numériques dans les conditions prévues par les articles
+      L224-25-1 et suivants du Code de la consommation français.
+    </p>
+    <p>
+      En cas de défaut de conformité établi, le consommateur bénéficie des recours
+      prévus par la loi (mise en conformité, réduction de prix, résolution du contrat).
+    </p>
+    <p>
+      BoutchSoftware ne garantit toutefois pas que Pilulo sera compatible avec
+      tous les modèles de téléphones, toutes les versions futures d'Android,
+      toutes les surcouches constructeur ou tous les réglages personnels de
+      l'utilisateur, en particulier lorsque ceux-ci bloquent ou limitent les
+      notifications.
+    </p>
+  </section>
+
+  <section>
+    <h2>12. Mises à jour</h2>
+    <p>
+      BoutchSoftware peut publier des mises à jour via Google Play afin de corriger
+      des anomalies, maintenir la compatibilité, améliorer la sécurité ou faire
+      évoluer certaines fonctionnalités.
+    </p>
+    <p>
+      Certaines mises à jour peuvent être nécessaires au bon fonctionnement de
+      l'application. L'utilisateur est invité à installer les mises à jour
+      disponibles et reconnaît que le refus ou l'absence d'installation d'une
+      mise à jour peut affecter le fonctionnement de Pilulo.
+    </p>
+    <p>
+      BoutchSoftware ne garantit pas la compatibilité indéfinie de Pilulo avec
+      toutes les futures versions d'Android, tous les appareils ou toutes les
+      politiques techniques de Google Play.
+    </p>
+  </section>
+
+  <section>
+    <h2>13. Données personnelles et stockage local</h2>
+    <p>
+      L'utilisation des données personnelles est décrite dans la
       <a href="privacy.html">Politique de confidentialité</a>.
     </p>
     <div class="highlight">
-      Vos données de santé (médicaments, doses, horaires) sont stockées
-      uniquement sur votre appareil. BoutchSoftware n'y a aucun accès.
+      Les données de santé (médicaments, doses, horaires, historique) sont stockées
+      <strong>uniquement sur l'appareil de l'utilisateur</strong>. BoutchSoftware
+      n'y a aucun accès et ne dispose d'aucune copie distante.
+    </div>
+    <p>
+      <strong>Conservation et perte de données.</strong> Pilulo ne dispose d'aucune
+      copie distante et ne peut pas restaurer les données perdues. L'utilisateur
+      est seul responsable de l'export, de la sauvegarde et de la conservation de
+      ses données. La désinstallation de l'application, l'effacement des données,
+      la réinitialisation du téléphone, une panne de l'appareil ou un changement
+      de téléphone peuvent entraîner une perte définitive des données.
+    </p>
+    <p>
+      <strong>Exports.</strong> Les fonctions d'export (médicaments, journal
+      d'alarmes) sont fournies pour un usage personnel de consultation ou de
+      sauvegarde. Les exports générés par Pilulo <strong>ne constituent pas</strong>
+      un dossier médical, une preuve médicale certifiée, une ordonnance, un
+      document opposable à un professionnel de santé ou un justificatif officiel
+      de bonne prise d'un traitement.
+    </p>
+  </section>
+
+  <section>
+    <h2>14. Licence d'utilisation et propriété intellectuelle</h2>
+    <p>
+      Sous réserve du respect des présentes Conditions, BoutchSoftware accorde à
+      l'utilisateur une licence <strong>personnelle, non exclusive, non
+      transférable et limitée</strong> d'utilisation de Pilulo sur un appareil
+      compatible associé à son compte Google Play.
+    </p>
+    <p>
+      Cette licence n'emporte aucun transfert de propriété sur le logiciel, son
+      code, ses visuels, son nom, ses textes, son interface ou son identité
+      graphique, lesquels demeurent la propriété exclusive de BoutchSoftware.
+      La protection du code source est assurée par le droit d'auteur français
+      (Code de la Propriété Intellectuelle, article L111-1) dès sa création.
+    </p>
+    <p>
+      Sauf autorisation légale impérative (notamment en matière d'interopérabilité),
+      l'utilisateur s'interdit de copier, modifier, distribuer, vendre, louer,
+      sous-licencier, décompiler, désassembler, tenter d'extraire le code source,
+      contourner les mécanismes de paiement ou altérer le fonctionnement de
+      l'application.
+    </p>
+  </section>
+
+  <section>
+    <h2>15. Composants tiers</h2>
+    <p>
+      Pilulo intègre des composants logiciels tiers ou open source soumis à leurs
+      propres licences (notamment les bibliothèques AndroidX, Jetpack Compose,
+      Kotlin Coroutines, kotlinx.serialization et la police Nunito sous SIL Open
+      Font License). Ces licences restent applicables à leurs composants
+      respectifs.
+    </p>
+    <p>
+      Une liste des composants et licences applicables peut être obtenue sur
+      demande à <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>16. Limitation de responsabilité</h2>
+    <p>
+      Dans les limites permises par la loi, BoutchSoftware ne peut être tenue
+      responsable des conséquences résultant :
+    </p>
+    <ul>
+      <li>d'une mauvaise saisie des informations par l'utilisateur ;</li>
+      <li>d'un mauvais paramétrage des rappels ;</li>
+      <li>d'un défaut d'autorisation des notifications, alarmes ou sons ;</li>
+      <li>d'une configuration du téléphone empêchant ou retardant les notifications ;</li>
+      <li>d'une utilisation de Pilulo pour un traitement exclu ou critique au sens
+        de la section <a href="#usage">3</a> ;</li>
+      <li>de l'absence de système de rappel secondaire ;</li>
+      <li>d'une perte de données locales non sauvegardées par l'utilisateur ;</li>
+      <li>d'un usage contraire aux présentes Conditions.</li>
+    </ul>
+    <p>
+      Dans les limites permises par la loi, BoutchSoftware n'est pas tenue
+      responsable des dommages indirects, perte de chance ou préjudice moral
+      résultant de l'utilisation ou de l'impossibilité d'utiliser l'application.
+    </p>
+    <p class="muted">
+      Les limitations ci-dessus <strong>ne s'appliquent pas</strong> aux garanties
+      légales impératives, aux droits du consommateur prévus par la loi, ni aux
+      cas dans lesquels la responsabilité ne peut légalement être limitée ou
+      exclue (notamment en cas de dommage corporel ou de faute lourde).
+    </p>
+  </section>
+
+  <section>
+    <h2>17. Disponibilité du service</h2>
+    <p>
+      Pilulo est une application fonctionnant <strong>entièrement hors ligne</strong>.
+      Son fonctionnement ne dépend d'aucun serveur externe maintenu par BoutchSoftware.
+    </p>
+    <p>
+      BoutchSoftware ne garantit pas une disponibilité continue de la distribution
+      de Pilulo sur Google Play ni la compatibilité avec toute version future du
+      système Android.
+    </p>
+  </section>
+
+  <section>
+    <h2>18. Réclamation préalable</h2>
+    <p>
+      Toute réclamation doit être adressée à
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a> en
+      indiquant :
+    </p>
+    <ul>
+      <li>le nom de l'application (Pilulo) ;</li>
+      <li>la version de l'application (Paramètres → Paramètres avancés → Informations techniques) ;</li>
+      <li>le modèle de téléphone et la version Android ;</li>
+      <li>la date et l'heure du problème ;</li>
+      <li>les paramètres de notification connus (autorisations, économie d'énergie,
+        mode silencieux, etc.) ;</li>
+      <li>si possible, des captures d'écran ou un export du journal d'alarmes
+        (Paramètres → Données → Exporter le journal d'alarmes).</li>
+    </ul>
+    <p>
+      BoutchSoftware ne peut pas analyser un incident sans informations techniques
+      suffisantes.
+    </p>
+    <div class="warning">
+      <strong>Pas d'urgence médicale.</strong> L'adresse de contact ne doit pas
+      être utilisée pour une urgence médicale. En cas d'urgence ou de doute relatif
+      à un traitement, l'utilisateur doit contacter immédiatement un professionnel
+      de santé ou les services d'urgence (15 / 112).
     </div>
   </section>
 
   <section>
-    <h2>6. Propriété intellectuelle</h2>
+    <h2>19. Résolution amiable des litiges</h2>
     <p>
-      L'application Pilulo, son code, ses visuels, son nom et son identité graphique
-      sont la propriété exclusive de BoutchSoftware.
-      Toute reproduction, modification ou distribution sans autorisation est interdite.
-    </p>
-    <p>
-      La protection du code source est assurée par le droit d'auteur français
-      (Code de la Propriété Intellectuelle, article L111-1) dès sa création.
-    </p>
-  </section>
-
-  <section>
-    <h2>7. Limitation de responsabilité</h2>
-    <p>
-      Pilulo est fourni "<strong>tel quel</strong>", sans garantie d'absence de bug,
-      de continuité de service, ni d'efficacité médicale.
-    </p>
-    <p>
-      Dans les limites permises par le droit applicable, BoutchSoftware ne pourra
-      être tenu responsable :
-    </p>
-    <ul>
-      <li>D'un oubli ou d'un retard de prise médicamenteuse</li>
-      <li>D'une alarme non déclenchée pour cause technique (extinction de l'appareil,
-        batterie déchargée, mode économie d'énergie, optimisation batterie du
-        constructeur, mode silencieux ou « Ne pas déranger », notifications
-        désactivées, mise à jour du système d'exploitation, etc.)</li>
-      <li>De tout dommage indirect, perte de chance ou préjudice moral résultant de
-        l'utilisation ou de l'impossibilité d'utiliser l'application</li>
-      <li>De tout dommage résultant d'une utilisation hors de l'<a href="#usage">usage
-        prévu défini à la section 2</a></li>
-    </ul>
-    <p>
-      Dans les limites permises par le droit applicable, et notamment hors cas de
-      dommage corporel ou de faute lourde, la responsabilité totale de BoutchSoftware
-      au titre de l'application Pilulo est limitée au montant effectivement payé par
-      l'utilisateur pour Pilulo Premium (4,99 €) ou à zéro pour la version gratuite.
+      Toute difficulté liée à l'utilisation de Pilulo doit d'abord faire l'objet
+      d'une <strong>réclamation préalable</strong> auprès de BoutchSoftware
+      conformément à la section 18, afin de permettre une résolution amiable.
     </p>
     <p class="muted">
-      Les présentes limitations ne s'appliquent pas aux droits incessibles du
-      consommateur prévus par les dispositions impératives du droit français et
-      européen.
+      Pendant la phase de bêta gratuite, BoutchSoftware n'est pas soumise à
+      l'obligation d'adhésion à un médiateur de la consommation au sens de
+      l'article L612-1 du Code de la consommation, dans la mesure où aucun
+      contrat à titre onéreux n'est conclu avec le consommateur. Avant
+      l'activation des achats Premium, BoutchSoftware désignera un médiateur
+      de la consommation et complètera la présente section avec ses coordonnées.
     </p>
   </section>
 
   <section>
-    <h2>8. Disponibilité du service</h2>
+    <h2>20. Loi applicable et juridiction</h2>
     <p>
-      Pilulo est une application fonctionnant entièrement hors ligne.
-      Son fonctionnement ne dépend d'aucun serveur externe maintenu par BoutchSoftware.
-      Des mises à jour peuvent être publiées via Google Play pour corriger des bugs
-      ou ajouter des fonctionnalités.
+      Les présentes Conditions sont régies par le <strong>droit français</strong>.
+    </p>
+    <p>
+      En cas de litige, les juridictions compétentes seront déterminées
+      conformément aux règles légales applicables. Lorsque l'utilisateur agit en
+      qualité de consommateur, la présente clause ne le prive d'aucune règle
+      protectrice impérative applicable, notamment en matière de compétence
+      territoriale (articles R631-3 du Code de la consommation et 46 du Code de
+      procédure civile).
     </p>
   </section>
 
   <section>
-    <h2>9. Loi applicable et juridiction</h2>
+    <h2>21. Modification des Conditions</h2>
     <p>
-      Ces conditions sont régies par le <strong>droit français</strong>.
-      En cas de litige non résolu à l'amiable, les tribunaux compétents sont
-      ceux du ressort du domicile du développeur (France).
+      BoutchSoftware peut mettre à jour les présentes Conditions afin de tenir
+      compte d'évolutions légales, techniques, fonctionnelles ou commerciales.
+      La version applicable est celle disponible dans l'application ou sur le
+      site officiel au moment de l'utilisation.
     </p>
     <p>
-      Pour les consommateurs résidant dans l'UE, la
-      <a href="https://ec.europa.eu/consumers/odr" target="_blank">
-        plateforme de règlement en ligne des litiges de la Commission européenne
-      </a>
-      est également disponible.
+      En cas de modification substantielle, l'utilisateur pourra être informé
+      dans l'application ou via la page Google Play. Les modifications ne privent
+      pas l'utilisateur des droits acquis ni des droits impératifs prévus par la
+      loi.
     </p>
   </section>
 
   <section>
-    <h2>10. Contact</h2>
+    <h2>22. Divisibilité</h2>
     <p>
-      BoutchSoftware · France<br>
+      Si une clause des présentes Conditions est déclarée nulle, inapplicable ou
+      réputée non écrite, les autres clauses demeurent applicables dans toute la
+      mesure permise par la loi.
+    </p>
+  </section>
+
+  <section>
+    <h2>23. Version linguistique</h2>
+    <p>
+      Les présentes Conditions sont rédigées en français. Toute traduction en
+      langue étrangère est fournie à titre informatif. En cas de divergence entre
+      une traduction et la version française, la version française prévaut, sauf
+      disposition impérative contraire applicable au consommateur.
+    </p>
+  </section>
+
+  <section>
+    <h2>24. Contact</h2>
+    <p>
+      BoutchSoftware<br>
+      Adresse postale : communiquée sur demande<br>
       <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
     </p>
   </section>
