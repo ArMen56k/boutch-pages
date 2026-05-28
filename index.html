@@ -114,6 +114,28 @@
       padding: 20px;
     }
     footer a { color: var(--green-dark); }
+    .site-nav {
+      background: var(--card);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 20px;
+      padding: 11px 16px;
+      border-bottom: 1px solid #E0EFE0;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .site-nav a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .92rem;
+      padding: 3px 4px;
+    }
+    .site-nav a:hover { text-decoration: underline; }
+    .site-nav a[aria-current="page"] {
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 2px solid var(--green);
+    }
   </style>
 </head>
 <body>
@@ -122,6 +144,13 @@
   <h1>BoutchSoftware</h1>
   <p>Applications Android simples et bienveillantes</p>
 </header>
+
+<nav class="site-nav">
+  <a href="index.html" aria-current="page">🏠 Accueil</a>
+  <a href="pilulo/privacy.html">Pilulo · Confidentialité</a>
+  <a href="pilulo/terms.html">Pilulo · CGU</a>
+  <a href="translations.html">Traductions</a>
+</nav>
 
 <main>
   <section class="spirit">
