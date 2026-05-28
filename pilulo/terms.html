@@ -83,16 +83,45 @@
       color: var(--muted);
       font-size: .85rem;
     }
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 24px;
+    }
+    .lang-switch a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .9rem;
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .lang-switch a:hover { background: var(--green); color: #fff; }
+
+    /* ── Section anglaise (pour information) ── */
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+    body.show-en header p.fr-sub { display: none; }
+    body.show-en header p.en-sub { display: block !important; }
+    header p.en-sub { display: none; }
   </style>
 </head>
 <body>
 
 <header>
   <h1>🟢 Pilulo</h1>
-  <p>Conditions d'utilisation</p>
+  <p class="fr-sub">Conditions d'utilisation</p>
+  <p class="en-sub">Terms of Use</p>
 </header>
 
 <main>
+
+  <div class="lang-switch">
+    <a href="#" onclick="toggleLang(event)">English version ↓</a>
+  </div>
+
+  <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
+  <div class="fr">
 
   <section>
     <h2>📋 En bref</h2>
@@ -633,11 +662,546 @@
     </p>
   </section>
 
+  </div><!-- /fr -->
+
+  <!-- ═══════════════ ENGLISH VERSION (for information only) ═══════════════ -->
+  <div class="en">
+
+  <section>
+    <div class="warning">
+      <strong>⚠️ Translation for information only.</strong> This English text is an
+      unofficial translation provided for convenience. <strong>Only the French version
+      is legally binding.</strong> In the event of any discrepancy, the French version
+      prevails, except where a mandatory consumer-protection rule provides otherwise
+      (see section 23).
+    </div>
+  </section>
+
+  <section>
+    <h2>📋 In brief</h2>
+    <p class="muted">Last updated: 28 May 2026 — Version 1.3</p>
+    <p>
+      These Terms of Use (the "Terms") govern the use of the Pilulo application
+      (the "Application" or "Pilulo"), published by <strong>BoutchSoftware</strong>.
+      By installing or using Pilulo, the user acknowledges having read and accepted
+      these Terms.
+    </p>
+  </section>
+
+  <section>
+    <h2>1. Legal information</h2>
+    <p>
+      <strong>Publisher:</strong> BoutchSoftware<br>
+      <strong>Legal form:</strong> Sole proprietorship — micro-enterprise (France)<br>
+      <strong>SIREN:</strong> being assigned (will be published upon receipt from INSEE)<br>
+      <strong>Postal address:</strong> provided on request at the contact address below<br>
+      <strong>Contact:</strong>
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a><br>
+      <strong>Publication director:</strong> the legal representative of BoutchSoftware<br>
+      <strong>Hosting of the legal site:</strong> GitHub Pages (GitHub, Inc., 88 Colin P
+      Kelly Jr St, San Francisco, CA 94107, USA)
+    </p>
+    <p class="muted">
+      BoutchSoftware carries out an activity of publishing and selling application
+      software and mobile applications. The VAT-exemption scheme ("franchise en base
+      de TVA") applies below the legal thresholds: VAT is not charged by BoutchSoftware
+      (Google Play, acting as reseller, collects the VAT applicable to the end consumer).
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Description of the service</h2>
+    <p>
+      Pilulo is an Android <strong>personal reminder</strong> application allowing the
+      user to schedule, on their own device, local reminders based on the information
+      they enter themselves.
+    </p>
+    <p>
+      Pilulo <strong>does not determine</strong> which medication to take, <strong>does
+      not recommend any dose</strong>, <strong>does not modify any treatment</strong>,
+      <strong>does not analyse any medical data</strong>, <strong>does not monitor</strong>
+      the user's health, and <strong>does not send any alert</strong> to a third party
+      or to a healthcare professional.
+    </p>
+    <div class="warning">
+      <strong>⚠️ Important medical warning</strong>
+      <p style="margin-top:8px">
+        Pilulo does not carry the CE marking for medical devices and is not intended
+        to be used as a medical device, remote-monitoring software, diagnostic aid,
+        prescription aid, treatment aid, or safety system for critical treatment.
+      </p>
+      <p style="margin-top:8px">
+        Pilulo <strong>does not replace</strong>:
+      </p>
+      <ul style="margin-top:4px">
+        <li>the advice or follow-up of a doctor or pharmacist;</li>
+        <li>a secure pill organiser or the supervision of a caregiver;</li>
+        <li>any certified medical device.</li>
+      </ul>
+      <p style="margin-top:8px">
+        If in doubt about a treatment, consult a healthcare professional. Pilulo is
+        not suitable for certain uses: see section
+        <a href="#usage-en">3. Intended use and use restrictions</a>.
+      </p>
+    </div>
+  </section>
+
+  <section id="usage-en">
+    <h2>3. Intended use and use restrictions</h2>
+    <p>
+      This section sets out the intended scope of use of Pilulo and the uses for which
+      Pilulo <strong>must not</strong> be used.
+    </p>
+
+    <div class="highlight">
+      <strong>3.1 — Intended use.</strong> Pilulo is a reminder tool intended to signal
+      the taking of medications or care that <strong>do not present a vital risk in the
+      event of an occasional missed dose</strong> (for example: vitamins, food
+      supplements, comfort treatments, stabilised long-term treatments).
+    </div>
+
+    <div class="warning">
+      <strong>3.2 — Excluded uses.</strong> Using Pilulo as the <strong>sole or main</strong>
+      reminder system is expressly <strong>excluded</strong> for:
+      <ul style="margin-top:8px">
+        <li>any vital treatment whose omission may endanger life (including, by way of
+          example and without limitation: insulin, anticoagulants, antiarrhythmics,
+          antiepileptics, immunosuppressants, oral chemotherapy);</li>
+        <li>any treatment with a narrow therapeutic window;</li>
+        <li>any care whose omission, delay, doubling or incorrect intake is likely to
+          cause a serious health risk.</li>
+      </ul>
+      <p style="margin-top:8px">
+        The above examples are indicative and do not constitute an exhaustive list.
+        Generally, Pilulo must not be used as the main or sole means of reminder for
+        any treatment whose omission could cause a serious health risk.
+      </p>
+      <p style="margin-top:8px">
+        The user should seek advice from their doctor or pharmacist to determine whether
+        their treatment requires a secure reminder system, human supervision, a physical
+        pill organiser, a certified medical device or professional support.
+      </p>
+    </div>
+
+    <p>
+      <strong>3.3 — User commitment.</strong> The user acknowledges having read the
+      above restrictions and undertakes not to use Pilulo for the excluded uses.
+    </p>
+
+    <p>
+      <strong>3.4 — Exclusion of liability.</strong> To the extent permitted by law,
+      BoutchSoftware cannot be held liable for the consequences of use outside the
+      intended use defined in 3.1, or of failure to comply with the commitments made
+      in 3.3.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Obligation to keep a secondary reminder</h2>
+    <p>
+      The user acknowledges that smartphone notifications may fail for technical
+      reasons beyond BoutchSoftware's control.
+    </p>
+    <div class="highlight">
+      For any important, regular or medically prescribed treatment, the user undertakes
+      to keep a <strong>suitable secondary reminder</strong>: a physical pill organiser,
+      a paper prescription, an independent alarm, help from a relative, follow-up by a
+      healthcare professional, or any other appropriate means.
+    </div>
+    <p>
+      Pilulo acts as a complementary reminder and not as a primary safety system for
+      a treatment.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Technical conditions for reminders to work</h2>
+    <p>
+      Reminders may fail to trigger, trigger late, or be inaudible, in particular in
+      the following situations:
+    </p>
+    <ul>
+      <li>the device is turned off, discharged, restarted or locked by the system;</li>
+      <li>the required notifications, exact alarms, sounds, vibrations or permissions
+        are disabled;</li>
+      <li>silent mode, "Do not disturb", power saving, battery saving or a
+        manufacturer optimisation limits the application;</li>
+      <li>the user closes the application, force-stops it, or uses an automatic
+        cleaning tool;</li>
+      <li>the phone's time, time zone or date are incorrect;</li>
+      <li>an Android, manufacturer or Google Play update changes notification
+        behaviour;</li>
+      <li>the phone is rooted, modified, or uses a non-standard ROM;</li>
+      <li>storage space is insufficient, or the application's data is deleted.</li>
+    </ul>
+    <p>
+      Pilulo provides a "Check reliability" screen (Settings → Check reliability) to
+      help the user diagnose the main required technical conditions.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Mandatory reminder test</h2>
+    <p>
+      On first use, after any major update, after changing phone, after modifying
+      notification settings, or after an Android update, the user undertakes to run a
+      <strong>reminder test</strong> to verify that notifications work correctly on
+      their device.
+    </p>
+    <p>
+      The user acknowledges that, through the application and the "Check reliability"
+      screen, they have the means necessary to carry out this check.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Minor or vulnerable users</h2>
+    <p>
+      Pilulo is intended to be used by people capable of managing their own reminders
+      or under the supervision of a responsible adult.
+    </p>
+    <p>
+      The application is not intended to replace the supervision of a parent, guardian,
+      caregiver or healthcare professional for a person who is a minor, elderly,
+      dependent, vulnerable, or who has impairments of memory, understanding or autonomy.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Prohibition of professional medical use</h2>
+    <p>
+      Pilulo is intended for <strong>personal and domestic use</strong>.
+    </p>
+    <p>
+      It is not intended to be used by a healthcare professional to follow up, monitor,
+      prescribe, adjust or control a patient's treatment. It must not be used in a
+      healthcare facility, a care home, a medical practice, a pharmacy, or any other
+      professional setting as a patient-monitoring, remote-monitoring or care-coordination
+      tool.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Purchase, payment and Premium access</h2>
+
+    <div class="highlight">
+      <strong>Model:</strong> a free version limited to <strong>3 active reminders</strong>
+      · <strong>Pilulo Premium</strong> at <strong>€4.99</strong> as a one-time purchase
+      for unlimited reminders.
+    </div>
+
+    <ul>
+      <li>Free version: <strong>3 active reminders included</strong>, with no known time
+        limit;</li>
+      <li>Pilulo Premium: <strong>€4.99</strong>, one-time purchase, no subscription,
+        no recurring fees.</li>
+    </ul>
+
+    <p>
+      Pilulo Premium is a one-time purchase that unlocks unlimited reminders in the
+      application, with no subscription or recurring fee. This access remains linked to
+      the Google Play account used at the time of purchase and may be restored on
+      compatible devices connected to that same account, <strong>subject to Google Play
+      rules, the availability of the application, and technical compatibility with the
+      Android system used</strong>.
+    </p>
+
+    <p>
+      Payment, billing, purchase restoration and certain refund requests are handled by
+      <strong>Google Play Billing</strong>. Google acts as reseller ("Merchant of
+      Record") and collects the VAT applicable to the end consumer. BoutchSoftware does
+      not process any payment data.
+    </p>
+
+    <p>
+      BoutchSoftware does not control the technical or commercial decisions made by
+      Google regarding Google Play, Play Billing, the availability of the application,
+      payment methods or refund procedures.
+    </p>
+
+    <p>
+      In the event of a payment dispute, the user is invited to contact Google Play
+      first. For any other question, write to
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Right of withdrawal</h2>
+    <p>
+      In-app purchases are handled by Google Play Billing. Refund requests must be made
+      in accordance with Google Play's rules and procedures, <strong>without prejudice
+      to the consumer's statutory rights</strong>.
+    </p>
+    <p>
+      Where applicable law allows, immediate access to Premium digital features may
+      result in the loss of the right of withdrawal after the user's express agreement
+      and acknowledgement of that loss, in accordance with the rules applicable to
+      digital content and services (in particular articles L221-28, L224-25-1 et seq.
+      of the French Consumer Code, transposing Directive (EU) 2019/770).
+    </p>
+    <p>
+      The actual refund conditions and time limits are defined by Google Play. They may
+      depend on the type of purchase, the time elapsed, the payment method and the
+      user's country.
+    </p>
+  </section>
+
+  <section>
+    <h2>11. Legal guarantee of conformity</h2>
+    <p>
+      These Terms do not limit the consumer's statutory rights, in particular the
+      <strong>legal guarantee of conformity</strong> applicable to digital content and
+      services under the conditions provided by articles L224-25-1 et seq. of the French
+      Consumer Code.
+    </p>
+    <p>
+      In the event of an established lack of conformity, the consumer benefits from the
+      remedies provided by law (bringing into conformity, price reduction, termination
+      of the contract).
+    </p>
+    <p>
+      BoutchSoftware does not, however, guarantee that Pilulo will be compatible with
+      all phone models, all future versions of Android, all manufacturer overlays or all
+      personal user settings, in particular where these block or limit notifications.
+    </p>
+  </section>
+
+  <section>
+    <h2>12. Updates</h2>
+    <p>
+      BoutchSoftware may release updates via Google Play to fix issues, maintain
+      compatibility, improve security or change certain features.
+    </p>
+    <p>
+      Some updates may be necessary for the application to work properly. The user is
+      invited to install available updates and acknowledges that refusing or failing to
+      install an update may affect how Pilulo works.
+    </p>
+    <p>
+      BoutchSoftware does not guarantee Pilulo's indefinite compatibility with all
+      future Android versions, all devices or all Google Play technical policies.
+    </p>
+  </section>
+
+  <section>
+    <h2>13. Personal data and local storage</h2>
+    <p>
+      The use of personal data is described in the
+      <a href="privacy.html">Privacy Policy</a>.
+    </p>
+    <div class="highlight">
+      Health data (medications, doses, schedules, history) is stored
+      <strong>only on the user's device</strong>. BoutchSoftware has no access to it
+      and holds no remote copy.
+    </div>
+    <p>
+      <strong>Retention and loss of data.</strong> Pilulo holds no remote copy and
+      cannot restore lost data. The user is solely responsible for exporting, backing up
+      and retaining their data. Uninstalling the application, clearing the data,
+      resetting the phone, a device failure or a change of phone may result in permanent
+      loss of data.
+    </p>
+    <p>
+      <strong>Exports.</strong> The export functions (medications, alarm log) are
+      provided for personal consultation or backup use. The exports generated by Pilulo
+      <strong>do not constitute</strong> a medical record, certified medical evidence,
+      a prescription, a document enforceable against a healthcare professional, or an
+      official proof of correct treatment intake.
+    </p>
+  </section>
+
+  <section>
+    <h2>14. Licence to use and intellectual property</h2>
+    <p>
+      Subject to compliance with these Terms, BoutchSoftware grants the user a
+      <strong>personal, non-exclusive, non-transferable and limited</strong> licence to
+      use Pilulo on a compatible device associated with their Google Play account.
+    </p>
+    <p>
+      This licence does not transfer any ownership of the software, its code, its
+      visuals, its name, its texts, its interface or its graphic identity, which remain
+      the exclusive property of BoutchSoftware. Protection of the source code is ensured
+      by French copyright law (Intellectual Property Code, article L111-1) from its
+      creation.
+    </p>
+    <p>
+      Except where mandatory law allows (in particular regarding interoperability), the
+      user must not copy, modify, distribute, sell, rent, sub-license, decompile,
+      disassemble, attempt to extract the source code, circumvent the payment mechanisms,
+      or alter the operation of the application.
+    </p>
+  </section>
+
+  <section>
+    <h2>15. Third-party components</h2>
+    <p>
+      Pilulo includes third-party or open-source software components subject to their
+      own licences (in particular the AndroidX, Jetpack Compose, Kotlin Coroutines and
+      kotlinx.serialization libraries, and the Nunito font under the SIL Open Font
+      License). These licences remain applicable to their respective components.
+    </p>
+    <p>
+      A list of the components and applicable licences can be obtained on request at
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>16. Limitation of liability</h2>
+    <p>
+      To the extent permitted by law, BoutchSoftware cannot be held liable for the
+      consequences resulting from:
+    </p>
+    <ul>
+      <li>incorrect entry of information by the user;</li>
+      <li>incorrect reminder settings;</li>
+      <li>a lack of permission for notifications, alarms or sounds;</li>
+      <li>a phone configuration preventing or delaying notifications;</li>
+      <li>use of Pilulo for an excluded or critical treatment within the meaning of
+        section <a href="#usage-en">3</a>;</li>
+      <li>the absence of a secondary reminder system;</li>
+      <li>loss of local data not backed up by the user;</li>
+      <li>any use contrary to these Terms.</li>
+    </ul>
+    <p>
+      To the extent permitted by law, BoutchSoftware is not liable for indirect damages,
+      loss of opportunity or moral prejudice resulting from the use of, or inability to
+      use, the application.
+    </p>
+    <p class="muted">
+      The above limitations <strong>do not apply</strong> to mandatory legal guarantees,
+      to consumer rights provided by law, or to cases where liability cannot legally be
+      limited or excluded (in particular in the event of personal injury or gross
+      negligence).
+    </p>
+  </section>
+
+  <section>
+    <h2>17. Service availability</h2>
+    <p>
+      Pilulo is an application that works <strong>entirely offline</strong>. Its
+      operation does not depend on any external server maintained by BoutchSoftware.
+    </p>
+    <p>
+      BoutchSoftware does not guarantee continuous availability of Pilulo's distribution
+      on Google Play, nor compatibility with any future version of the Android system.
+    </p>
+  </section>
+
+  <section>
+    <h2>18. Prior complaint</h2>
+    <p>
+      Any complaint must be sent to
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>, stating:
+    </p>
+    <ul>
+      <li>the name of the application (Pilulo);</li>
+      <li>the version of the application (Settings → Advanced settings → Technical
+        information);</li>
+      <li>the phone model and the Android version;</li>
+      <li>the date and time of the problem;</li>
+      <li>the known notification settings (permissions, power saving, silent mode, etc.);</li>
+      <li>if possible, screenshots or an export of the alarm log
+        (Settings → Data → Export alarm log).</li>
+    </ul>
+    <p>
+      BoutchSoftware cannot analyse an incident without sufficient technical information.
+    </p>
+    <div class="warning">
+      <strong>No medical emergency.</strong> The contact address must not be used for a
+      medical emergency. In the event of an emergency or doubt about a treatment, the
+      user must immediately contact a healthcare professional or the emergency services
+      (in France: 15 / 112).
+    </div>
+  </section>
+
+  <section>
+    <h2>19. Amicable dispute resolution</h2>
+    <p>
+      Any difficulty related to the use of Pilulo must first be the subject of a
+      <strong>prior complaint</strong> to BoutchSoftware in accordance with section 18,
+      to allow an amicable resolution.
+    </p>
+    <p class="muted">
+      During the free beta phase, BoutchSoftware is not subject to the obligation to
+      join a consumer mediator within the meaning of article L612-1 of the French
+      Consumer Code, insofar as no contract for valuable consideration is concluded with
+      the consumer. Before activating Premium purchases, BoutchSoftware will appoint a
+      consumer mediator and complete this section with its contact details.
+    </p>
+  </section>
+
+  <section>
+    <h2>20. Governing law and jurisdiction</h2>
+    <p>
+      These Terms are governed by <strong>French law</strong>.
+    </p>
+    <p>
+      In the event of a dispute, the competent courts will be determined in accordance
+      with the applicable legal rules. Where the user acts as a consumer, this clause
+      does not deprive them of any mandatory protective rule, in particular regarding
+      territorial jurisdiction (articles R631-3 of the French Consumer Code and 46 of the
+      Code of Civil Procedure).
+    </p>
+  </section>
+
+  <section>
+    <h2>21. Changes to the Terms</h2>
+    <p>
+      BoutchSoftware may update these Terms to reflect legal, technical, functional or
+      commercial developments. The applicable version is the one available in the
+      application or on the official site at the time of use.
+    </p>
+    <p>
+      In the event of a substantial change, the user may be informed in the application
+      or via the Google Play page. Changes do not deprive the user of acquired rights or
+      of mandatory rights provided by law.
+    </p>
+  </section>
+
+  <section>
+    <h2>22. Severability</h2>
+    <p>
+      If any clause of these Terms is declared void, unenforceable or deemed unwritten,
+      the other clauses remain applicable to the fullest extent permitted by law.
+    </p>
+  </section>
+
+  <section>
+    <h2>23. Language version</h2>
+    <p>
+      These Terms are written in French. Any translation into a foreign language is
+      provided for information purposes. In the event of any discrepancy between a
+      translation and the French version, <strong>the French version prevails</strong>,
+      except where a mandatory rule applicable to the consumer provides otherwise.
+    </p>
+  </section>
+
+  <section>
+    <h2>24. Contact</h2>
+    <p>
+      BoutchSoftware<br>
+      Postal address: provided on request<br>
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
+    </p>
+  </section>
+
+  </div><!-- /en -->
+
   <footer>
     <p>Pilulo · BoutchSoftware · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
-    <p style="margin-top:6px"><a href="privacy.html">Politique de confidentialité</a></p>
+    <p style="margin-top:6px"><a href="privacy.html">Politique de confidentialité / Privacy Policy</a></p>
   </footer>
 
 </main>
+
+<script>
+  function toggleLang(e) {
+    e.preventDefault();
+    const isEn = document.body.classList.toggle('show-en');
+    e.target.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+  }
+</script>
 </body>
 </html>
