@@ -113,9 +113,15 @@
       color: var(--text);
       border-bottom: 2px solid var(--green);
     }
+
+    /* ── Libellés de menu bilingues (inline) ── */
+    .site-nav .nav-en { display: none; }
+    body.show-en .site-nav .nav-fr { display: none; }
+    body.show-en .site-nav .nav-en { display: inline; }
   </style>
 </head>
 <body>
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
 
 <header>
   <h1>🟢 Pilulo</h1>
@@ -124,10 +130,10 @@
 </header>
 
 <nav class="site-nav">
-  <a href="../index.html">🏠 Accueil</a>
-  <a href="privacy.html" aria-current="page">Pilulo · Confidentialité</a>
-  <a href="terms.html">Pilulo · CGU</a>
-  <a href="../translations.html">Traductions</a>
+  <a href="../index.html"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
+  <a href="privacy.html" aria-current="page"><span class="nav-fr">Pilulo · Confidentialité</span><span class="nav-en">Pilulo · Privacy</span></a>
+  <a href="terms.html"><span class="nav-fr">Pilulo · CGU</span><span class="nav-en">Pilulo · Terms</span></a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
 </nav>
 
 <main>
@@ -458,11 +464,18 @@
 </main>
 
 <script>
+  function applyLangLabel() {
+    var isEn = document.body.classList.contains('show-en');
+    var link = document.querySelector('.lang-switch a');
+    if (link) link.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+  }
   function toggleLang(e) {
     e.preventDefault();
-    const isEn = document.body.classList.toggle('show-en');
-    e.target.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+    var isEn = document.body.classList.toggle('show-en');
+    try { localStorage.setItem('bs-lang', isEn ? 'en' : 'fr'); } catch (err) {}
+    applyLangLabel();
   }
+  applyLangLabel();
 </script>
 </body>
 </html>
