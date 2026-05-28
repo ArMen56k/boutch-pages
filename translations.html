@@ -120,12 +120,34 @@
       color: var(--text);
       border-bottom: 2px solid var(--green);
     }
+    .lang-switch {
+      text-align: right;
+      margin-bottom: 24px;
+    }
+    .lang-switch a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .9rem;
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .lang-switch a:hover { background: var(--green); color: #fff; }
+
+    /* ── Section anglaise ── */
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+    body.show-en header p.fr-sub { display: none; }
+    body.show-en header p.en-sub { display: block !important; }
+    header p.en-sub { display: none; }
   </style>
 </head>
 <body>
 <header>
   <h1>BoutchSoftware</h1>
-  <p>Aider à traduire nos applications</p>
+  <p class="fr-sub">Aider à traduire nos applications</p>
+  <p class="en-sub">Help translate our apps</p>
 </header>
 
 <nav class="site-nav">
@@ -136,6 +158,14 @@
 </nav>
 
 <main>
+
+  <div class="lang-switch">
+    <a href="#" onclick="toggleLang(event)">English version ↓</a>
+  </div>
+
+  <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
+  <div class="fr">
+
   <section>
     <h2>Principe</h2>
     <p>
@@ -182,10 +212,72 @@
       <a href="mailto:boutchsoftware@gmail.com?subject=Traduction%20BoutchSoftware">boutchsoftware@gmail.com</a>
     </p>
   </section>
+
+  </div><!-- /fr -->
+
+  <!-- ═══════════════ ENGLISH VERSION ═══════════════ -->
+  <div class="en">
+
+  <section>
+    <h2>How it works</h2>
+    <p>
+      This page brings together the translation kits for BoutchSoftware apps.
+      It is designed for Pilulo today and for upcoming apps tomorrow.
+    </p>
+    <p>
+      Proposed translations are reviewed before integration. This is essential to avoid
+      mistakes, especially in texts related to health, Android permissions and payments.
+    </p>
+  </section>
+
+  <section>
+    <h2>Available apps</h2>
+    <div class="app-card">
+      <h3>Pilulo</h3>
+      <p class="muted">Daily medication and care reminders.</p>
+      <p>
+        The CSV kit contains the app's texts, their reference French version, an English
+        column where it exists, and columns prepared for the proposed translation.
+      </p>
+      <div class="actions">
+        <a class="button" href="pilulo/translation-kit.csv" download>Download the CSV kit</a>
+        <a class="button secondary" href="mailto:boutchsoftware@gmail.com?subject=Traduction%20BoutchSoftware%20-%20Pilulo">Send a proposal</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Important guidelines</h2>
+    <ul>
+      <li>Do not change the technical keys.</li>
+      <li>Keep elements such as <code>%1$s</code>, <code>%2$d</code>, <code>\n</code> and <code>%%</code> exactly as they are.</li>
+      <li>Keep the names <strong>Pilulo</strong>, <strong>BoutchSoftware</strong> and <strong>boutchsoftware@gmail.com</strong>.</li>
+      <li>Prefer short, simple sentences.</li>
+      <li>Flag any uncertain wording in the notes column.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <p>
+      To propose a language, report an error or send a translated file:
+      <a href="mailto:boutchsoftware@gmail.com?subject=Traduction%20BoutchSoftware">boutchsoftware@gmail.com</a>
+    </p>
+  </section>
+
+  </div><!-- /en -->
 </main>
 
 <footer>
   BoutchSoftware - Dernière mise à jour : 26 mai 2026
 </footer>
+
+<script>
+  function toggleLang(e) {
+    e.preventDefault();
+    const isEn = document.body.classList.toggle('show-en');
+    e.target.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+  }
+</script>
 </body>
 </html>
