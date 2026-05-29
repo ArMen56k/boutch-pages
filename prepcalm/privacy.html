@@ -145,7 +145,7 @@
 
 <main>
   <div class="lang-switch">
-    <a href="#" onclick="toggleLang(event)">English version ↓</a>
+    <a href="#" onclick="toggleLang(event)">⇄ English version</a>
   </div>
 
   <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
@@ -486,7 +486,7 @@
   function applyLangLabel() {
     var isEn = document.body.classList.contains('show-en');
     var link = document.querySelector('.lang-switch a');
-    if (link) link.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+    if (link) link.textContent = isEn ? '⇄ Version française' : '⇄ English version';
   }
   function toggleLang(e) {
     e.preventDefault();

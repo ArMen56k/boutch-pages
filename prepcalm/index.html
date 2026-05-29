@@ -86,7 +86,7 @@
   <p class="tagline en">Prepare calmly, check, and go.</p>
 </div>
 
-<div class="lang-switch"><a href="#" onclick="toggleLang(event)">English version ↓</a></div>
+<div class="lang-switch"><a href="#" onclick="toggleLang(event)">⇄ English version</a></div>
 
 <main>
   <!-- ═══════════ FR ═══════════ -->
@@ -151,7 +151,7 @@
 </footer>
 
 <script>
-  function applyLangLabel(){var en=document.body.classList.contains('show-en');var l=document.querySelector('.lang-switch a');if(l)l.textContent=en?'Version française ↑':'English version ↓';}
+  function applyLangLabel(){var en=document.body.classList.contains('show-en');var l=document.querySelector('.lang-switch a');if(l)l.textContent=en?'⇄ Version française':'⇄ English version';}
   function toggleLang(e){e.preventDefault();var en=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',en?'en':'fr');}catch(err){}applyLangLabel();}
   applyLangLabel();
 </script>
