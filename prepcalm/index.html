@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrepCalm — prépare au calme, coche et pars</title>
+  <style>
+    :root {
+      --brand:      #0E8174;
+      --brand-dark: #00665A;
+      --text:       #16201d;
+      --muted:      #566b66;
+      --bg:         #F1FAF7;
+      --card:       #FFFFFF;
+      --radius:     18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+    .site-nav {
+      background: var(--card); display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 4px 22px; padding: 12px 16px; border-bottom: 1px solid #D6ECE6;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 5;
+    }
+    .site-nav a { color: var(--brand-dark); text-decoration: none; font-size: .95rem; padding: 3px 4px; }
+    .site-nav a:hover { text-decoration: underline; }
+    .site-nav a[aria-current="page"] { font-weight: 700; color: var(--text); border-bottom: 2px solid var(--brand); }
+    .site-nav .nav-en { display: none; }
+    body.show-en .site-nav .nav-fr { display: none; }
+    body.show-en .site-nav .nav-en { display: inline; }
+
+    .hero {
+      background: linear-gradient(150deg, #0E8174 0%, #00524A 100%);
+      color: #fff; text-align: center; padding: 52px 24px 60px;
+    }
+    .hero img.icon { width: 104px; height: 104px; border-radius: 26px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-top: 18px; }
+    .hero .tagline { font-size: 1.2rem; opacity: .95; margin-top: 8px; }
+
+    main { max-width: 760px; margin: -32px auto 0; padding: 0 18px 60px; }
+    .promise {
+      background: var(--card); border-radius: var(--radius); padding: 30px 30px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.10); text-align: center;
+      font-size: 1.3rem; font-weight: 600; color: var(--brand-dark);
+    }
+    h2 { font-size: .82rem; text-transform: uppercase; letter-spacing: 1.6px; color: var(--muted); margin: 40px 0 16px; text-align: center; }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .features { grid-template-columns: 1fr; } }
+    .feature { background: var(--card); border-radius: 14px; padding: 20px 22px; box-shadow: 0 1px 5px rgba(0,0,0,.07); }
+    .feature .emoji { font-size: 1.6rem; }
+    .feature h3 { font-size: 1.05rem; margin: 8px 0 4px; }
+    .feature p { color: var(--muted); font-size: .95rem; }
+    .intention { background: #DCF1EC; border-left: 4px solid var(--brand); border-radius: 0 14px 14px 0; padding: 22px 26px; margin-top: 8px; }
+    .intention p { margin-bottom: 10px; }
+    .intention p:last-child { margin-bottom: 0; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 36px; }
+    .btn { display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 1rem; }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-ghost { background: transparent; color: var(--brand-dark); border: 2px solid var(--brand); }
+    .btn-ghost:hover { background: var(--brand); color: #fff; }
+    footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 24px; }
+    footer a { color: var(--brand-dark); }
+    .lang-switch { text-align: right; max-width: 760px; margin: 14px auto -6px; padding: 0 18px; }
+    .lang-switch a { color: var(--brand-dark); text-decoration: none; font-size: .88rem; border: 1px solid var(--brand); padding: 4px 12px; border-radius: 20px; }
+    .lang-switch a:hover { background: var(--brand); color: #fff; }
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+  </style>
+</head>
+<body>
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+
+<nav class="site-nav">
+  <a href="../index.html"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
+  <a href="../pilulo/index.html">Pilulo</a>
+  <a href="index.html" aria-current="page">PrepCalm</a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
+</nav>
+
+<div class="hero">
+  <img class="icon" src="../assets/prepcalm-icon.png" alt="Icône PrepCalm" width="104" height="104" />
+  <h1>PrepCalm</h1>
+  <p class="tagline fr">Prépare au calme, coche et pars.</p>
+  <p class="tagline en">Prepare calmly, check, and go.</p>
+</div>
+
+<div class="lang-switch"><a href="#" onclick="toggleLang(event)">English version ↓</a></div>
+
+<main>
+  <!-- ═══════════ FR ═══════════ -->
+  <div class="fr">
+    <div class="promise">
+      Pense ta liste idéale <strong>une seule fois</strong>, puis réutilise-la instantanément à chaque départ : tu ouvres, tu coches, tu pars — sans rien oublier.
+    </div>
+
+    <h2>Ce que PrepCalm fait</h2>
+    <div class="features">
+      <div class="feature"><div class="emoji">🧳</div><h3>Des listes réutilisables</h3><p>Crée tes listes de départ (voyage, week-end, compétition…) et retrouve-les prêtes à chaque fois.</p></div>
+      <div class="feature"><div class="emoji">👆</div><h3>Tri rapide</h3><p>Pars d'une liste maître et garde ou retire chaque élément d'un simple geste.</p></div>
+      <div class="feature"><div class="emoji">✓</div><h3>Coche puis réinitialise</h3><p>À l'usage, tu coches ce que tu emportes ; au retour, tu réinitialises pour la prochaine fois.</p></div>
+      <div class="feature"><div class="emoji">🔗</div><h3>Partage en un lien</h3><p>Envoie ta liste à ton équipe par lien ou QR — sans serveur, tes listes restent à toi.</p></div>
+    </div>
+
+    <h2>L'intention derrière</h2>
+    <div class="intention">
+      <p>La vraie valeur n'est pas de <em>créer</em> des listes, mais de <strong>réutiliser</strong> une liste déjà pensée. Le travail de réflexion se paie une fois ; le bénéfice dure à vie.</p>
+      <p>PrepCalm enlève la charge mentale du « est-ce que j'ai pensé à tout ? » : la liste idéale est déjà là, prête à cocher.</p>
+      <p>Et parce qu'une bonne liste se partage, l'offrir à un proche doit être aussi simple que d'envoyer un message.</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.boutch.prepcalm">Google Play</a>
+      <a class="btn btn-ghost" href="privacy.html">Confidentialité</a>
+      <a class="btn btn-ghost" href="terms.html">Conditions d'utilisation</a>
+    </div>
+  </div>
+
+  <!-- ═══════════ EN ═══════════ -->
+  <div class="en">
+    <div class="promise">
+      Think your ideal list <strong>once</strong>, then reuse it instantly every time you leave: open it, check it off, and go — without forgetting a thing.
+    </div>
+
+    <h2>What PrepCalm does</h2>
+    <div class="features">
+      <div class="feature"><div class="emoji">🧳</div><h3>Reusable checklists</h3><p>Create your departure lists (travel, weekend, competition…) and find them ready every time.</p></div>
+      <div class="feature"><div class="emoji">👆</div><h3>Quick sorting</h3><p>Start from a master list and keep or drop each item with a single gesture.</p></div>
+      <div class="feature"><div class="emoji">✓</div><h3>Check, then reset</h3><p>While packing you check what you take; when back, you reset for next time.</p></div>
+      <div class="feature"><div class="emoji">🔗</div><h3>Share in one link</h3><p>Send your list to your team by link or QR — no server, your lists stay yours.</p></div>
+    </div>
+
+    <h2>The intention behind it</h2>
+    <div class="intention">
+      <p>The real value is not <em>creating</em> lists but <strong>reusing</strong> one you already thought through. The thinking is paid once; the benefit lasts for life.</p>
+      <p>PrepCalm removes the mental load of "did I think of everything?": the ideal list is already there, ready to check off.</p>
+      <p>And because a good list is meant to be shared, giving it to someone should be as easy as sending a message.</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.boutch.prepcalm">Google Play</a>
+      <a class="btn btn-ghost" href="privacy.html">Privacy</a>
+      <a class="btn btn-ghost" href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>PrepCalm · <a href="../index.html">BoutchSoftware</a> · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
+</footer>
+
+<script>
+  function applyLangLabel(){var en=document.body.classList.contains('show-en');var l=document.querySelector('.lang-switch a');if(l)l.textContent=en?'Version française ↑':'English version ↓';}
+  function toggleLang(e){e.preventDefault();var en=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',en?'en':'fr');}catch(err){}applyLangLabel();}
+  applyLangLabel();
+</script>
+</body>
+</html>

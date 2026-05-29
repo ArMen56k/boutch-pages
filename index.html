@@ -95,6 +95,9 @@
     img.app-icon { object-fit: cover; background: transparent; }
     .app-info { flex: 1; }
     .app-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
+    .app-info h3 a { color: inherit; text-decoration: none; }
+    .app-info h3 a:hover { color: var(--green-dark); }
+    .app-icon-link { flex-shrink: 0; line-height: 0; }
     .app-info p  { color: var(--muted); font-size: .9rem; line-height: 1.5; margin-bottom: 14px; }
     .app-links { display: flex; gap: 10px; flex-wrap: wrap; }
     .app-links a {
@@ -176,8 +179,8 @@
 
 <nav class="site-nav">
   <a href="index.html" aria-current="page"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
-  <a href="pilulo/privacy.html"><span class="nav-fr">Pilulo · Confidentialité</span><span class="nav-en">Pilulo · Privacy</span></a>
-  <a href="pilulo/terms.html"><span class="nav-fr">Pilulo · CGU</span><span class="nav-en">Pilulo · Terms</span></a>
+  <a href="pilulo/index.html">Pilulo</a>
+  <a href="prepcalm/index.html">PrepCalm</a>
   <a href="translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
 </nav>
 
@@ -217,27 +220,29 @@
     <h2>Nos applications</h2>
 
     <div class="app-card">
-      <img class="app-icon" src="assets/pilulo-icon.png" alt="Icône de l'application Pilulo" width="64" height="64" />
+      <a class="app-icon-link" href="pilulo/index.html"><img class="app-icon" src="assets/pilulo-icon.png" alt="Icône Pilulo" width="64" height="64" /></a>
       <div class="app-info">
-        <h3>Pilulo</h3>
-        <p>Rappel de médicaments et de soins.<br>
+        <h3><a href="pilulo/index.html">Pilulo</a></h3>
+        <p>Aide-mémoire de prise de médicaments et de soins.<br>
            Simple, sans compte, sans serveur.</p>
         <div class="app-links">
+          <a href="pilulo/index.html">Découvrir</a>
           <a href="pilulo/privacy.html">Confidentialité</a>
-          <a href="pilulo/terms.html">Conditions d'utilisation</a>
+          <a href="pilulo/terms.html">CGU</a>
         </div>
       </div>
     </div>
 
     <div class="app-card">
-      <div class="app-icon">🧳</div>
+      <a class="app-icon-link" href="prepcalm/index.html"><img class="app-icon" src="assets/prepcalm-icon.png" alt="Icône PrepCalm" width="64" height="64" /></a>
       <div class="app-info">
-        <h3>PrepCalm</h3>
+        <h3><a href="prepcalm/index.html">PrepCalm</a></h3>
         <p>Listes de préparation réutilisables.<br>
-           Prépare au calme, coche et pars. Sans compte, sans serveur.</p>
+           Prépare au calme, coche et pars.</p>
         <div class="app-links">
+          <a href="prepcalm/index.html">Découvrir</a>
           <a href="prepcalm/privacy.html">Confidentialité</a>
-          <a href="prepcalm/terms.html">Conditions d'utilisation</a>
+          <a href="prepcalm/terms.html">CGU</a>
         </div>
       </div>
     </div>
@@ -249,7 +254,12 @@
     <h2>Contribuer</h2>
 
     <div class="app-card">
-      <div class="app-icon">🌍</div>
+      <svg class="app-icon" style="background:transparent;display:block" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traductions">
+        <defs><linearGradient id="tgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6CC76B"/><stop offset="1" stop-color="#3D8C3C"/></linearGradient></defs>
+        <rect width="64" height="64" rx="15" fill="url(#tgrad)"/>
+        <text x="21" y="34" font-size="24" font-weight="800" fill="#fff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">A</text>
+        <text x="42" y="50" font-size="22" font-weight="800" fill="#fff" opacity=".92" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">文</text>
+      </svg>
       <div class="app-info">
         <h3>Aider à traduire</h3>
         <p>Proposez une langue qui n'existe pas encore.<br>
@@ -293,27 +303,29 @@
     <h2>Our apps</h2>
 
     <div class="app-card">
-      <img class="app-icon" src="assets/pilulo-icon.png" alt="Pilulo app icon" width="64" height="64" />
+      <a class="app-icon-link" href="pilulo/index.html"><img class="app-icon" src="assets/pilulo-icon.png" alt="Pilulo app icon" width="64" height="64" /></a>
       <div class="app-info">
-        <h3>Pilulo</h3>
+        <h3><a href="pilulo/index.html">Pilulo</a></h3>
         <p>Medication and care reminders.<br>
            Simple, no account, no server.</p>
         <div class="app-links">
+          <a href="pilulo/index.html">Discover</a>
           <a href="pilulo/privacy.html">Privacy</a>
-          <a href="pilulo/terms.html">Terms of Use</a>
+          <a href="pilulo/terms.html">Terms</a>
         </div>
       </div>
     </div>
 
     <div class="app-card">
-      <div class="app-icon">🧳</div>
+      <a class="app-icon-link" href="prepcalm/index.html"><img class="app-icon" src="assets/prepcalm-icon.png" alt="PrepCalm app icon" width="64" height="64" /></a>
       <div class="app-info">
-        <h3>PrepCalm</h3>
+        <h3><a href="prepcalm/index.html">PrepCalm</a></h3>
         <p>Reusable preparation checklists.<br>
-           Prepare calmly, check, and go. No account, no server.</p>
+           Prepare calmly, check, and go.</p>
         <div class="app-links">
+          <a href="prepcalm/index.html">Discover</a>
           <a href="prepcalm/privacy.html">Privacy</a>
-          <a href="prepcalm/terms.html">Terms of Use</a>
+          <a href="prepcalm/terms.html">Terms</a>
         </div>
       </div>
     </div>
@@ -324,7 +336,12 @@
     <h2>Contribute</h2>
 
     <div class="app-card">
-      <div class="app-icon">🌍</div>
+      <svg class="app-icon" style="background:transparent;display:block" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traductions">
+        <defs><linearGradient id="tgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6CC76B"/><stop offset="1" stop-color="#3D8C3C"/></linearGradient></defs>
+        <rect width="64" height="64" rx="15" fill="url(#tgrad)"/>
+        <text x="21" y="34" font-size="24" font-weight="800" fill="#fff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">A</text>
+        <text x="42" y="50" font-size="22" font-weight="800" fill="#fff" opacity=".92" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">文</text>
+      </svg>
       <div class="app-info">
         <h3>Help translate</h3>
         <p>Suggest a language that doesn't exist yet.<br>

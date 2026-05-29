@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pilulo — aide-mémoire de prise de médicaments</title>
+  <style>
+    :root {
+      --brand:      #5BB65A;
+      --brand-dark: #3D8C3C;
+      --text:       #1d241d;
+      --muted:      #5d6b5d;
+      --bg:         #F5FBF5;
+      --card:       #FFFFFF;
+      --radius:     18px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; }
+    .site-nav {
+      background: var(--card); display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 4px 22px; padding: 12px 16px; border-bottom: 1px solid #E0EFE0;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06); position: sticky; top: 0; z-index: 5;
+    }
+    .site-nav a { color: var(--brand-dark); text-decoration: none; font-size: .95rem; padding: 3px 4px; }
+    .site-nav a:hover { text-decoration: underline; }
+    .site-nav a[aria-current="page"] { font-weight: 700; color: var(--text); border-bottom: 2px solid var(--brand); }
+    .site-nav .nav-en { display: none; }
+    body.show-en .site-nav .nav-fr { display: none; }
+    body.show-en .site-nav .nav-en { display: inline; }
+
+    .hero {
+      background: linear-gradient(150deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: #fff; text-align: center; padding: 52px 24px 60px;
+    }
+    .hero img.icon { width: 104px; height: 104px; border-radius: 26px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+    .hero h1 { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; margin-top: 18px; }
+    .hero .tagline { font-size: 1.2rem; opacity: .95; margin-top: 8px; }
+
+    main { max-width: 760px; margin: -32px auto 0; padding: 0 18px 60px; }
+    .promise {
+      background: var(--card); border-radius: var(--radius); padding: 30px 30px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.10); text-align: center;
+      font-size: 1.3rem; font-weight: 600; color: var(--brand-dark);
+    }
+    h2 {
+      font-size: .82rem; text-transform: uppercase; letter-spacing: 1.6px;
+      color: var(--muted); margin: 40px 0 16px; text-align: center;
+    }
+    .features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .features { grid-template-columns: 1fr; } }
+    .feature {
+      background: var(--card); border-radius: 14px; padding: 20px 22px;
+      box-shadow: 0 1px 5px rgba(0,0,0,.07);
+    }
+    .feature .emoji { font-size: 1.6rem; }
+    .feature h3 { font-size: 1.05rem; margin: 8px 0 4px; }
+    .feature p { color: var(--muted); font-size: .95rem; }
+    .intention {
+      background: #E8F5E9; border-left: 4px solid var(--brand); border-radius: 0 14px 14px 0;
+      padding: 22px 26px; margin-top: 8px;
+    }
+    .intention p { margin-bottom: 10px; }
+    .intention p:last-child { margin-bottom: 0; }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 36px; }
+    .btn {
+      display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 700;
+      text-decoration: none; font-size: 1rem;
+    }
+    .btn-primary { background: var(--brand); color: #fff; }
+    .btn-primary:hover { background: var(--brand-dark); }
+    .btn-ghost { background: transparent; color: var(--brand-dark); border: 2px solid var(--brand); }
+    .btn-ghost:hover { background: var(--brand); color: #fff; }
+    .disclaimer { color: var(--muted); font-size: .85rem; text-align: center; margin-top: 26px; }
+    footer { text-align: center; color: var(--muted); font-size: .82rem; padding: 24px; }
+    footer a { color: var(--brand-dark); }
+    .lang-switch { text-align: right; max-width: 760px; margin: 14px auto -6px; padding: 0 18px; }
+    .lang-switch a { color: var(--brand-dark); text-decoration: none; font-size: .88rem; border: 1px solid var(--brand); padding: 4px 12px; border-radius: 20px; }
+    .lang-switch a:hover { background: var(--brand); color: #fff; }
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+  </style>
+</head>
+<body>
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+
+<nav class="site-nav">
+  <a href="../index.html"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
+  <a href="index.html" aria-current="page">Pilulo</a>
+  <a href="../prepcalm/index.html">PrepCalm</a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
+</nav>
+
+<div class="hero">
+  <img class="icon" src="../assets/pilulo-icon.png" alt="Icône Pilulo" width="104" height="104" />
+  <h1>Pilulo</h1>
+  <p class="tagline fr">Ne plus jamais oublier une prise.</p>
+  <p class="tagline en">Never miss a dose again.</p>
+</div>
+
+<div class="lang-switch"><a href="#" onclick="toggleLang(event)">English version ↓</a></div>
+
+<main>
+  <!-- ═══════════ FR ═══════════ -->
+  <div class="fr">
+    <div class="promise">
+      Un aide-mémoire simple et bienveillant pour prendre ses médicaments et faire ses soins à l'heure — pour soi ou pour un proche.
+    </div>
+
+    <h2>Ce que Pilulo fait</h2>
+    <div class="features">
+      <div class="feature"><div class="emoji">⏰</div><h3>Des rappels clairs</h3><p>Programmez vos prises ; Pilulo vous alerte à l'heure, simplement.</p></div>
+      <div class="feature"><div class="emoji">🤝</div><h3>Pensé pour tous</h3><p>Une interface volontairement épurée, lisible, sans jargon — y compris pour qui n'est pas à l'aise avec la tech.</p></div>
+      <div class="feature"><div class="emoji">🔒</div><h3>Privé par nature</h3><p>Tout reste sur votre téléphone. Pas de compte, pas de serveur.</p></div>
+      <div class="feature"><div class="emoji">🌙</div><h3>Respectueux</h3><p>Heures silencieuses, rappel de confirmation, reprise après redémarrage.</p></div>
+    </div>
+
+    <h2>L'intention derrière</h2>
+    <div class="intention">
+      <p>Pilulo est né d'une idée simple : la technologie doit se mettre <strong>à hauteur humaine</strong>. Pas impressionner — rendre service.</p>
+      <p>C'est un <strong>aide-mémoire</strong>, pas un dispositif médical : il ne remplace ni un médecin, ni un pharmacien, ni un aidant. Pour un traitement critique, gardez un second moyen de rappel fiable.</p>
+      <p>Sa raison d'être : aider, simplement, avec douceur et droiture.</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.boutch.pilulo">Google Play</a>
+      <a class="btn btn-ghost" href="privacy.html">Confidentialité</a>
+      <a class="btn btn-ghost" href="terms.html">Conditions d'utilisation</a>
+    </div>
+    <p class="disclaimer">Pilulo est une aide-mémoire et ne remplace pas un avis médical.</p>
+  </div>
+
+  <!-- ═══════════ EN ═══════════ -->
+  <div class="en">
+    <div class="promise">
+      A simple, caring reminder to take your medication and care on time — for yourself or a loved one.
+    </div>
+
+    <h2>What Pilulo does</h2>
+    <div class="features">
+      <div class="feature"><div class="emoji">⏰</div><h3>Clear reminders</h3><p>Set your doses; Pilulo alerts you on time, simply.</p></div>
+      <div class="feature"><div class="emoji">🤝</div><h3>Made for everyone</h3><p>A deliberately clean, readable interface with no jargon — even for those uneasy with tech.</p></div>
+      <div class="feature"><div class="emoji">🔒</div><h3>Private by nature</h3><p>Everything stays on your phone. No account, no server.</p></div>
+      <div class="feature"><div class="emoji">🌙</div><h3>Respectful</h3><p>Quiet hours, confirmation reminders, recovery after reboot.</p></div>
+    </div>
+
+    <h2>The intention behind it</h2>
+    <div class="intention">
+      <p>Pilulo was born from a simple idea: technology should be brought <strong>down to human scale</strong>. Not to impress — to be of service.</p>
+      <p>It is a <strong>reminder</strong>, not a medical device: it replaces neither a doctor, a pharmacist, nor a caregiver. For critical treatment, keep a second reliable reminder.</p>
+      <p>Its purpose: to help, simply, with kindness and integrity.</p>
+    </div>
+
+    <div class="cta">
+      <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.boutch.pilulo">Google Play</a>
+      <a class="btn btn-ghost" href="privacy.html">Privacy</a>
+      <a class="btn btn-ghost" href="terms.html">Terms of Use</a>
+    </div>
+    <p class="disclaimer">Pilulo is a reminder tool and does not replace medical advice.</p>
+  </div>
+</main>
+
+<footer>
+  <p>Pilulo · <a href="../index.html">BoutchSoftware</a> · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
+</footer>
+
+<script>
+  function applyLangLabel(){var en=document.body.classList.contains('show-en');var l=document.querySelector('.lang-switch a');if(l)l.textContent=en?'Version française ↑':'English version ↓';}
+  function toggleLang(e){e.preventDefault();var en=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',en?'en':'fr');}catch(err){}applyLangLabel();}
+  applyLangLabel();
+</script>
+</body>
+</html>
