@@ -158,7 +158,7 @@
         d'éléments, noms de listes) restent <strong>sur votre téléphone</strong>.
         BoutchSoftware n'y a aucun accès.
       </div>
-      <p class="muted">Dernière mise à jour : 29 mai 2026 — Version 1.0</p>
+      <p class="muted">Dernière mise à jour : 29 mai 2026 — Version 1.1</p>
     </section>
 
     <section>
@@ -255,11 +255,18 @@
     <section>
       <h2>6. Partage de listes</h2>
       <p>
-        Lorsque vous partagez une liste, PrepCalm prépare un <strong>texte</strong> (nom de la
-        liste + intitulés des éléments) que <strong>vous</strong> envoyez via l'application de
-        votre choix (messagerie, e-mail, etc.) grâce au partage standard d'Android.
-        BoutchSoftware ne reçoit, ne voit ni ne stocke ce contenu : le partage se fait
-        directement entre vous et le destinataire que vous choisissez.
+        Lorsque vous partagez une liste, PrepCalm crée un <strong>lien</strong> dans lequel la
+        liste (nom + intitulés des éléments) est <strong>encodée dans la partie après le
+        « # » (le « fragment »)</strong>. Or le fragment d'un lien <strong>n'est pas
+        transmis au serveur</strong> par les navigateurs : la liste reste donc entre
+        <strong>vous</strong> et le destinataire que vous choisissez.
+      </p>
+      <p>
+        Si le destinataire n'a pas encore l'application, le lien ouvre une page web qui
+        affiche la liste <strong>dans son navigateur</strong>, à partir du lien lui-même,
+        <strong>sans l'envoyer à BoutchSoftware</strong> ni à GitHub Pages (hébergeur de la
+        page). Un QR code, qui contient le même lien, est aussi proposé. BoutchSoftware ne
+        reçoit, ne voit ni ne stocke vos listes.
       </p>
     </section>
 
@@ -328,7 +335,7 @@
         PrepCalm collects no data on any server. Your lists (item labels, list names)
         stay <strong>on your phone</strong>. BoutchSoftware has no access to them.
       </div>
-      <p class="muted">Last updated: May 29, 2026 — Version 1.0</p>
+      <p class="muted">Last updated: May 29, 2026 — Version 1.1</p>
     </section>
 
     <section>
@@ -416,9 +423,16 @@
     <section>
       <h2>6. Sharing lists</h2>
       <p>
-        When you share a list, PrepCalm prepares a <strong>text</strong> (list name + item
-        labels) that <strong>you</strong> send through the app of your choice using Android's
-        standard sharing. BoutchSoftware does not receive, see, or store this content.
+        When you share a list, PrepCalm builds a <strong>link</strong> in which the list
+        (name + item labels) is <strong>encoded in the part after the "#" (the
+        "fragment")</strong>. Browsers <strong>do not send the fragment to the server</strong>,
+        so the list stays between <strong>you</strong> and the recipient you choose.
+      </p>
+      <p>
+        If the recipient does not have the app yet, the link opens a web page that renders the
+        list <strong>in their browser</strong>, from the link itself, <strong>without sending
+        it to BoutchSoftware</strong> or to GitHub Pages (the page host). A QR code containing
+        the same link is also offered. BoutchSoftware does not receive, see, or store your lists.
       </p>
     </section>
 
