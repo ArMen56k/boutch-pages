@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrepCalm — Conditions d'utilisation</title>
+  <style>
+    :root {
+      --green:      #0E8174;
+      --green-dark: #00665A;
+      --text:       #212121;
+      --muted:      #757575;
+      --bg:         #F1FAF7;
+      --card:       #FFFFFF;
+      --radius:     12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      padding: 0 0 60px;
+    }
+    header {
+      background: var(--green);
+      color: #fff;
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p  { margin-top: 6px; opacity: .88; font-size: .95rem; }
+    main {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+    .lang-switch { text-align: right; margin-bottom: 24px; }
+    .lang-switch a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .9rem;
+      border: 1px solid var(--green);
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .lang-switch a:hover { background: var(--green); color: #fff; }
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--bg);
+    }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: #DCF1EC;
+      border-left: 4px solid var(--green);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-weight: 500;
+    }
+    .warning {
+      background: #FFF8E1;
+      border-left: 4px solid #FFB300;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+    }
+    .muted { color: var(--muted); font-size: .9rem; }
+    a { color: var(--green-dark); }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+    body.show-en header p.fr-sub { display: none; }
+    body.show-en header p.en-sub { display: block !important; }
+    header p.en-sub { display: none; }
+    .site-nav {
+      background: var(--card);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 20px;
+      padding: 11px 16px;
+      border-bottom: 1px solid #D6ECE6;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .site-nav a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: .92rem;
+      padding: 3px 4px;
+    }
+    .site-nav a:hover { text-decoration: underline; }
+    .site-nav a[aria-current="page"] {
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 2px solid var(--green);
+    }
+    .site-nav .nav-en { display: none; }
+    body.show-en .site-nav .nav-fr { display: none; }
+    body.show-en .site-nav .nav-en { display: inline; }
+  </style>
+</head>
+<body>
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+
+<header>
+  <h1>✓ PrepCalm</h1>
+  <p class="fr-sub">Conditions d'utilisation</p>
+  <p class="en-sub">Terms of Use</p>
+</header>
+
+<nav class="site-nav">
+  <a href="../index.html"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
+  <a href="privacy.html"><span class="nav-fr">PrepCalm · Confidentialité</span><span class="nav-en">PrepCalm · Privacy</span></a>
+  <a href="terms.html" aria-current="page"><span class="nav-fr">PrepCalm · CGU</span><span class="nav-en">PrepCalm · Terms</span></a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
+</nav>
+
+<main>
+  <div class="lang-switch">
+    <a href="#" onclick="toggleLang(event)">English version ↓</a>
+  </div>
+
+  <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
+  <div class="fr">
+
+  <section>
+    <h2>📋 En bref</h2>
+    <p class="muted">Dernière mise à jour : 29 mai 2026 — Version 1.0</p>
+    <p>
+      Les présentes Conditions d'Utilisation (« Conditions ») régissent l'utilisation de
+      l'application PrepCalm (« l'Application » ou « PrepCalm »), éditée par
+      <strong>BoutchSoftware</strong>. En installant ou en utilisant PrepCalm, l'utilisateur
+      reconnaît avoir pris connaissance des présentes Conditions et les accepter.
+    </p>
+  </section>
+
+  <section>
+    <h2>1. Mentions légales</h2>
+    <p>
+      <strong>Éditeur :</strong> BoutchSoftware<br>
+      <strong>Forme juridique :</strong> Entreprise individuelle — micro-entreprise<br>
+      <strong>SIREN :</strong> en cours d'attribution (sera publié dès réception INSEE)<br>
+      <strong>Adresse postale :</strong> communiquée sur demande à l'adresse de contact ci-dessous<br>
+      <strong>Contact :</strong>
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a><br>
+      <strong>Directeur de la publication :</strong> le représentant légal de BoutchSoftware<br>
+      <strong>Hébergement du site légal :</strong> GitHub Pages (GitHub, Inc., 88 Colin P
+      Kelly Jr St, San Francisco, CA 94107, États-Unis)
+    </p>
+    <p class="muted">
+      BoutchSoftware exerce une activité d'édition et de commercialisation de logiciels
+      applicatifs et d'applications mobiles. La franchise en base de TVA s'applique en
+      dessous des seuils légaux : la TVA n'est pas facturée par BoutchSoftware (Google
+      Play, en qualité de revendeur, collecte la TVA applicable au consommateur final).
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Description du service</h2>
+    <p>
+      PrepCalm est une application Android d'<strong>aide à l'organisation</strong> permettant
+      à l'utilisateur de créer, sur son propre appareil, des listes réutilisables (par
+      exemple des listes de préparation de départ ou de voyage), de cocher leurs éléments à
+      l'usage, puis de les réinitialiser pour les réutiliser.
+    </p>
+    <p>
+      PrepCalm fonctionne <strong>hors ligne</strong>, sans compte ni serveur. L'utilisateur
+      peut partager une liste sous forme de texte via les applications de partage de son
+      appareil.
+    </p>
+  </section>
+
+  <section id="usage">
+    <h2>3. Usage prévu et responsabilité de l'utilisateur</h2>
+    <div class="highlight">
+      <strong>3.1 — Usage prévu.</strong> PrepCalm est un outil d'aide-mémoire et
+      d'organisation personnelle. Il aide l'utilisateur à préparer et à réutiliser ses
+      listes, mais il <strong>ne garantit pas</strong> l'exhaustivité ni l'exactitude du
+      contenu : c'est l'utilisateur qui décide de ce qu'il inscrit, garde ou retire.
+    </div>
+    <div class="warning">
+      <strong>3.2 — Vérification finale par l'utilisateur.</strong> L'utilisateur reste
+      <strong>seul responsable</strong> de la vérification de ce qu'il emporte ou prépare.
+      PrepCalm ne doit pas être utilisé comme <strong>moyen unique ou principal</strong>
+      pour des éléments dont l'oubli pourrait avoir des conséquences graves (par exemple :
+      médicaments indispensables, documents officiels, équipements de sécurité). Pour de
+      tels éléments, l'utilisateur doit recourir à une vérification appropriée et, le cas
+      échéant, à l'avis d'un professionnel.
+    </div>
+    <p>
+      <strong>3.3 — Engagement.</strong> L'utilisateur reconnaît avoir pris connaissance de
+      ce qui précède et utilise PrepCalm en connaissance de cause.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Propriété intellectuelle</h2>
+    <p>
+      L'Application, son code, son interface et ses contenus fournis par BoutchSoftware sont
+      protégés par le droit de la propriété intellectuelle. Les listes et éléments que
+      l'utilisateur crée lui appartiennent ; il en dispose librement, notamment pour les
+      partager.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Données personnelles</h2>
+    <p>
+      PrepCalm stocke ses données localement sur l'appareil et ne les transmet à aucun
+      serveur de BoutchSoftware. Le traitement des données est détaillé dans la
+      <a href="privacy.html">Politique de confidentialité</a>, qui fait partie intégrante des
+      présentes Conditions.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Prix et version Premium</h2>
+    <p>
+      PrepCalm est gratuite à l'installation. Une version <strong>Premium</strong> (achat
+      unique via Google Play Billing) est prévue pour débloquer un nombre illimité de listes ;
+      la liste maître et le partage restent gratuits. Pendant la phase bêta, l'accès complet
+      est offert. Les prix éventuels sont affichés dans Google Play avant tout achat.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Limitation de responsabilité</h2>
+    <p>
+      Dans les limites permises par la loi, BoutchSoftware ne saurait être tenue pour
+      responsable des conséquences d'un oubli, d'une erreur de saisie, d'une liste incomplète,
+      d'une perte de données (notamment en l'absence de sauvegarde Android activée), ni d'un
+      dysfonctionnement technique de l'appareil ou du système d'exploitation. PrepCalm est
+      fournie « en l'état », sans garantie d'adéquation à un usage particulier.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Disponibilité et résiliation</h2>
+    <p>
+      L'utilisateur peut cesser d'utiliser PrepCalm et la désinstaller à tout moment.
+      BoutchSoftware peut faire évoluer ou interrompre l'Application, en s'efforçant de ne
+      pas porter atteinte aux données déjà présentes sur l'appareil de l'utilisateur.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Droit applicable</h2>
+    <p>
+      Les présentes Conditions sont régies par le droit français. À défaut de résolution
+      amiable, tout litige relève des juridictions compétentes. Le consommateur peut recourir
+      à un médiateur de la consommation ou à la plateforme européenne de règlement des litiges.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Modifications</h2>
+    <p>
+      BoutchSoftware peut modifier les présentes Conditions. En cas de modification
+      substantielle, une nouvelle acceptation pourra être demandée dans l'application.
+      Contact : <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
+    </p>
+  </section>
+
+  </div><!-- /.fr -->
+
+  <!-- ═══════════════ ENGLISH VERSION ═══════════════ -->
+  <div class="en">
+
+  <section>
+    <div class="warning">
+      <strong>⚠️ Translation for information only.</strong> Only the French version of these
+      Terms is authoritative. In the event of any discrepancy, the French version prevails.
+    </div>
+  </section>
+
+  <section>
+    <h2>📋 In short</h2>
+    <p class="muted">Last updated: May 29, 2026 — Version 1.0</p>
+    <p>
+      These Terms of Use govern the use of the PrepCalm application, published by
+      <strong>BoutchSoftware</strong>. By installing or using PrepCalm, you acknowledge that
+      you have read and accept these Terms.
+    </p>
+  </section>
+
+  <section>
+    <h2>1. Legal notice</h2>
+    <p>
+      <strong>Publisher:</strong> BoutchSoftware<br>
+      <strong>Legal form:</strong> sole proprietorship (French micro-entreprise)<br>
+      <strong>SIREN:</strong> pending (will be published once issued by INSEE)<br>
+      <strong>Contact:</strong> <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a><br>
+      <strong>Legal site hosting:</strong> GitHub Pages (GitHub, Inc., USA)
+    </p>
+  </section>
+
+  <section>
+    <h2>2. Service description</h2>
+    <p>
+      PrepCalm is an Android <strong>organisation aid</strong> that lets you create reusable
+      lists on your own device (for example departure or travel checklists), check off items
+      as you use them, then reset them for reuse. PrepCalm works offline, with no account or
+      server. You can share a list as text via your device's sharing apps.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Intended use and user responsibility</h2>
+    <div class="highlight">
+      <strong>3.1 — Intended use.</strong> PrepCalm is a personal reminder and organisation
+      tool. It helps you prepare and reuse your lists but <strong>does not guarantee</strong>
+      the completeness or accuracy of their content: you decide what to add, keep or remove.
+    </div>
+    <div class="warning">
+      <strong>3.2 — Final check by the user.</strong> You remain <strong>solely
+      responsible</strong> for verifying what you take or prepare. PrepCalm must not be used as
+      the <strong>sole or primary</strong> means for items whose omission could have serious
+      consequences (e.g. essential medication, official documents, safety equipment). For such
+      items, use an appropriate verification and, where relevant, professional advice.
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Intellectual property</h2>
+    <p>
+      The Application, its code, interface and content provided by BoutchSoftware are
+      protected by intellectual property law. The lists and items you create belong to you.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. Personal data</h2>
+    <p>
+      PrepCalm stores its data locally on the device and sends it to no BoutchSoftware server.
+      Data processing is detailed in the <a href="privacy.html">Privacy Policy</a>, which forms
+      an integral part of these Terms.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Pricing and Premium</h2>
+    <p>
+      PrepCalm is free to install. A <strong>Premium</strong> version (one-time purchase via
+      Google Play Billing) is planned to unlock unlimited lists; the master list and sharing
+      remain free. During the beta phase, full access is provided. Any prices are shown in
+      Google Play before purchase.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Limitation of liability</h2>
+    <p>
+      To the extent permitted by law, BoutchSoftware cannot be held liable for the
+      consequences of a forgotten item, an input error, an incomplete list, data loss
+      (notably without Android backup enabled), or a technical malfunction of the device or
+      operating system. PrepCalm is provided "as is", without warranty of fitness for a
+      particular purpose.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. Availability and termination</h2>
+    <p>
+      You may stop using PrepCalm and uninstall it at any time. BoutchSoftware may update or
+      discontinue the Application, while striving not to harm data already on your device.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Governing law</h2>
+    <p>
+      These Terms are governed by French law. Failing an amicable resolution, any dispute
+      falls under the competent courts.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Changes</h2>
+    <p>
+      BoutchSoftware may amend these Terms. For material changes, a new acceptance may be
+      requested in the app. Contact: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
+    </p>
+  </section>
+
+  </div><!-- /.en -->
+
+  <footer>
+    <p>PrepCalm · BoutchSoftware · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
+    <p style="margin-top:6px"><a href="privacy.html">Politique de confidentialité / Privacy Policy</a></p>
+  </footer>
+</main>
+
+<script>
+  function applyLangLabel() {
+    var isEn = document.body.classList.contains('show-en');
+    var link = document.querySelector('.lang-switch a');
+    if (link) link.textContent = isEn ? 'Version française ↑' : 'English version ↓';
+  }
+  function toggleLang(e) {
+    e.preventDefault();
+    var isEn = document.body.classList.toggle('show-en');
+    try { localStorage.setItem('bs-lang', isEn ? 'en' : 'fr'); } catch (err) {}
+    applyLangLabel();
+  }
+  applyLangLabel();
+</script>
+</body>
+</html>
