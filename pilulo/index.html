@@ -80,6 +80,15 @@
     .en { display: none; }
     body.show-en .fr { display: none; }
     body.show-en .en { display: block; }
+  
+    /* FINDING-002 — touch targets >=44px (WCAG) */
+    .site-nav { padding-top: 3px; padding-bottom: 3px; }
+    .site-nav a, .lang-switch a, .app-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>

@@ -131,6 +131,15 @@
     .site-nav .nav-en { display: none; }
     body.show-en .site-nav .nav-fr { display: none; }
     body.show-en .site-nav .nav-en { display: inline; }
+  
+    /* FINDING-002 — touch targets >=44px (WCAG) */
+    .site-nav { padding-top: 3px; padding-bottom: 3px; }
+    .site-nav a, .lang-switch a, .app-links a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
