@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Une liste PrepCalm pour toi</title>
+  <style>
+    :root {
+      --teal:      #0E8174;
+      --teal-dark: #00665A;
+      --text:      #212121;
+      --muted:     #5b6b66;
+      --bg:        #F1FAF7;
+      --card:      #FFFFFF;
+      --radius:    16px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0 0 48px;
+    }
+    header {
+      background: var(--teal);
+      color: #fff;
+      padding: 28px 20px 24px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    header p  { margin-top: 4px; opacity: .9; font-size: .95rem; }
+    main { max-width: 560px; margin: 24px auto 0; padding: 0 16px; }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 22px 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,.08);
+      margin-bottom: 20px;
+    }
+    .list-name { font-size: 1.3rem; font-weight: 700; color: var(--teal-dark); }
+    .count { color: var(--muted); font-size: .9rem; margin: 2px 0 14px; }
+    ul { list-style: none; }
+    li {
+      padding: 9px 0 9px 28px;
+      border-bottom: 1px solid #eef4f2;
+      position: relative;
+    }
+    li:last-child { border-bottom: none; }
+    li::before {
+      content: "✓";
+      position: absolute; left: 4px; top: 9px;
+      color: var(--teal); font-weight: 700;
+    }
+    .actions { max-width: 560px; margin: 0 auto; padding: 0 16px; text-align: center; }
+    .btn {
+      display: block; width: 100%;
+      padding: 15px 18px; margin: 10px 0;
+      border-radius: 999px; border: none;
+      font-size: 1.05rem; font-weight: 700; cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary { background: var(--teal); color: #fff; }
+    .btn-secondary { background: transparent; color: var(--teal-dark); border: 2px solid var(--teal); }
+    .note { color: var(--muted); font-size: .82rem; margin-top: 16px; }
+    .error { text-align: center; color: var(--muted); padding: 30px 10px; }
+    footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 28px; }
+    footer a { color: var(--teal-dark); }
+  </style>
+</head>
+<body>
+<header>
+  <h1>✓ Une liste PrepCalm pour toi</h1>
+  <p>Prépare au calme, coche et pars.</p>
+</header>
+
+<main>
+  <div id="content" class="card">
+    <p class="error">Chargement…</p>
+  </div>
+</main>
+
+<div class="actions" id="actions" style="display:none">
+  <a class="btn btn-primary" id="open-app">Ouvrir dans PrepCalm</a>
+  <a class="btn btn-secondary" id="install"
+     href="https://play.google.com/store/apps/details?id=com.boutch.prepcalm&referrer=src%3Dshare">
+     Installer PrepCalm (gratuit)
+  </a>
+  <p class="note">Cette liste est contenue dans le lien lui-même (après le « # ») : elle n'est envoyée à aucun serveur.</p>
+</div>
+
+<footer>
+  <p>Liste partagée avec <strong>PrepCalm</strong> · <a href="../../index.html">BoutchSoftware</a></p>
+</footer>
+
+<script>
+  // Décode base64url → UTF-8 (gère accents/emoji).
+  function decodePayload(frag) {
+    var s = frag.replace(/-/g, '+').replace(/_/g, '/');
+    while (s.length % 4) s += '=';
+    var bin = atob(s);
+    var bytes = Uint8Array.from(bin, function (c) { return c.charCodeAt(0); });
+    return new TextDecoder('utf-8').decode(bytes);
+  }
+
+  function showError(msg) {
+    var c = document.getElementById('content');
+    c.innerHTML = '';
+    var p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = msg;
+    c.appendChild(p);
+    // On propose quand même d'installer l'app.
+    document.getElementById('open-app').style.display = 'none';
+    document.getElementById('actions').style.display = 'block';
+  }
+
+  try {
+    var frag = location.hash.replace(/^#/, '').trim();
+    if (!frag) { showError("Aucune liste dans ce lien. Installe PrepCalm pour créer les tiennes."); }
+    else {
+      var data = JSON.parse(decodePayload(frag));
+      var name = (data && typeof data.name === 'string') ? data.name : '';
+      var items = (data && Array.isArray(data.items)) ? data.items : [];
+      if (!name) { showError("Lien invalide."); }
+      else {
+        // Rendu SÛR : aucun innerHTML avec des données du lien (anti-XSS).
+        var c = document.getElementById('content');
+        c.innerHTML = '';
+        var h = document.createElement('div'); h.className = 'list-name'; h.textContent = name; c.appendChild(h);
+        var cnt = document.createElement('div'); cnt.className = 'count';
+        cnt.textContent = items.length + ' élément' + (items.length > 1 ? 's' : '');
+        c.appendChild(cnt);
+        var ul = document.createElement('ul');
+        items.forEach(function (it) {
+          var label = (it && typeof it.label === 'string') ? it.label : '';
+          if (!label) return;
+          var li = document.createElement('li'); li.textContent = label; ul.appendChild(li);
+        });
+        c.appendChild(ul);
+
+        // « Ouvrir dans l'app » réutilise le même payload via le schéma custom.
+        document.getElementById('open-app').setAttribute('href', 'prepcalm://list#' + frag);
+        document.getElementById('actions').style.display = 'block';
+      }
+    }
+  } catch (e) {
+    showError("Lien illisible. Installe PrepCalm pour créer et partager tes listes.");
+  }
+</script>
+</body>
+</html>
