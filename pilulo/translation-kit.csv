@@ -55,7 +55,7 @@
 "Pilulo","delete_reminder_confirm_message","string","Données et suppression","Voulez-vous vraiment supprimer le rappel de « %1$s » ? Cette action est irréversible.","Delete the reminder for “%1$s”? This cannot be undone.","",""
 "Pilulo","delete_reminder_confirm_button","string","Données et suppression","Supprimer","Delete","",""
 "Pilulo","welcome_title","string","Ajout de rappel","Bienvenue dans Pilulo","Welcome to Pilulo","",""
-"Pilulo","welcome_intro","string","Ajout de rappel","Pilulo vous rappelle vos médicaments et vos soins, chaque jour, à l\'heure.","Pilulo reminds you of your medications and care, every day, on time.","",""
+"Pilulo","welcome_intro","string","Ajout de rappel","Pilulo vous rappelle vos médicaments et vos soins, chaque jour, à l\'heure. Avec une montre Wear OS compatible, le rappel peut aussi s\'afficher au poignet.","Pilulo reminds you of your medications and care, every day, on time. With a compatible Wear OS watch, reminders can also appear on your wrist.","",""
 "Pilulo","welcome_step_time","string","Ajout de rappel","Vous choisissez l\'heure","You choose the time","",""
 "Pilulo","welcome_step_ring","string","Ajout de rappel","Pilulo vous le rappelle","Pilulo reminds you","",""
 "Pilulo","welcome_step_confirm","string","Ajout de rappel","Vous confirmez après l\'avoir pris","You confirm after taking it","",""
