@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Touché, c'est fait — Conditions d'utilisation</title>
+  <style>
+    :root {
+      --green:      #2E7D32;
+      --green-dark: #1B5E20;
+      --text:       #212121;
+      --muted:      #757575;
+      --bg:         #F5FBF5;
+      --card:       #FFFFFF;
+      --radius:     12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      padding: 0 0 60px;
+    }
+    header { background: var(--green); color: #fff; padding: 32px 24px 28px; text-align: center; }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p  { margin-top: 6px; opacity: .88; font-size: .95rem; }
+    main { max-width: 760px; margin: 32px auto 0; padding: 0 20px; }
+    .lang-switch { text-align: right; margin-bottom: 24px; }
+    .lang-switch a {
+      color: var(--green-dark); text-decoration: none; font-size: .9rem;
+      border: 1px solid var(--green); padding: 8px 16px; border-radius: 22px;
+      display: inline-flex; align-items: center; min-height: 44px; cursor: pointer;
+    }
+    .lang-switch a:hover { background: var(--green); color: #fff; }
+    section {
+      background: var(--card); border-radius: var(--radius);
+      padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    h2 {
+      font-size: 1.15rem; color: var(--green-dark); margin-bottom: 12px;
+      padding-bottom: 8px; border-bottom: 2px solid var(--bg);
+    }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: #E3F2E4; border-left: 4px solid var(--green);
+      padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-weight: 500;
+    }
+    .warning {
+      background: #FFF8E1; border-left: 4px solid #FFB300;
+      padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0;
+    }
+    .muted { color: var(--muted); font-size: .9rem; }
+    a { color: var(--green-dark); }
+    footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: .85rem; }
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+    body.show-en header p.fr-sub { display: none; }
+    body.show-en header p.en-sub { display: block !important; }
+    header p.en-sub { display: none; }
+  </style>
+</head>
+<body>
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+
+<header>
+  <h1>📍 Touché, c'est fait</h1>
+  <p class="fr-sub">Conditions d'utilisation — version 1.0 du 14 juillet 2026</p>
+  <p class="en-sub">Terms of Use — version 1.0, July 14, 2026</p>
+</header>
+
+<main>
+  <div class="lang-switch">
+    <a onclick="document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',document.body.classList.contains('show-en')?'en':'fr');}catch(e){}">🌐 English / Français</a>
+  </div>
+
+  <div class="fr">
+    <section>
+      <h2>1. Le service</h2>
+      <p>« Touché, c'est fait » est une application Android éditée par <strong>BoutchSoftware</strong>
+      (contact : <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>). Elle aide un
+      foyer à suivre ses petites tâches récurrentes : une étiquette NFC est placée à l'endroit où une
+      tâche se fait ; toucher l'étiquette avec le téléphone enregistre que la tâche est faite.</p>
+    </section>
+
+    <section>
+      <h2>2. Fonctionnement local</h2>
+      <p>Dans sa version actuelle, l'application fonctionne <strong>sans compte</strong> et
+      <strong>sans serveur</strong> : vos tâches et votre historique restent sur votre appareil.
+      Vous pouvez créer une sauvegarde (fichier) et la réimporter à tout moment.</p>
+    </section>
+
+    <section>
+      <h2>3. Étiquettes NFC</h2>
+      <p>L'application fonctionne avec toute étiquette NFC compatible (format NDEF) que vous vous
+      procurez librement. Elle y écrit uniquement un lien contenant un identifiant aléatoire —
+      jamais de nom, d'adresse ou de contenu confidentiel.</p>
+      <div class="warning">Une étiquette NFC ordinaire peut être copiée ou déplacée. « Touché,
+      c'est fait » est un outil d'organisation domestique : il ne prouve pas qu'une personne était
+      présente ni qu'une opération a réellement été effectuée. Ne l'utilisez pas comme dispositif
+      de contrôle ou pour des opérations critiques.</div>
+    </section>
+
+    <section>
+      <h2>4. Utilisation et responsabilité</h2>
+      <p>L'application est fournie « en l'état », pour l'organisation du quotidien. Les rappels
+      dépendent du système Android et peuvent être retardés ou supprimés par les optimisations de
+      batterie : ne confiez pas à l'application des échéances critiques (santé, sécurité,
+      obligations légales).</p>
+      <p>Vous restez responsable de l'usage des étiquettes et du respect des personnes de votre
+      foyer : l'affichage de « qui a fait quoi » et la répartition des tâches sont des options que
+      le foyer choisit ensemble.</p>
+    </section>
+
+    <section>
+      <h2>5. Gratuité et évolutions</h2>
+      <p>L'application est actuellement gratuite. Des fonctions optionnelles payantes (par exemple
+      la synchronisation entre les téléphones d'un même foyer) pourront être proposées plus tard ;
+      ce qui fonctionne localement et gratuitement aujourd'hui ne deviendra pas payant
+      rétroactivement.</p>
+    </section>
+
+    <section>
+      <h2>6. Acceptation et modifications</h2>
+      <p>L'utilisation de l'application vaut acceptation des présentes conditions, présentées au
+      premier lancement. En cas de modification substantielle, la nouvelle version vous sera
+      présentée dans l'application avant de continuer.</p>
+    </section>
+
+    <section>
+      <h2>7. Contact</h2>
+      <p>Pour toute question : <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+      Voir aussi la <a href="privacy.html">politique de confidentialité</a>.</p>
+    </section>
+  </div>
+
+  <div class="en">
+    <section>
+      <h2>1. The service</h2>
+      <p>"Touché, c'est fait" is an Android application published by <strong>BoutchSoftware</strong>
+      (contact: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>). It helps a
+      household keep track of small recurring chores: an NFC sticker is placed where a chore
+      happens; tapping the sticker with your phone records that the chore is done.</p>
+    </section>
+
+    <section>
+      <h2>2. Local operation</h2>
+      <p>In its current version the app works <strong>without an account</strong> and
+      <strong>without a server</strong>: your chores and history stay on your device. You can
+      create a backup file and import it back at any time.</p>
+    </section>
+
+    <section>
+      <h2>3. NFC stickers</h2>
+      <p>The app works with any compatible NFC tag (NDEF format) that you obtain yourself. It only
+      writes a link containing a random identifier — never a name, address or confidential
+      content.</p>
+      <div class="warning">An ordinary NFC tag can be copied or moved. "Touché, c'est fait" is a
+      household organisation tool: it does not prove that a person was present or that an
+      operation was actually performed. Do not use it as a monitoring device or for critical
+      operations.</div>
+    </section>
+
+    <section>
+      <h2>4. Use and liability</h2>
+      <p>The app is provided "as is", for everyday organisation. Reminders depend on Android and
+      may be delayed or dropped by battery optimisations: do not rely on the app for critical
+      deadlines (health, safety, legal obligations).</p>
+      <p>You remain responsible for how tags are used and for respecting the members of your
+      household: showing "who did what" and chore rotation are options the household chooses
+      together.</p>
+    </section>
+
+    <section>
+      <h2>5. Free version and future changes</h2>
+      <p>The app is currently free. Optional paid features (such as synchronisation between the
+      phones of one household) may be offered later; what works locally and free today will not
+      become paid retroactively.</p>
+    </section>
+
+    <section>
+      <h2>6. Acceptance and changes</h2>
+      <p>Using the app means accepting these terms, shown at first launch. If they change
+      substantially, the new version will be presented in the app before you continue.</p>
+    </section>
+
+    <section>
+      <h2>7. Contact</h2>
+      <p>Questions: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+      See also the <a href="privacy.html">privacy policy</a>.</p>
+    </section>
+  </div>
+
+  <footer>
+    <p>BoutchSoftware — <a href="https://armen56k.github.io/boutch-pages/index.html">boutch-pages</a></p>
+  </footer>
+</main>
+</body>
+</html>
