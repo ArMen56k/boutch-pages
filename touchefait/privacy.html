@@ -5,220 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Touché, c'est fait — Politique de confidentialité</title>
   <style>
-    :root {
-      --green:      #2E7D32;
-      --green-dark: #1B5E20;
-      --text:       #212121;
-      --muted:      #757575;
-      --bg:         #F5FBF5;
-      --card:       #FFFFFF;
-      --radius:     12px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: 17px;
-      line-height: 1.7;
-      color: var(--text);
-      background: var(--bg);
-      padding: 0 0 60px;
-    }
-    header { background: var(--green); color: #fff; padding: 32px 24px 28px; text-align: center; }
-    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
-    header p  { margin-top: 6px; opacity: .88; font-size: .95rem; }
-    main { max-width: 760px; margin: 32px auto 0; padding: 0 20px; }
-    .lang-switch { text-align: right; margin-bottom: 24px; }
-    .lang-switch a {
-      color: var(--green-dark); text-decoration: none; font-size: .9rem;
-      border: 1px solid var(--green); padding: 8px 16px; border-radius: 22px;
-      display: inline-flex; align-items: center; min-height: 44px; cursor: pointer;
-    }
-    .lang-switch a:hover { background: var(--green); color: #fff; }
-    section {
-      background: var(--card); border-radius: var(--radius);
-      padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07);
-    }
-    h2 {
-      font-size: 1.15rem; color: var(--green-dark); margin-bottom: 12px;
-      padding-bottom: 8px; border-bottom: 2px solid var(--bg);
-    }
-    p { margin-bottom: 10px; }
-    p:last-child { margin-bottom: 0; }
-    ul { padding-left: 20px; margin-bottom: 10px; }
-    li { margin-bottom: 6px; }
-    .highlight {
-      background: #E3F2E4; border-left: 4px solid var(--green);
-      padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 14px 0; font-weight: 500;
-    }
-    .muted { color: var(--muted); font-size: .9rem; }
-    a { color: var(--green-dark); }
-    footer { text-align: center; margin-top: 40px; color: var(--muted); font-size: .85rem; }
-    .en { display: none; }
-    body.show-en .fr { display: none; }
-    body.show-en .en { display: block; }
-    body.show-en header p.fr-sub { display: none; }
-    body.show-en header p.en-sub { display: block !important; }
-    header p.en-sub { display: none; }
+    :root{--green:#2E7D32;--dark:#1B5E20;--text:#212121;--muted:#757575;--bg:#F5FBF5;--card:#fff}
+    *{box-sizing:border-box}body{margin:0;font:17px/1.7 "Segoe UI",Arial,sans-serif;color:var(--text);background:var(--bg)}
+    header{background:var(--green);color:#fff;padding:32px 24px;text-align:center}header h1{margin:0}header p{margin:6px 0 0}
+    main{max-width:760px;margin:32px auto;padding:0 20px 60px}.switch{text-align:right;margin-bottom:24px}
+    button{border:1px solid var(--green);background:white;color:var(--dark);padding:10px 16px;border-radius:22px;font:inherit;cursor:pointer}
+    section{background:var(--card);border-radius:12px;padding:24px 28px;margin-bottom:20px;box-shadow:0 1px 4px #0001}
+    h2{font-size:1.15rem;color:var(--dark);border-bottom:2px solid var(--bg);padding-bottom:8px}
+    .highlight{background:#E3F2E4;border-left:4px solid var(--green);padding:14px 18px;border-radius:0 8px 8px 0}
+    a{color:var(--dark)}footer{text-align:center;color:var(--muted)}.en{display:none}
+    body.show-en .fr{display:none}body.show-en .en{display:block}
+    body.show-en .fr-sub{display:none}body:not(.show-en) .en-sub{display:none}
   </style>
 </head>
 <body>
-<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
-
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en')}catch(e){}</script>
 <header>
   <h1>📍 Touché, c'est fait</h1>
-  <p class="fr-sub">Politique de confidentialité — version 1.0 du 14 juillet 2026</p>
-  <p class="en-sub">Privacy Policy — version 1.0, July 14, 2026</p>
+  <p class="fr-sub">Politique de confidentialité — version 2.0 du 15 juillet 2026</p>
+  <p class="en-sub">Privacy Policy — version 2.0, July 15, 2026</p>
 </header>
-
 <main>
-  <div class="lang-switch">
-    <a onclick="document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',document.body.classList.contains('show-en')?'en':'fr');}catch(e){}">🌐 English / Français</a>
-  </div>
-
+  <div class="switch"><button onclick="document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',document.body.classList.contains('show-en')?'en':'fr')}catch(e){}">🌐 English / Français</button></div>
   <div class="fr">
-    <section>
-      <h2>L'essentiel</h2>
-      <div class="highlight">Dans sa version actuelle, « Touché, c'est fait » fonctionne sans
-      compte et sans serveur : <strong>aucune donnée ne quitte votre téléphone</strong>. Pas de
-      publicité, pas de traceurs, et l'historique des habitudes de votre foyer ne sera jamais
-      vendu.</div>
-    </section>
-
-    <section>
-      <h2>1. Données stockées sur votre appareil</h2>
-      <ul>
-        <li>vos tâches (nom, pictogramme, répétition, consigne éventuelle) ;</li>
-        <li>le journal des réalisations (quelle tâche, quand, par quel prénom, par étiquette ou
-        manuellement) ;</li>
-        <li>les prénoms des membres du foyer que vous saisissez ;</li>
-        <li>vos réglages (rappels, profondeur d'historique, affichage de l'auteur).</li>
-      </ul>
-      <p>Ces données restent dans la mémoire privée de l'application, sur votre appareil. Elles
-      peuvent être incluses dans la sauvegarde Android de votre téléphone (service Google de
-      sauvegarde d'appareil), selon vos réglages Android.</p>
-    </section>
-
-    <section>
-      <h2>2. Ce qui est écrit dans une étiquette NFC</h2>
-      <p>Uniquement un lien de la forme
-      <code>https://boutchsoftware.github.io/touchefait/t/#identifiant-aléatoire</code>.
-      L'identifiant ne révèle rien de la tâche ni de votre foyer. Aucun nom, aucune adresse,
-      aucune description n'est écrite dans l'étiquette.</p>
-      <p>Quand l'application est installée, toucher une étiquette n'accède pas au réseau :
-      l'identifiant est placé après le <code>#</code> du lien et n'est jamais transmis à un
-      serveur. Sans l'application, le navigateur affiche une page statique hébergée sur GitHub
-      Pages (soumise aux journaux techniques standards de GitHub).</p>
-    </section>
-
-    <section>
-      <h2>3. Autorisations demandées</h2>
-      <ul>
-        <li><strong>NFC</strong> : lire et programmer vos étiquettes ;</li>
-        <li><strong>Notifications</strong> : uniquement si vous activez les rappels ;</li>
-        <li><strong>Vibration</strong> : la confirmation après contact.</li>
-      </ul>
-      <p>L'application ne demande ni position, ni contacts, ni microphone, ni accès aux photos.</p>
-    </section>
-
-    <section>
-      <h2>4. Sauvegardes manuelles</h2>
-      <p>L'export crée un fichier (tâches + historique) à l'endroit que vous choisissez. Ce fichier
-      est sous votre seul contrôle : il n'est envoyé nulle part par l'application.</p>
-    </section>
-
-    <section>
-      <h2>5. Conservation et suppression</h2>
-      <p>La profondeur d'historique se règle dans les paramètres (30 jours, 90 jours, 1 an ou
-      illimité) ; au-delà, les réalisations sont effacées de l'appareil. Vous pouvez tout effacer
-      via Paramètres → Avancé → Réinitialiser, ou en désinstallant l'application.</p>
-    </section>
-
-    <section>
-      <h2>6. Évolutions</h2>
-      <p>Si une synchronisation entre les téléphones d'un foyer est proposée un jour, elle
-      impliquera un service en ligne : cette politique sera mise à jour et la nouvelle version
-      vous sera présentée <strong>avant</strong> toute activation.</p>
-    </section>
-
-    <section>
-      <h2>7. Contact</h2>
-      <p><a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a> — voir aussi les
-      <a href="terms.html">conditions d'utilisation</a>.</p>
-    </section>
+    <section><h2>L'essentiel</h2><div class="highlight">Vous pouvez utiliser l'application uniquement sur votre téléphone, ou activer volontairement un foyer partagé. Dans ce second cas, les données du foyer sont synchronisées via Firebase. Pas de publicité, pas de traceurs, et l'historique de votre foyer ne sera jamais vendu.</div></section>
+    <section><h2>1. Responsable et données traitées</h2><p>BoutchSoftware est responsable du traitement. L'application enregistre les tâches, leurs réglages, les prénoms saisis, le journal des réalisations et les préférences.</p><p>En mode local, ces données restent dans la mémoire privée de l'application. Si vous activez un foyer partagé, les prénoms, tâches et réalisations sont aussi envoyés à Firebase avec des identifiants aléatoires de compte anonyme et de foyer. Firebase traite les données techniques nécessaires à la connexion et à la sécurité, notamment l'adresse IP.</p></section>
+    <section><h2>2. Étiquettes NFC</h2><p>L'étiquette contient uniquement un lien avec un identifiant aléatoire, jamais de nom ou de description. Placé après le <code>#</code>, cet identifiant n'est pas transmis au site web lors de l'ouverture du lien. L'application peut ensuite synchroniser la réalisation avec Firebase si le foyer partagé est actif. Sans l'application, GitHub Pages affiche une page statique et peut conserver ses journaux techniques standards.</p></section>
+    <section><h2>3. Autorisations</h2><ul><li><strong>NFC</strong> : lire et programmer les étiquettes ;</li><li><strong>Notifications</strong> : confirmations et rappels activés ;</li><li><strong>Vibration</strong> : confirmer un contact ;</li><li><strong>Internet</strong> : authentifier anonymement l'appareil et synchroniser le foyer.</li></ul><p>Aucune autorisation de position, contacts, microphone ou photos n'est demandée.</p></section>
+    <section><h2>4. Finalités, base juridique et destinataires</h2><p>Les données servent uniquement à fournir le suivi et la synchronisation demandés par les membres du foyer, sur la base de l'exécution du service. Elles sont visibles par les membres invités et traitées par Google Firebase comme prestataire technique. Elles ne servent ni à la publicité ni au profilage commercial.</p></section>
+    <section><h2>5. Hébergement et sécurité</h2><p>Les données synchronisées sont hébergées dans Cloud Firestore en région européenne <code>eur3</code>. Les échanges sont chiffrés, les règles contrôlent l'appartenance au foyer et les invitations aléatoires expirent après 15 minutes. Un cache hors ligne reste sur chaque appareil membre.</p></section>
+    <section><h2>6. Conservation et suppression</h2><p>L'historique est conservé selon le réglage choisi. L'export manuel crée un fichier à l'endroit choisi. Quitter un foyer retire l'accès et les données partagées de l'appareil ; le propriétaire peut supprimer le foyer, ses invitations et ses données serveur. Une désinstallation seule ne supprime pas les données présentes chez les autres membres.</p></section>
+    <section><h2>7. Vos droits et contact</h2><p>Vous pouvez consulter et exporter les données dans l'application, corriger votre prénom, quitter le foyer ou demander sa suppression. Pour vos droits d'accès, rectification, effacement, limitation ou opposition : <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>. Vous pouvez aussi saisir votre autorité de protection des données. Voir les <a href="terms.html">conditions d'utilisation</a>.</p></section>
   </div>
-
   <div class="en">
-    <section>
-      <h2>In short</h2>
-      <div class="highlight">In its current version, "Touché, c'est fait" works without an account
-      and without a server: <strong>no data leaves your phone</strong>. No ads, no trackers, and
-      your household's habit history will never be sold.</div>
-    </section>
-
-    <section>
-      <h2>1. Data stored on your device</h2>
-      <ul>
-        <li>your chores (name, icon, recurrence, optional note);</li>
-        <li>the completion log (which chore, when, by which first name, via sticker or manually);</li>
-        <li>the household members' first names you enter;</li>
-        <li>your settings (reminders, history length, author display).</li>
-      </ul>
-      <p>This data stays in the app's private storage on your device. It may be included in your
-      phone's Android backup (Google device backup), depending on your Android settings.</p>
-    </section>
-
-    <section>
-      <h2>2. What is written on an NFC sticker</h2>
-      <p>Only a link of the form
-      <code>https://boutchsoftware.github.io/touchefait/t/#random-identifier</code>. The
-      identifier reveals nothing about the chore or your household. No name, address or
-      description is ever written on the sticker.</p>
-      <p>When the app is installed, tapping a sticker does not use the network: the identifier
-      sits after the <code>#</code> of the link and is never sent to any server. Without the app,
-      the browser shows a static page hosted on GitHub Pages (subject to GitHub's standard
-      technical logs).</p>
-    </section>
-
-    <section>
-      <h2>3. Permissions</h2>
-      <ul>
-        <li><strong>NFC</strong>: read and program your stickers;</li>
-        <li><strong>Notifications</strong>: only if you enable reminders;</li>
-        <li><strong>Vibration</strong>: the confirmation after a tap.</li>
-      </ul>
-      <p>The app requests no location, contacts, microphone or photo access.</p>
-    </section>
-
-    <section>
-      <h2>4. Manual backups</h2>
-      <p>Export creates a file (chores + history) at the location you choose. That file is under
-      your sole control: the app sends it nowhere.</p>
-    </section>
-
-    <section>
-      <h2>5. Retention and deletion</h2>
-      <p>History length is configurable in settings (30 days, 90 days, 1 year or unlimited);
-      older entries are deleted from the device. You can erase everything via Settings → Advanced
-      → Reset, or by uninstalling the app.</p>
-    </section>
-
-    <section>
-      <h2>6. Future changes</h2>
-      <p>If synchronisation between a household's phones is offered one day, it will involve an
-      online service: this policy will be updated and shown to you <strong>before</strong> any
-      activation.</p>
-    </section>
-
-    <section>
-      <h2>7. Contact</h2>
-      <p><a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a> — see also the
-      <a href="terms.html">terms of use</a>.</p>
-    </section>
+    <section><h2>In short</h2><div class="highlight">You can use the app only on your phone, or voluntarily enable a shared household. In the latter case, household data is synchronised through Firebase. No ads, no trackers, and your household history will never be sold.</div></section>
+    <section><h2>1. Controller and data processed</h2><p>BoutchSoftware is the data controller. The app records chores and their settings, entered first names, completion history and preferences.</p><p>In local mode, this stays in the app's private storage. If you enable a shared household, first names, chores and completions are also sent to Firebase with random anonymous-account and household identifiers. Firebase processes technical data required for connection and security, including IP addresses.</p></section>
+    <section><h2>2. NFC stickers</h2><p>A sticker contains only a link with a random identifier—never a name or description. Because it sits after <code>#</code>, the identifier is not sent to the website when the link opens. The app may then sync the completion with Firebase when sharing is active. Without the app, GitHub Pages displays a static page and may retain its standard technical logs.</p></section>
+    <section><h2>3. Permissions</h2><ul><li><strong>NFC</strong>: read and program stickers;</li><li><strong>Notifications</strong>: enabled confirmations and reminders;</li><li><strong>Vibration</strong>: confirm a tap;</li><li><strong>Internet</strong>: anonymously authenticate the device and sync the household.</li></ul><p>No location, contacts, microphone or photo permission is requested.</p></section>
+    <section><h2>4. Purposes, legal basis and recipients</h2><p>Data is used only to provide the tracking and synchronisation requested by household members, as necessary to perform the service. It is visible to invited members and processed by Google Firebase as a technical provider. It is not used for ads or commercial profiling.</p></section>
+    <section><h2>5. Hosting and security</h2><p>Synchronised data is hosted in Cloud Firestore's European <code>eur3</code> region. Transfers are encrypted, rules enforce household membership and random invitations expire after 15 minutes. An offline cache remains on each member device.</p></section>
+    <section><h2>6. Retention and deletion</h2><p>History is retained according to the selected setting. Manual export creates a file where you choose. Leaving removes access and shared data from that device; the owner can delete the household, invitations and server data. Uninstalling alone does not delete data held by other members.</p></section>
+    <section><h2>7. Your rights and contact</h2><p>You can view and export data in the app, correct your first name, leave or request deletion. For access, correction, erasure, restriction or objection rights: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>. You may also contact your data protection authority. See the <a href="terms.html">terms of use</a>.</p></section>
   </div>
-
-  <footer>
-    <p>BoutchSoftware — <a href="https://armen56k.github.io/boutch-pages/index.html">boutch-pages</a></p>
-  </footer>
+  <footer>BoutchSoftware — <a href="https://armen56k.github.io/boutch-pages/index.html">boutch-pages</a></footer>
 </main>
 </body>
 </html>
