@@ -16,6 +16,24 @@
     a{color:var(--dark)}footer{text-align:center;color:var(--muted)}.en{display:none}
     body.show-en .fr{display:none}body.show-en .en{display:block}
     body.show-en .fr-sub{display:none}body:not(.show-en) .en-sub{display:none}
+    .site-nav{background:var(--card);display:flex;flex-wrap:wrap;justify-content:center;gap:4px 20px;
+      padding:3px 16px;border-bottom:1px solid #D6E9D6;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .site-nav a{color:var(--dark);text-decoration:none;font-size:.92rem;padding:3px 4px}
+    .site-nav a:hover{text-decoration:underline}
+    .site-nav a[aria-current="page"]{font-weight:700;color:var(--text);border-bottom:2px solid var(--green)}
+    .site-nav .nav-en{display:none}
+    body.show-en .site-nav .nav-fr{display:none}
+    body.show-en .site-nav .nav-en{display:inline}
+    /* Cibles tactiles >=44px (WCAG) */
+    .site-nav a,.switch a{min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+    .switch a{color:var(--dark);text-decoration:none;font-size:.9rem;border:1px solid var(--green);
+      padding:4px 12px;border-radius:20px}
+    .switch a:hover{background:var(--green);color:#fff}
+    /* Bascule FR/EN en ligne (les règles .fr/.en passent en block et casseraient le pied) */
+    .i18n-en{display:none}
+    body.show-en .i18n-fr{display:none}
+    body.show-en .i18n-en{display:inline}
+    footer{font-size:.85rem;padding:8px 16px 0}footer p{margin:4px 0}
   </style>
 </head>
 <body>
@@ -25,8 +43,17 @@
   <p class="fr-sub">Politique de confidentialité — version 3.0 du 15 juillet 2026</p>
   <p class="en-sub">Privacy Policy — version 3.0, July 15, 2026</p>
 </header>
+
+<nav class="site-nav">
+  <a href="../index.html"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
+  <a href="../pilulo/index.html">Pilulo</a>
+  <a href="../prepcalm/index.html">PrepCalm</a>
+  <a href="https://boutchsoftware.github.io/touchefait/" aria-current="page">Touché, c'est fait</a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
+</nav>
+
 <main>
-  <div class="switch"><button onclick="document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',document.body.classList.contains('show-en')?'en':'fr')}catch(e){}">🌐 English / Français</button></div>
+  <div class="switch"><a href="#" onclick="toggleLang(event)">⇄ English version</a></div>
   <div class="fr">
     <section><h2>L'essentiel</h2><div class="highlight">Vous pouvez utiliser l'application uniquement sur votre téléphone, ou activer volontairement un foyer partagé. Dans ce second cas, les données du foyer sont synchronisées via Firebase. Pas de publicité, pas de traceurs, et l'historique de votre foyer ne sera jamais vendu.</div></section>
     <section><h2>1. Responsable et données traitées</h2><p>BoutchSoftware est responsable du traitement. L'application enregistre les tâches, leurs réglages, les prénoms saisis, le journal des réalisations et les préférences.</p><p>En mode local, ces données restent dans la mémoire privée de l'application. Si vous activez un foyer partagé, les prénoms, tâches et réalisations sont aussi envoyés à Firebase avec des identifiants aléatoires de compte, de foyer et d'appareil. Un jeton technique permet d'envoyer les notifications familiales. Firebase et Play Integrity traitent les données techniques nécessaires à la connexion, à la sécurité et à l'attestation de l'application, notamment l'adresse IP.</p></section>
@@ -47,7 +74,17 @@
     <section><h2>6. Subscription and retention</h2><p>Google Play handles payment. BoutchSoftware receives the purchased product, subscription status, expiry date and a purchase token needed for verification; it receives no payment-card details. A fingerprint of the token prevents one purchase from being linked to several households.</p><p>Completions synchronised during the trial are kept for at most 90 days; with a subscription, at most 3 years. Invitations expire after 15 minutes and unused notification tokens after 120 days. Manual export creates a file where you choose. Leaving removes the device's access; the owner can delete the household and its server data. Uninstalling alone does not delete data held by other members; purchase restoration can recover the household.</p></section>
     <section><h2>7. Your rights and contact</h2><p>You can view and export data in the app, correct your first name, leave or request deletion. For access, correction, erasure, restriction or objection rights: <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>. You may also contact your data protection authority. See the <a href="terms.html">terms of use</a>.</p></section>
   </div>
-  <footer>BoutchSoftware — <a href="https://armen56k.github.io/boutch-pages/index.html">boutch-pages</a></footer>
+  <footer>
+    <p><a href="https://boutchsoftware.github.io/touchefait/">Touché, c'est fait</a> ·
+       <a href="../index.html">BoutchSoftware</a> ·
+       <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
+    <p><a href="terms.html"><span class="i18n-fr">Conditions d'utilisation</span><span class="i18n-en">Terms of Use</span></a></p>
+  </footer>
 </main>
+<script>
+  function applyLangLabel(){var en=document.body.classList.contains('show-en');var l=document.querySelector('.switch a');if(l)l.textContent=en?'⇄ Version française':'⇄ English version';}
+  function toggleLang(e){e.preventDefault();var en=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',en?'en':'fr');}catch(err){}applyLangLabel();}
+  applyLangLabel();
+</script>
 </body>
 </html>
