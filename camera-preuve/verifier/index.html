@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vérifier un dossier - Caméra de preuve</title>
+  <style>
+    :root {
+      --brand: #315DA8;
+      --brand-dark: #1E4382;
+      --text: #172033;
+      --muted: #5B6475;
+      --bg: #F4F7FD;
+      --card: #FFFFFF;
+      --ok: #247447;
+      --bad: #B3261E;
+      --border: #D8E1F2;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Segoe UI', system-ui, Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .site-nav { background: var(--card); padding: 10px 18px; border-bottom: 1px solid var(--border); }
+    .site-nav a { color: var(--brand-dark); min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; font-weight: 600; }
+    .site-nav a:hover { text-decoration: underline; }
+    .hero { background: linear-gradient(150deg, #315DA8 0%, #17396F 100%); color: white; padding: 46px 20px 52px; text-align: center; }
+    .hero h1 { margin: 0; font-size: clamp(2rem, 7vw, 2.7rem); }
+    .hero p { margin: 9px auto 0; max-width: 680px; font-size: 1.08rem; opacity: .95; }
+    main { max-width: 820px; margin: -24px auto 0; padding: 0 18px 56px; }
+    .card { background: var(--card); border-radius: 18px; padding: 24px; box-shadow: 0 3px 16px rgba(24,52,98,.10); margin-bottom: 18px; }
+    h2 { margin: 0 0 12px; font-size: 1.18rem; color: var(--brand-dark); }
+    p { margin: 7px 0; }
+    .privacy { background: #E4EDFF; border-left: 4px solid var(--brand); }
+    .fields { display: grid; gap: 14px; margin-top: 18px; }
+    label { display: block; font-weight: 700; }
+    label span { display: block; color: var(--muted); font-size: .88rem; font-weight: 400; margin: 3px 0 7px; }
+    input[type=file] { width: 100%; min-height: 48px; border: 1px solid var(--border); border-radius: 12px; padding: 10px; background: #FAFCFF; }
+    button { min-height: 48px; border: 0; border-radius: 999px; padding: 12px 24px; background: var(--brand); color: white; font: inherit; font-weight: 700; cursor: pointer; }
+    button:hover { background: var(--brand-dark); }
+    button:disabled { background: #A7B3C9; cursor: default; }
+    #summary { margin-top: 18px; }
+    .status { border-radius: 12px; padding: 12px 14px; margin: 8px 0; overflow-wrap: anywhere; }
+    .status.ok { background: #E1F4E8; color: #135C35; }
+    .status.bad { background: #FCE8E6; color: #8C1D18; }
+    .status.info { background: #EDF2FA; color: #34425A; }
+    .file-result { border-top: 1px solid var(--border); padding: 13px 0; }
+    .file-result:first-child { border-top: 0; }
+    .file-name { font-weight: 700; overflow-wrap: anywhere; }
+    code { font-family: ui-monospace, Consolas, monospace; font-size: .78rem; overflow-wrap: anywhere; }
+    footer { text-align: center; color: var(--muted); padding: 22px; font-size: .85rem; }
+    footer a { color: var(--brand-dark); }
+  </style>
+</head>
+<body>
+  <nav class="site-nav"><a href="../../index.html">BoutchSoftware</a></nav>
+  <header class="hero">
+    <h1>Vérifier un dossier photo</h1>
+    <p>Recalculez les empreintes et contrôlez la signature d'un dossier Caméra de preuve, directement sur votre appareil.</p>
+  </header>
+  <main>
+    <section class="card privacy">
+      <h2>Vos fichiers restent privés</h2>
+      <p>Tout le contrôle se déroule dans ce navigateur. Les photos, le manifeste et la signature ne sont envoyés à aucun serveur.</p>
+    </section>
+    <section class="card">
+      <h2>Fichiers à sélectionner</h2>
+      <p>Décompressez l'archive ZIP produite par l'application, puis choisissez les éléments ci-dessous.</p>
+      <div class="fields">
+        <label>1. Manifeste
+          <span>Le fichier <code>manifest.json</code>.</span>
+          <input id="manifest" type="file" accept="application/json,.json" />
+        </label>
+        <label>2. Signature
+          <span>Le fichier <code>manifest-signature.json</code> (facultatif pour les empreintes).</span>
+          <input id="signature" type="file" accept="application/json,.json" />
+        </label>
+        <label>3. Fichiers originaux
+          <span>Sélectionnez toutes les photos du dossier <code>originals</code>.</span>
+          <input id="originals" type="file" accept="image/*" multiple />
+        </label>
+      </div>
+      <p style="margin-top:18px"><button id="verify" disabled>Vérifier le dossier</button></p>
+      <div id="summary" aria-live="polite"></div>
+      <div id="results"></div>
+    </section>
+    <section class="card">
+      <h2>Ce que ce contrôle signifie</h2>
+      <p>Une empreinte identique confirme que le fichier sélectionné est exactement celui référencé par le manifeste. Une signature valide confirme que le manifeste n'a pas changé depuis sa signature par la clé de l'application.</p>
+      <p>Ce contrôle ne garantit pas l'authenticité de la scène photographiée et ne détermine pas, à lui seul, la valeur juridique du dossier.</p>
+    </section>
+  </main>
+  <footer>BoutchSoftware - <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></footer>
+  <script>
+    const manifestInput = document.getElementById('manifest');
+    const signatureInput = document.getElementById('signature');
+    const originalsInput = document.getElementById('originals');
+    const verifyButton = document.getElementById('verify');
+    const summary = document.getElementById('summary');
+    const results = document.getElementById('results');
+
+    function updateButton() {
+      verifyButton.disabled = !(manifestInput.files.length && originalsInput.files.length);
+    }
+    manifestInput.addEventListener('change', updateButton);
+    originalsInput.addEventListener('change', updateButton);
+    verifyButton.addEventListener('click', verifyAll);
+
+    async function verifyAll() {
+      verifyButton.disabled = true;
+      summary.innerHTML = '<div class="status info">Vérification en cours…</div>';
+      results.innerHTML = '';
+      try {
+        const manifestFile = manifestInput.files[0];
+        const manifestBytes = await manifestFile.arrayBuffer();
+        const manifest = JSON.parse(new TextDecoder().decode(manifestBytes));
+        if (!Array.isArray(manifest.files)) throw new Error('Le manifeste ne contient pas de liste de fichiers.');
+        const selected = Array.from(originalsInput.files);
+        let valid = 0;
+        let missing = 0;
+        let altered = 0;
+        for (const expected of manifest.files) {
+          const baseName = String(expected.fileName || '').replaceAll('\\', '/').split('/').pop();
+          const file = selected.find(candidate => candidate.name === baseName);
+          const row = document.createElement('div');
+          row.className = 'file-result';
+          if (!file) {
+            missing++;
+            row.innerHTML = '<div class="file-name">' + escapeHtml(expected.fileName) + '</div><div class="status bad">Fichier manquant</div>';
+          } else {
+            const digest = await sha256(file);
+            const ok = digest.toLowerCase() === String(expected.sha256).toLowerCase();
+            if (ok) valid++; else altered++;
+            row.innerHTML = '<div class="file-name">' + escapeHtml(expected.fileName) + '</div>' +
+              '<div class="status ' + (ok ? 'ok' : 'bad') + '">' + (ok ? 'Empreinte identique' : 'Empreinte différente - fichier modifié') + '</div>' +
+              '<code>' + digest + '</code>';
+          }
+          results.appendChild(row);
+        }
+
+        let signatureText = 'Signature non contrôlée : aucun fichier de signature sélectionné.';
+        let signatureOk = null;
+        if (signatureInput.files.length) {
+          try {
+            const signature = JSON.parse(await signatureInput.files[0].text());
+            signatureOk = await verifyManifestSignature(manifestBytes, signature);
+            signatureText = signatureOk ? 'Signature ECDSA du manifeste valide.' : 'Signature ECDSA invalide.';
+          } catch (error) {
+            signatureOk = false;
+            signatureText = 'Signature impossible à vérifier : ' + error.message;
+          }
+        }
+        const allHashesOk = altered === 0 && missing === 0 && valid === manifest.files.length;
+        summary.innerHTML =
+          '<div class="status ' + (allHashesOk ? 'ok' : 'bad') + '">' + valid + ' fichier(s) intègre(s), ' + altered + ' modifié(s), ' + missing + ' manquant(s).</div>' +
+          '<div class="status ' + (signatureOk === true ? 'ok' : signatureOk === false ? 'bad' : 'info') + '">' + escapeHtml(signatureText) + '</div>';
+      } catch (error) {
+        summary.innerHTML = '<div class="status bad">' + escapeHtml(error.message || String(error)) + '</div>';
+      } finally {
+        updateButton();
+      }
+    }
+
+    async function sha256(file) {
+      const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+      return Array.from(new Uint8Array(digest), value => value.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function verifyManifestSignature(manifestBytes, signature) {
+      if (!signature.certificateChainBase64?.length || !signature.signatureBase64) {
+        throw new Error('certificat ou signature absent');
+      }
+      const certificate = base64Bytes(signature.certificateChainBase64[0]);
+      const spki = extractSpki(certificate);
+      const key = await crypto.subtle.importKey('spki', spki, { name: 'ECDSA', namedCurve: 'P-256' }, false, ['verify']);
+      const derSignature = base64Bytes(signature.signatureBase64);
+      const rawSignature = ecdsaDerToRaw(derSignature, 32);
+      return crypto.subtle.verify({ name: 'ECDSA', hash: 'SHA-256' }, key, rawSignature, manifestBytes);
+    }
+
+    function extractSpki(certificate) {
+      const root = readTlv(certificate, 0);
+      const certificateFields = children(certificate, root);
+      const tbsFields = children(certificate, certificateFields[0]);
+      const hasVersion = tbsFields[0].tag === 0xA0;
+      const spki = tbsFields[hasVersion ? 6 : 5];
+      if (!spki || spki.tag !== 0x30) throw new Error('certificat X.509 non reconnu');
+      return certificate.slice(spki.start, spki.end).buffer;
+    }
+
+    function ecdsaDerToRaw(bytes, size) {
+      const sequence = readTlv(bytes, 0);
+      const integers = children(bytes, sequence);
+      if (integers.length !== 2 || integers.some(value => value.tag !== 0x02)) throw new Error('signature ECDSA non reconnue');
+      const raw = new Uint8Array(size * 2);
+      integers.forEach((integer, index) => {
+        let value = bytes.slice(integer.contentStart, integer.end);
+        while (value.length > size && value[0] === 0) value = value.slice(1);
+        if (value.length > size) throw new Error('signature ECDSA trop longue');
+        raw.set(value, index * size + size - value.length);
+      });
+      return raw;
+    }
+
+    function readTlv(bytes, start) {
+      const tag = bytes[start];
+      let cursor = start + 1;
+      let length = bytes[cursor++];
+      if (length & 0x80) {
+        const count = length & 0x7F;
+        length = 0;
+        for (let index = 0; index < count; index++) length = (length << 8) | bytes[cursor++];
+      }
+      return { tag, start, contentStart: cursor, end: cursor + length };
+    }
+
+    function children(bytes, parent) {
+      const values = [];
+      let cursor = parent.contentStart;
+      while (cursor < parent.end) {
+        const value = readTlv(bytes, cursor);
+        values.push(value);
+        cursor = value.end;
+      }
+      return values;
+    }
+
+    function base64Bytes(value) {
+      return Uint8Array.from(atob(value), character => character.charCodeAt(0));
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>'"]/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' })[character]);
+    }
+  </script>
+</body>
+</html>
