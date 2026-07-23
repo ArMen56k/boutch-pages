@@ -62,8 +62,12 @@
     </section>
     <section class="card">
       <h2>Fichiers à sélectionner</h2>
-      <p>Décompressez l'archive ZIP produite par l'application, puis choisissez les éléments ci-dessous.</p>
+      <p>Choisissez directement l'archive ZIP produite par l'application, ou décompressez-la puis choisissez les éléments ci-dessous.</p>
       <div class="fields">
+        <label>Archive ZIP (recommandé)
+          <span>Le fichier <code>.zip</code> exporté par l'application. Il est lu uniquement dans ce navigateur.</span>
+          <input id="archive" type="file" accept="application/zip,.zip" />
+        </label>
         <label>1. Manifeste
           <span>Le fichier <code>manifest.json</code>.</span>
           <input id="manifest" type="file" accept="application/json,.json" />
@@ -93,15 +97,17 @@
     const manifestInput = document.getElementById('manifest');
     const signatureInput = document.getElementById('signature');
     const originalsInput = document.getElementById('originals');
+    const archiveInput = document.getElementById('archive');
     const verifyButton = document.getElementById('verify');
     const summary = document.getElementById('summary');
     const results = document.getElementById('results');
 
     function updateButton() {
-      verifyButton.disabled = !(manifestInput.files.length && originalsInput.files.length);
+      verifyButton.disabled = !(archiveInput.files.length || (manifestInput.files.length && originalsInput.files.length));
     }
     manifestInput.addEventListener('change', updateButton);
     originalsInput.addEventListener('change', updateButton);
+    archiveInput.addEventListener('change', updateButton);
     verifyButton.addEventListener('click', verifyAll);
 
     async function verifyAll() {
@@ -109,24 +115,34 @@
       summary.innerHTML = '<div class="status info">Vérification en cours…</div>';
       results.innerHTML = '';
       try {
-        const manifestFile = manifestInput.files[0];
-        const manifestBytes = await manifestFile.arrayBuffer();
+        let manifestBytes;
+        let signatureBytes = null;
+        let selected;
+        if (archiveInput.files.length) {
+          const entries = await readZip(await archiveInput.files[0].arrayBuffer());
+          manifestBytes = requiredEntry(entries, 'manifest.json');
+          signatureBytes = entries.get('manifest-signature.json') || null;
+          selected = Array.from(entries, ([name, bytes]) => ({ name, bytes }));
+        } else {
+          manifestBytes = await manifestInput.files[0].arrayBuffer();
+          signatureBytes = signatureInput.files.length ? await signatureInput.files[0].arrayBuffer() : null;
+          selected = Array.from(originalsInput.files);
+        }
         const manifest = JSON.parse(new TextDecoder().decode(manifestBytes));
         if (!Array.isArray(manifest.files)) throw new Error('Le manifeste ne contient pas de liste de fichiers.');
-        const selected = Array.from(originalsInput.files);
         let valid = 0;
         let missing = 0;
         let altered = 0;
         for (const expected of manifest.files) {
-          const baseName = String(expected.fileName || '').replaceAll('\\', '/').split('/').pop();
-          const file = selected.find(candidate => candidate.name === baseName);
+          const expectedName = String(expected.fileName || '').replaceAll('\\', '/');
+          const file = selected.find(candidate => candidate.name === expectedName || candidate.name === expectedName.split('/').pop());
           const row = document.createElement('div');
           row.className = 'file-result';
           if (!file) {
             missing++;
             row.innerHTML = '<div class="file-name">' + escapeHtml(expected.fileName) + '</div><div class="status bad">Fichier manquant</div>';
           } else {
-            const digest = await sha256(file);
+            const digest = await sha256(file.bytes || file);
             const ok = digest.toLowerCase() === String(expected.sha256).toLowerCase();
             if (ok) valid++; else altered++;
             row.innerHTML = '<div class="file-name">' + escapeHtml(expected.fileName) + '</div>' +
@@ -138,9 +154,9 @@
 
         let signatureText = 'Intégrité interne non contrôlée : aucun fichier de signature sélectionné. Émetteur : non authentifié.';
         let signatureOk = null;
-        if (signatureInput.files.length) {
+        if (signatureBytes) {
           try {
-            const signature = JSON.parse(await signatureInput.files[0].text());
+            const signature = JSON.parse(new TextDecoder().decode(signatureBytes));
             signatureOk = await verifyManifestSignature(manifestBytes, signature);
             signatureText = signatureOk
               ? 'Intégrité interne : OK (signature ECDSA). Émetteur : non authentifié (attestation non incluse).'
@@ -161,9 +177,59 @@
       }
     }
 
-    async function sha256(file) {
-      const digest = await crypto.subtle.digest('SHA-256', await file.arrayBuffer());
+    async function sha256(value) {
+      const bytes = value instanceof File ? await value.arrayBuffer() : value;
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
       return Array.from(new Uint8Array(digest), value => value.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function readZip(buffer) {
+      const data = new Uint8Array(buffer);
+      const eocd = findEndOfCentralDirectory(data);
+      const view = new DataView(data.buffer, data.byteOffset, data.byteLength);
+      const count = view.getUint16(eocd + 10, true);
+      let cursor = view.getUint32(eocd + 16, true);
+      const entries = new Map();
+      if (count > 10_000) throw new Error('Archive ZIP anormalement volumineuse.');
+      for (let index = 0; index < count; index++) {
+        if (view.getUint32(cursor, true) !== 0x02014b50) throw new Error('Répertoire ZIP illisible.');
+        const method = view.getUint16(cursor + 10, true);
+        const compressedSize = view.getUint32(cursor + 20, true);
+        const uncompressedSize = view.getUint32(cursor + 24, true);
+        const nameLength = view.getUint16(cursor + 28, true);
+        const extraLength = view.getUint16(cursor + 30, true);
+        const commentLength = view.getUint16(cursor + 32, true);
+        const localOffset = view.getUint32(cursor + 42, true);
+        const name = new TextDecoder().decode(data.slice(cursor + 46, cursor + 46 + nameLength));
+        if (name.includes('..') || name.startsWith('/')) throw new Error('Chemin ZIP non autorisé.');
+        if (uncompressedSize > 50 * 1024 * 1024) throw new Error('Fichier ZIP trop volumineux : ' + name);
+        if (view.getUint32(localOffset, true) !== 0x04034b50) throw new Error('Entrée ZIP illisible : ' + name);
+        const localNameLength = view.getUint16(localOffset + 26, true);
+        const localExtraLength = view.getUint16(localOffset + 28, true);
+        const payloadStart = localOffset + 30 + localNameLength + localExtraLength;
+        const compressed = data.slice(payloadStart, payloadStart + compressedSize);
+        let bytes;
+        if (method === 0) bytes = compressed;
+        else if (method === 8) bytes = new Uint8Array(await new Response(new Blob([compressed]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer());
+        else throw new Error('Compression ZIP non prise en charge : ' + name);
+        if (bytes.length !== uncompressedSize) throw new Error('Taille ZIP incohérente : ' + name);
+        entries.set(name, bytes.buffer);
+        cursor += 46 + nameLength + extraLength + commentLength;
+      }
+      return entries;
+    }
+
+    function findEndOfCentralDirectory(data) {
+      for (let index = data.length - 22; index >= Math.max(0, data.length - 65557); index--) {
+        if (data[index] === 0x50 && data[index + 1] === 0x4b && data[index + 2] === 0x05 && data[index + 3] === 0x06) return index;
+      }
+      throw new Error('Fin de l’archive ZIP introuvable.');
+    }
+
+    function requiredEntry(entries, name) {
+      const entry = entries.get(name);
+      if (!entry) throw new Error('Archive ZIP : ' + name + ' absent.');
+      return entry;
     }
 
     async function verifyManifestSignature(manifestBytes, signature) {
