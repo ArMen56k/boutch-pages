@@ -76,7 +76,11 @@
           <span>Le fichier <code>manifest-signature.json</code> (facultatif pour les empreintes).</span>
           <input id="signature" type="file" accept="application/json,.json" />
         </label>
-        <label>3. Fichiers originaux
+        <label>3. Horodatage
+          <span>Le fichier <code>manifest-signature.tsr</code> (facultatif, mais nécessaire pour l'antériorité).</span>
+          <input id="timestamp" type="file" accept="application/timestamp-reply,.tsr" />
+        </label>
+        <label>4. Fichiers originaux
           <span>Sélectionnez toutes les photos du dossier <code>originals</code>.</span>
           <input id="originals" type="file" accept="image/*" multiple />
         </label>
@@ -88,14 +92,16 @@
     <section class="card">
       <h2>Ce que ce contrôle signifie</h2>
       <p>Une empreinte identique confirme que le fichier sélectionné est exactement celui référencé par le manifeste. Une signature ECDSA valide établit la cohérence interne du manifeste.</p>
-      <p>Elle n'authentifie pas l'émetteur : l'attestation d'appareil n'est pas incluse dans cette version. Le contrôle du jeton d'horodatage RFC 3161 contre une ancre TSA indépendante est en cours d'intégration.</p>
+      <p>Elle n'authentifie pas l'émetteur : l'attestation d'appareil n'est pas incluse dans cette version. Un jeton RFC 3161 FreeTSA valide établit que l'enveloppe de signature existait avant sa date, contre l'ancre TSA embarquée.</p>
       <p>Ce contrôle ne garantit pas l'authenticité de la scène photographiée et ne détermine pas, à lui seul, la valeur juridique du dossier.</p>
     </section>
   </main>
   <footer>BoutchSoftware - <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></footer>
+  <script src="timestamp.js"></script>
   <script>
     const manifestInput = document.getElementById('manifest');
     const signatureInput = document.getElementById('signature');
+    const timestampInput = document.getElementById('timestamp');
     const originalsInput = document.getElementById('originals');
     const archiveInput = document.getElementById('archive');
     const verifyButton = document.getElementById('verify');
@@ -117,15 +123,18 @@
       try {
         let manifestBytes;
         let signatureBytes = null;
+        let timestampBytes = null;
         let selected;
         if (archiveInput.files.length) {
           const entries = await readZip(await archiveInput.files[0].arrayBuffer());
           manifestBytes = requiredEntry(entries, 'manifest.json');
           signatureBytes = entries.get('manifest-signature.json') || null;
+          timestampBytes = entries.get('manifest-signature.tsr') || null;
           selected = Array.from(entries, ([name, bytes]) => ({ name, bytes }));
         } else {
           manifestBytes = await manifestInput.files[0].arrayBuffer();
           signatureBytes = signatureInput.files.length ? await signatureInput.files[0].arrayBuffer() : null;
+          timestampBytes = timestampInput.files.length ? await timestampInput.files[0].arrayBuffer() : null;
           selected = Array.from(originalsInput.files);
         }
         const manifest = JSON.parse(new TextDecoder().decode(manifestBytes));
@@ -166,10 +175,28 @@
             signatureText = 'Intégrité interne impossible à vérifier : ' + error.message + '. Émetteur : non authentifié.';
           }
         }
+        let timestampText = 'Antériorité non établie : aucun jeton RFC 3161 sélectionné.';
+        let timestampOk = null;
+        if (timestampBytes) {
+          if (!signatureBytes) {
+            timestampOk = false;
+            timestampText = 'Antériorité impossible à vérifier : manifest-signature.json absent.';
+          } else {
+            try {
+              const timestamp = await verifyTimestamp(signatureBytes, timestampBytes);
+              timestampOk = true;
+              timestampText = 'Antériorité : OK (jeton RFC 3161 FreeTSA du ' + timestamp.timestamp + ').';
+            } catch (error) {
+              timestampOk = false;
+              timestampText = 'Antériorité : échec (' + error.message + ').';
+            }
+          }
+        }
         const allHashesOk = altered === 0 && missing === 0 && valid === manifest.files.length;
         summary.innerHTML =
           '<div class="status ' + (allHashesOk ? 'ok' : 'bad') + '">' + valid + ' fichier(s) intègre(s), ' + altered + ' modifié(s), ' + missing + ' manquant(s).</div>' +
-          '<div class="status ' + (signatureOk === true ? 'ok' : signatureOk === false ? 'bad' : 'info') + '">' + escapeHtml(signatureText) + '</div>';
+          '<div class="status ' + (signatureOk === true ? 'ok' : signatureOk === false ? 'bad' : 'info') + '">' + escapeHtml(signatureText) + '</div>' +
+          '<div class="status ' + (timestampOk === true ? 'ok' : timestampOk === false ? 'bad' : 'info') + '">' + escapeHtml(timestampText) + '</div>';
       } catch (error) {
         summary.innerHTML = '<div class="status bad">' + escapeHtml(error.message || String(error)) + '</div>';
       } finally {
