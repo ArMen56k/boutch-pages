@@ -28,6 +28,8 @@ async function verifyTimestamp(envelope, responseBuffer) {
   const signerInfo = timestampChildren(data, timestampChildren(data, fields[fields.length - 1])[0]);
   const leaf = timestampSignerCertificate(data, certificates, signerInfo[1]);
   if (!leaf) throw new Error('certificat TSA signataire absent');
+  const issuedAt = timestampTime(data.slice(tstFields[4].contentStart, tstFields[4].end));
+  if (issuedAt < leaf.notBefore || issuedAt > leaf.notAfter) throw new Error('jeton hors validité du certificat TSA');
   if (!await timestampVerifyWithCertificate(root, leaf.signatureAlgorithm, leaf.tbs, leaf.signature)) throw new Error('chaîne TSA invalide');
   if (!timestampHasTsaUsage(data, leaf)) throw new Error('certificat TSA non autorisé pour l’horodatage');
   const signedAttributes = signerInfo[3];
@@ -35,14 +37,15 @@ async function verifyTimestamp(envelope, responseBuffer) {
   const signed = timestampSlice(data, signedAttributes); signed[0] = 0x31;
   const signatureAlgorithm = timestampAlgorithm(data, signerInfo[4]);
   if (!await timestampVerifyWithCertificate(leaf, signatureAlgorithm, signed, data.slice(signerInfo[5].contentStart, signerInfo[5].end))) throw new Error('signature TSA invalide');
-  return { timestamp: timestampTime(data.slice(tstFields[4].contentStart, tstFields[4].end)) };
+  return { timestamp: issuedAt };
 }
 
 function timestampCertificate(data, node) {
   const fields = timestampChildren(data, node), tbs = fields[0], tbsFields = timestampChildren(data, tbs);
   const offset = tbsFields[0].tag === 0xA0 ? 1 : 0, spki = tbsFields[offset + 5];
   const curve = timestampCurve(data, spki);
-  return { der: timestampSlice(data, node), tbs: timestampSlice(data, tbs), serial: timestampSlice(data, tbsFields[offset]), issuer: timestampSlice(data, tbsFields[offset + 2]), spki: timestampSlice(data, spki), curve, extensions: tbsFields.find(value => value.tag === 0xA3), signatureAlgorithm: timestampAlgorithm(data, fields[1]), signature: data.slice(fields[2].contentStart + 1, fields[2].end) };
+  const validity = timestampChildren(data, tbsFields[offset + 3]);
+  return { der: timestampSlice(data, node), tbs: timestampSlice(data, tbs), serial: timestampSlice(data, tbsFields[offset]), issuer: timestampSlice(data, tbsFields[offset + 2]), spki: timestampSlice(data, spki), curve, notBefore: timestampX509Time(data.slice(validity[0].contentStart, validity[0].end)), notAfter: timestampX509Time(data.slice(validity[1].contentStart, validity[1].end)), extensions: tbsFields.find(value => value.tag === 0xA3), signatureAlgorithm: timestampAlgorithm(data, fields[1]), signature: data.slice(fields[2].contentStart + 1, fields[2].end) };
 }
 
 async function timestampRoot(certificates) {
@@ -115,3 +118,4 @@ async function timestampSha256(value) { return timestampHex(new Uint8Array(await
 async function timestampDigest(value, hash) { return timestampHex(new Uint8Array(await crypto.subtle.digest(hash, value))); }
 function timestampHex(bytes) { return Array.from(bytes, value => value.toString(16).padStart(2, '0')).join(''); }
 function timestampTime(bytes) { const raw = new TextDecoder().decode(bytes).replace(/\.\d+Z$/, 'Z'); const match = raw.match(/^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})Z$/); if (!match) throw new Error('date TSA invalide'); return new Date(Date.UTC(match[1], match[2] - 1, match[3], match[4], match[5], match[6])).toISOString(); }
+function timestampX509Time(bytes) { const raw = new TextDecoder().decode(bytes); const match = raw.match(/^(\d{2}|\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})Z$/); if (!match) throw new Error('validité TSA invalide'); const year = match[1].length === 2 ? (Number(match[1]) >= 50 ? 1900 : 2000) + Number(match[1]) : Number(match[1]); return new Date(Date.UTC(year, match[2] - 1, match[3], match[4], match[5], match[6])).toISOString(); }
