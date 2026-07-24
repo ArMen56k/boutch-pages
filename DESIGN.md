@@ -19,7 +19,7 @@ Shared neutrals:
 - `--card: #FFFFFF`
 
 Per-app accent (intentional theming):
-- **Home / Pilulo — green:** `--green / --brand: #5BB65A`, dark `#3D8C3C`
+- **Home — green:** `--green / --brand: #5BB65A`, dark `#3D8C3C`
 - **PrepCalm — teal:** `--brand: #0E8174`, dark `#00665A`
 
 Rules: accent is used for headings, primary buttons, nav, links. Keep ≤8 colors

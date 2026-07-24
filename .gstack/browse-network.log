@@ -1,8 +1,0 @@
-[2026-05-29T21:45:38.538Z] GET http://127.0.0.1:8080/ → 200 (4ms, 14742B)
-[2026-05-29T21:45:38.545Z] GET http://127.0.0.1:8080/assets/boutchsoftware-colibri.jpg → 200 (4ms, 928201B)
-[2026-05-29T21:45:38.545Z] GET http://127.0.0.1:8080/assets/pilulo-icon.png → 200 (5ms, 413614B)
-[2026-05-29T21:45:38.545Z] GET http://127.0.0.1:8080/assets/prepcalm-icon.png → 200 (5ms, 314688B)
-[2026-05-29T21:45:38.970Z] GET http://127.0.0.1:8080/translations.html → 200 (2ms, 9338B)
-[2026-05-29T21:45:39.203Z] GET http://127.0.0.1:8080/pilulo/privacy.html → 200 (2ms, 19180B)
-[2026-05-29T21:55:39.147Z] GET http://127.0.0.1:8080/translations.html → 200 (3ms, 9338B)
-[2026-05-29T21:55:39.371Z] GET http://127.0.0.1:8080/prepcalm/l/ → 200 (2ms, 5546B)
