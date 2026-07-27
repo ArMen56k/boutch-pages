@@ -125,9 +125,9 @@ body.studio-product .btn:hover, body.studio-product .button:hover { border-color
 
 /* Legal documents */
 body.studio-legal { color: var(--studio-ink) !important; background: linear-gradient(180deg,var(--studio-night) 0 430px,var(--studio-paper) 430px) !important; }
-body.studio-legal > header { min-height: 370px !important; padding-bottom: 86px !important; }
+body.studio-legal > header { z-index: 1; min-height: 370px !important; padding-bottom: 86px !important; }
 body.studio-legal > header h1 { font-size: clamp(2.7rem,6vw,5.6rem) !important; }
-body.studio-legal > main { width: min(940px,calc(100% - 32px)); max-width: none !important; margin: -62px auto 0 !important; padding: 0 0 100px !important; }
+body.studio-legal > main { position: relative; z-index: 2; width: min(940px,calc(100% - 32px)); max-width: none !important; margin: -62px auto 0 !important; padding: 0 0 100px !important; }
 body.studio-legal main > .lang-switch, body.studio-legal main > .switch { position: relative; z-index: 2; margin: 0 0 18px !important; text-align: right; }
 body.studio-legal section, body.studio-legal main.card, body.studio-legal main > .card { margin: 0 0 14px !important; padding: clamp(24px,4vw,42px) !important; border: 1px solid #dbe6df !important; border-radius: 24px !important; color: var(--studio-ink) !important; background: rgba(255,255,255,.94) !important; box-shadow: 0 16px 45px rgba(17,48,32,.08) !important; }
 body.studio-legal h2 { margin: 0 0 16px !important; padding: 0 !important; border: 0 !important; color: #173b2c !important; font-size: clamp(1.25rem,2.3vw,1.65rem) !important; letter-spacing: -.04em; }
@@ -170,7 +170,8 @@ body.show-en a.en, body.show-en button.en { display: inline-flex !important; }
 @media (max-width: 760px) {
   .studio-nav { top: 9px; width: calc(100% - 18px); min-height: 58px; padding: 7px 8px 7px 12px; }
   .studio-brand { font-size: .87rem; }
-  .studio-brand small, .studio-language { display: none; }
+  .studio-brand small { display: none; }
+  .studio-language { min-width: 42px; padding: 0 9px; }
   .studio-menu-toggle { display: grid; }
   .studio-menu { position: absolute; top: calc(100% + 8px); left: 0; right: 0; display: none; padding: 8px; border: 1px solid var(--studio-line); border-radius: 18px; background: rgba(5,14,10,.97); box-shadow: 0 22px 60px rgba(0,0,0,.45); }
   .studio-nav.menu-open .studio-menu { display: grid; }

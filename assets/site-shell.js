@@ -4,6 +4,9 @@
     const icon = document.createElement('link'); icon.rel = 'icon'; icon.href = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23050b09'/%3E%3Cpath d='M18 18h28v28H18z' rx='8' fill='%2358e6bd'/%3E%3Cpath d='m24 33 5 5 12-14' fill='none' stroke='%23050b09' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"; document.head.append(icon);
   }
   const root = new URL('../', new URL(script.src, location.href));
+  const primaryRoot = location.hostname.toLowerCase() === 'boutchsoftware.github.io'
+    ? new URL('https://armen56k.github.io/boutch-pages/')
+    : root;
   const title = document.title.toLowerCase();
   const body = document.body;
   if (body.querySelector('.products')) body.classList.add('studio-home');
@@ -15,22 +18,45 @@
   else if (body.querySelector('.hero') && body.querySelector('main')) body.classList.add('studio-product');
   else body.classList.add('studio-utility');
 
-  const sourceNav = document.querySelector('.topbar .site-nav, .top .links, .site-nav');
   const sourceLanguage = document.querySelector('.lang-switch a, .switch a, button.lang, button.lang-switch');
   const nav = document.createElement('nav');
   nav.className = 'studio-nav';
   nav.setAttribute('aria-label', 'Navigation principale');
   const brand = document.createElement('a');
   brand.className = 'studio-brand';
-  brand.href = new URL('index.html', root).href;
+  brand.href = new URL('index.html', primaryRoot).href;
   brand.innerHTML = '<span class="studio-brand-mark" aria-hidden="true"></span><span>BoutchSoftware</span><small>SOFTWARE STUDIO</small>';
   const menu = document.createElement('div');
   menu.className = 'studio-menu';
   menu.id = 'studio-menu';
-  if (sourceNav) Array.from(sourceNav.querySelectorAll('a')).forEach((link) => menu.append(link.cloneNode(true)));
-  if (!menu.children.length) {
-    menu.innerHTML = `<a href="${new URL('index.html',root)}">Accueil</a><a href="${new URL('index.html#produits',root)}">Applications</a><a href="${new URL('translations.html',root)}">Traductions</a>`;
-  }
+  const menuItems = [
+    { key: 'home', href: new URL('index.html', primaryRoot).href, fr: 'Accueil', en: 'Home' },
+    { key: 'apps', href: new URL('index.html#produits', primaryRoot).href, fr: 'Applications', en: 'Apps' },
+    { key: 'philosophy', href: new URL('index.html#philosophie', primaryRoot).href, fr: 'Philosophie', en: 'Philosophy' },
+    { key: 'translations', href: new URL('translations.html', primaryRoot).href, fr: 'Traductions', en: 'Translations' }
+  ];
+  menuItems.forEach((item) => {
+    const link = document.createElement('a');
+    link.href = item.href;
+    link.dataset.navKey = item.key;
+    link.innerHTML = `<span class="i18n-fr">${item.fr}</span><span class="i18n-en">${item.en}</span>`;
+    menu.append(link);
+  });
+  const syncActiveLink = () => {
+    let activeKey = 'apps';
+    if (body.classList.contains('studio-translation')) activeKey = 'translations';
+    else if (body.classList.contains('studio-home')) {
+      activeKey = location.hash === '#produits' ? 'apps'
+        : location.hash === '#philosophie' ? 'philosophy'
+        : 'home';
+    }
+    menu.querySelectorAll('a').forEach((link) => {
+      if (link.dataset.navKey === activeKey) link.setAttribute('aria-current','page');
+      else link.removeAttribute('aria-current');
+    });
+  };
+  syncActiveLink();
+  window.addEventListener('hashchange', syncActiveLink);
   const toggle = document.createElement('button');
   toggle.className = 'studio-menu-toggle'; toggle.type = 'button'; toggle.setAttribute('aria-expanded','false'); toggle.setAttribute('aria-controls','studio-menu');
   toggle.innerHTML = '<span class="studio-sr-only">Ouvrir le menu</span><i></i><i></i>';

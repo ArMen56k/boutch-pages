@@ -31,10 +31,13 @@ Tokens principaux :
 
 ## Navigation
 
-La barre globale est flottante, translucide et compacte. Elle reprend les liens
-déjà présents dans chaque page, indique la page active, expose le changement de
-langue et devient un menu tactile sous 760 px. Les cibles interactives font au
-minimum 42 px de haut et le focus clavier reste visible.
+La barre globale est flottante, translucide et compacte. Son architecture est
+identique sur toutes les pages : **Accueil**, **Applications**, **Philosophie** et
+**Traductions**. Les applications restent regroupées dans leur annuaire sur la
+page d’accueil au lieu d’encombrer le menu. La barre indique la rubrique active,
+expose toujours le changement de langue et devient un menu tactile sous 760 px.
+Les cibles interactives font au minimum 42 px de haut et le focus clavier reste
+visible.
 
 ## Familles de pages
 
