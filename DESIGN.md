@@ -1,66 +1,60 @@
-# DESIGN.md — BoutchSoftware site
+# DESIGN.md — BoutchSoftware
 
-Design source of truth for the public site (`boutch-pages/`, mirrored to `docs/`).
-Inferred from the rendered site on 2026-05-29 and locked in after the design review.
+Source de vérité visuelle du site public (`boutch-pages/`, miroir `docs/`) et des
+pages web produit. Le système partagé vit dans `assets/site-shell.css` et
+`assets/site-shell.js`.
 
-> **Edit rule:** styles are inline per HTML page (no shared stylesheet yet). Apply
-> any change to **both** `boutch-pages/` and `docs/`. See the repo's structure note.
+## Positionnement
 
-## Voice
-Calm, exact, human — with a distinctly contemporary presentation. The home page
-may use a dark, immersive visual system and restrained generative motion to show
-technical care. It must never become a noisy sales pitch: the products and their
-daily usefulness remain the proof.
+BoutchSoftware se présente comme un studio logiciel contemporain, précis et
+humain. L’interface doit démontrer la qualité technique par sa finition, sa
+fluidité et sa clarté — jamais par du jargon ou des effets gratuits.
 
-## Color tokens
-Shared neutrals:
-- `--text: #212121` (off-black body) / per-app darker variants (`#1d241d`, `#16201d`)
-- `--muted: #757575` secondary text
-- `--bg: #F5FBF5` (green pages) / `#F1FAF7` (PrepCalm)
-- `--card: #FFFFFF`
+## Langage visuel
 
-Per-app accent (intentional theming):
-- **Home — green:** `--green / --brand: #5BB65A`, dark `#3D8C3C`
-- **PrepCalm — teal:** `--brand: #0E8174`, dark `#00665A`
+- Fond graphite presque noir pour les héros et les pages produit.
+- Accents lumineux vert, menthe et cyan, utilisés avec parcimonie.
+- Surfaces vitrées sombres, lignes fines, halos très diffus et grille technique.
+- Sections éditoriales claires pour créer du rythme et maximiser la lisibilité.
+- Typographie système très contrastée, titres massifs et interlignage serré.
+- Grilles « bento » asymétriques sur ordinateur, pile simple sur mobile.
 
-Rules: accent is used for headings, primary buttons, nav, links. Keep ≤8 colors
-per page. No purple/gradient slop. Footer/inline links use the accent-dark color.
+Tokens principaux :
 
-## Typography
-- Stack: `'Segoe UI', system-ui, Arial, sans-serif` (system; candidate for a
-  self-hosted humanist sans later).
-- Body 16px, line-height ~1.65.
-- `h1` (hero) 2.4–2.5rem / weight 700–800.
-- Section labels (`h2`): 0.82rem, UPPERCASE, letter-spacing ~1.5px, **weight 700**,
-  in the accent-dark color — they must read as headings, not grey fine print.
-- Card titles (`h3`) ~1.05–1.2rem / 700.
+- `--studio-night: #03100b`
+- `--studio-deep: #071b13`
+- `--studio-green: #7cf28a`
+- `--studio-lime: #a7f96f`
+- `--studio-mint: #58e6bd`
+- `--studio-cyan: #65dff2`
+- `--studio-paper: #f1f6f3`
 
-## Spacing & shape
-- Radius: `--radius: 14px` (home) / `18px` (app pages); pills/buttons `20px`–`999px`.
-- Card shadow: `0 1px 4px rgba(0,0,0,.08)` (soft).
-- Content max-width: 760–920px, centered.
+## Navigation
 
-## Buttons & actions
-- **Primary:** filled accent, white text (one per card/section).
-- **Secondary:** outline (1.5–2px accent border), accent text; fills on hover.
-- **Soon:** muted grey, `cursor: default`.
-- **Touch targets ≥44px** (min-height + inline-flex centering) — non-negotiable;
-  this is a mobile-app site.
+La barre globale est flottante, translucide et compacte. Elle reprend les liens
+déjà présents dans chaque page, indique la page active, expose le changement de
+langue et devient un menu tactile sous 760 px. Les cibles interactives font au
+minimum 42 px de haut et le focus clavier reste visible.
 
-## Layout conventions
-- Sticky top nav, centered links, current page underlined in accent.
-- Hero: full-width accent band (gradient on app pages), centered icon + h1 + tagline.
-- Bilingual FR/EN toggled in place (`body.show-en`); toggle labelled with a `⇄`
-  swap glyph, never a directional scroll arrow.
-- One job per section. Cards only when the card is the content (an app, a kit).
+## Familles de pages
 
-## Motion and accessibility
-- Motion must add meaning, not distract. Respect `prefers-reduced-motion`.
-- Canvas or other rich visual effects must be progressive enhancement: all content
-  remains available without them.
-- Preserve visible keyboard focus, semantic landmarks, contrast and 44px touch targets.
+- **Vitrine et traduction** : héros immersif, alternance de séquences sombres et
+  claires, appels à l’action très lisibles.
+- **Produits** : héros sombre, promesse forte, étapes et bénéfices en cartes bento.
+- **Juridique** : en-tête sombre, contenu sur papier clair pour la lecture longue.
+- **Utilitaires** : carte de verre centrée, information essentielle immédiatement
+  visible sur mobile.
 
-## Avoid (slop blacklist)
-Purple/indigo gradients, 3-column icon-in-circle feature grids, centered-everything,
-decorative blobs, emoji as primary design elements, generic "Unlock the power of…"
-hero copy, fake metrics or stock-tech jargon.
+## Mouvement et accessibilité
+
+Les effets sont des améliorations progressives : le contenu reste visible sans
+JavaScript. Les transitions sont courtes, le défilement respecte
+`prefers-reduced-motion`, le contraste est maintenu et les langues FR/EN sont
+annoncées correctement aux technologies d’assistance.
+
+## Règles de maintenance
+
+- Ne jamais réécrire les textes métier lors d’une évolution visuelle.
+- Toute nouvelle page charge le shell partagé avant d’ajouter ses exceptions.
+- Répliquer chaque changement du site public dans `docs/`.
+- Contrôler au minimum une vue ordinateur et une vue mobile dans un vrai navigateur.
