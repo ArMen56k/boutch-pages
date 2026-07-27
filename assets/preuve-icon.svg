@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108" role="img" aria-labelledby="title">
+  <title id="title">Icône Preuve à l'appui</title>
+  <defs>
+    <linearGradient id="bg" x1="12" y1="8" x2="96" y2="102" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f7bd0"/>
+      <stop offset="1" stop-color="#173b79"/>
+    </linearGradient>
+  </defs>
+  <rect width="108" height="108" rx="25" fill="url(#bg)"/>
+  <path fill="#fff" d="M31 34h10l4-6h18l4 6h10c5 0 9 4 9 9v30c0 5-4 9-9 9H31c-5 0-9-4-9-9V43c0-5 4-9 9-9Z"/>
+  <circle cx="54" cy="58" r="16" fill="#315da8"/>
+  <circle cx="54" cy="58" r="10" fill="#d9e3ff"/>
+  <circle cx="58" cy="54" r="3" fill="#fff" opacity=".9"/>
+</svg>

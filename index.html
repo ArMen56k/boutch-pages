@@ -99,12 +99,16 @@
     .product:hover::before { transform: scale(1.18) rotate(20deg); }
     .product-prep { background: linear-gradient(145deg, #045e55, #072d29); }
     .product-touch { background: linear-gradient(145deg, #315637, #122b1d); }
+    .product-proof { background: linear-gradient(145deg, #315da8, #102d5a); }
+    .product-serene { background: linear-gradient(145deg, #668da1, #263f4c); }
     .product-tag { position: absolute; top: 28px; left: 29px; display: inline-flex; align-items: center; min-height: 29px; padding: 0 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: .7rem; font-weight: 760; letter-spacing: .08em; text-transform: uppercase; }
     .product-icon { width: 72px; height: 72px; position: absolute; top: 76px; left: 29px; border-radius: 18px; box-shadow: 0 12px 28px rgba(0,0,0,.24); }
     .product h3 { margin: 0; font-size: 2rem; letter-spacing: -.055em; }
     .product p { max-width: 360px; margin: 7px 0 0; color: rgba(245,255,249,.8); font-size: .98rem; line-height: 1.55; }
     .product-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 19px; color: var(--aqua); font-size: .86rem; font-weight: 800; }
     .product-touch .product-link { color: #b8efa8; }
+    .product-proof .product-link { color: #c6dcff; }
+    .product-serene .product-link { color: #d8eff8; }
     .manifesto { position: relative; padding: clamp(82px, 11vw, 150px) 0; overflow: hidden; background: #0b2119; }
     .manifesto::before { content: ""; position: absolute; width: 620px; height: 620px; top: -360px; right: -160px; border: 1px solid rgba(112,223,196,.18); border-radius: 50%; box-shadow: 0 0 0 70px rgba(112,223,196,.025), 0 0 0 150px rgba(112,223,196,.025); }
     .manifesto-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .62fr); gap: clamp(36px, 8vw, 128px); }
@@ -117,6 +121,19 @@
     .principle b { color: var(--aqua); font-size: .78rem; }
     .principle h3 { margin: 0; color: #fff; font-size: .98rem; }
     .principle p { margin: 4px 0 0; color: var(--muted); font-size: .86rem; line-height: 1.5; }
+    .spirit { position: relative; padding: clamp(82px, 11vw, 150px) 0; color: var(--paper-ink); background: #f2f6f3; overflow: clip; }
+    .spirit::before { content: ""; position: absolute; width: 520px; height: 520px; right: -260px; top: 8%; border: 1px solid rgba(33,118,77,.11); border-radius: 50%; box-shadow: 0 0 0 62px rgba(33,118,77,.025), 0 0 0 130px rgba(33,118,77,.02); }
+    .spirit-layout { position: relative; display: grid; grid-template-columns: minmax(240px,.65fr) minmax(0,1.35fr); gap: clamp(42px,8vw,118px); align-items: start; }
+    .spirit-heading { position: sticky; top: 116px; }
+    .spirit h2 { max-width: 430px; margin: 0; color: #102f23; font-size: clamp(2.6rem,5vw,5rem); line-height: .94; letter-spacing: -.07em; }
+    .spirit h2 strong { color: #22865f; font-weight: inherit; }
+    .spirit-lead { margin: 22px 0 0; color: #587066; font-size: .95rem; line-height: 1.65; }
+    .spirit-copy { counter-reset: spirit; }
+    .spirit-copy p { counter-increment: spirit; position: relative; margin: 0; padding: 26px 8px 26px 54px; border-top: 1px solid #d5e0da; color: #395247; font-size: clamp(1rem,1.5vw,1.16rem); line-height: 1.8; }
+    .spirit-copy p::before { content: counter(spirit,decimal-leading-zero); position: absolute; left: 0; top: 31px; color: #2b8a66; font: 800 .7rem/1 ui-monospace,Consolas,monospace; letter-spacing: .08em; }
+    .spirit-copy p:first-child { padding-top: 2px; border-top: 0; color: #173c2d; font-size: clamp(1.25rem,2.1vw,1.65rem); line-height: 1.55; letter-spacing: -.025em; }
+    .spirit-copy p:first-child::before { top: 8px; }
+    .spirit-copy p:last-child { color: #0e5038; font-size: 1.25rem; font-weight: 760; }
     .contribute { color: var(--paper-ink); background: #dcefe1; padding: clamp(64px, 9vw, 108px) 0; }
     .contribute-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center; padding: clamp(28px, 5vw, 58px); border-radius: var(--radius); background: #fff; box-shadow: 0 18px 45px rgba(24,64,41,.1); }
     .contribute h2 { max-width: 640px; margin: 0; font-size: clamp(1.95rem, 4vw, 3.5rem); line-height: 1; letter-spacing: -.06em; }
@@ -140,7 +157,8 @@
       .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 115px 0 82px; }
       .experience-card { justify-self: start; width: min(100%, 360px); transform: none; }
       .scroll-hint { display: none; }
-      .section-head, .contribute-card, .manifesto-grid { grid-template-columns: 1fr; display: grid; align-items: start; }
+      .section-head, .contribute-card, .manifesto-grid, .spirit-layout { grid-template-columns: 1fr; display: grid; align-items: start; }
+      .spirit-heading { position: static; }
       .products { grid-template-columns: 1fr; }
       .contribute .button { justify-self: start; }
     }
@@ -158,6 +176,7 @@
       <nav class="site-nav" aria-label="Navigation principale">
         <a href="#produits" aria-current="page"><span class="fr inline">Applications</span><span class="en inline">Apps</span></a>
         <a href="#approche"><span class="fr inline">Notre approche</span><span class="en inline">Our approach</span></a>
+        <a href="#philosophie"><span class="fr inline">Philosophie</span><span class="en inline">Philosophy</span></a>
         <a href="translations.html"><span class="fr inline">Traductions</span><span class="en inline">Translations</span></a>
       </nav>
       <button class="lang-switch" type="button" onclick="toggleLang()"><span aria-hidden="true">FR / EN</span><span class="fr inline"> · English</span><span class="en inline"> · Français</span></button>
@@ -180,12 +199,12 @@
           </div>
           <p class="hero-note"><span class="live-dot" aria-hidden="true"></span><span class="fr">Conçu pour les personnes, jamais pour capter leur attention.</span><span class="en">Made for people, never to capture their attention.</span></p>
         </div>
-        <div class="experience-card" aria-label="Aperçu d’une interface simple et apaisée">
+        <div class="experience-card" role="img" aria-label="Aperçu d’une interface simple et apaisée">
           <div class="card-bar"><span class="fr">L’essentiel, maintenant</span><span class="en">What matters, now</span><span class="status"><span class="fr">local</span><span class="en">local</span></span></div>
           <div class="interface">
             <h2 class="fr">Prêt à partir</h2><h2 class="en">Ready to go</h2>
             <p class="fr">Votre liste est déjà pensée.</p><p class="en">Your list is already thought through.</p>
-            <div class="progress" aria-label="Progression : deux tâches sur trois"><i class="done"></i><i class="done"></i><i></i></div>
+            <div class="progress" role="progressbar" aria-label="Progression : deux tâches sur trois" aria-valuemin="0" aria-valuemax="3" aria-valuenow="2"><i class="done"></i><i class="done"></i><i></i></div>
             <div class="task done"><span class="check">✓</span><span class="fr">Les indispensables</span><span class="en">The essentials</span><time>09:12</time></div>
             <div class="task done"><span class="check">✓</span><span class="fr">Prévenir l’équipe</span><span class="en">Tell the team</span><time>09:16</time></div>
             <div class="task"><span class="check"></span><span class="fr">Fermer, et partir</span><span class="en">Close it, and go</span><time>…</time></div>
@@ -212,6 +231,16 @@
             <img class="product-icon" src="assets/touchefait-icon.png" alt="" width="72" height="72" />
             <div><h3>Touché, c’est fait</h3><p class="fr">Les tâches de la maison, sans liste à ouvrir. Vous faites, vous touchez : c’est enregistré.</p><p class="en">Household tasks, with no list to open. You do it, you tap: it’s recorded.</p><span class="product-link"><span class="fr">Découvrir l’application</span><span class="en">Discover the app</span> <span aria-hidden="true">↗</span></span></div>
           </a>
+          <a class="product product-proof" href="preuve-a-lappui/index.html">
+            <span class="product-tag fr">Documenter</span><span class="product-tag en">Document</span>
+            <img class="product-icon" src="assets/preuve-icon.svg" alt="" width="72" height="72" />
+            <div><h3>Preuve à l’appui</h3><p class="fr">La photo qui fait foi. Constituez un dossier photographique complet, ordonné et vérifiable.</p><p class="en">The photo that stands as evidence. Build a complete, ordered and verifiable photographic record.</p><span class="product-link"><span class="fr">Découvrir Preuve à l’appui</span><span class="en">Discover Preuve à l’appui</span> <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="product product-serene" href="serene/index.html">
+            <span class="product-tag fr">Décider</span><span class="product-tag en">Decide</span>
+            <img class="product-icon" src="assets/serene-icon.svg" alt="" width="72" height="72" />
+            <div><h3>Serene Decisions</h3><p class="fr">Il est parfois difficile de prendre une décision. Optez pour la sérénité en laissant faire le destin !</p><p class="en">Decisions can be difficult. Find serenity by letting chance make the choice.</p><span class="product-link"><span class="fr">Découvrir Serene Decisions</span><span class="en">Discover Serene Decisions</span> <span aria-hidden="true">↗</span></span></div>
+          </a>
         </div>
       </div>
     </section>
@@ -229,6 +258,39 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="spirit" id="philosophie">
+      <div class="fr"><div class="shell spirit-layout">
+        <div class="spirit-heading"><p class="section-kicker">Notre manifeste</p><h2>L’esprit de <strong>BoutchSoftware</strong></h2><p class="spirit-lead">La philosophie fondatrice, dans son texte intégral.</p></div>
+        <div class="spirit-copy">
+          <p>BoutchSoftware porte dans son nom une source discrète : une tendresse, une force, une manière d’habiter le monde.</p>
+          <p>Boutch, ce n’est pas seulement un nom. C’est une présence. Une chaleur au cœur des choses. Une façon de regarder la vie sans bruit inutile, avec attention, avec droiture, avec cette intelligence du cœur qui reconnaît l’essentiel avant même que les mots ne viennent l’expliquer.</p>
+          <p>Il y a, dans l’esprit de Boutch, le calme d’un félin qui ronronne près de nous, la grâce légère des oiseaux qui chantent au matin, la musique qui apaise les heures trop lourdes, le chant qui redonne souffle et courage. Il y a l’amour de ce qui est simple, de ce qui est vrai, de ce qui ne triche pas. Il y a la franchise, la bonté, le goût de la justice, et cette manière rare de rester pleinement humaine dans un monde qui va trop vite.</p>
+          <p>On s’épargne parfois quarante ans de philosophie lorsqu’on comprend, d’un seul mouvement intérieur, que le bonheur n’est pas très loin. Il est dans l’amour de ce que l’on a déjà. Dans la joie tranquille de faire les choses soi-même. Dans l’acceptation de ce qui ne dépend pas de nous. Et surtout, dans la chance immense d’être entouré de ceux que l’on aime.</p>
+          <p>C’est de cette intuition que naît BoutchSoftware.</p>
+          <p>Un bon logiciel devrait ressembler à une main posée doucement sur l’épaule : il rassure, il guide, il aide à faire, puis il s’efface. Il ne capte pas inutilement l’attention. Il ne transforme pas l’utilisateur en serviteur de la machine. Il reste clair, loyal, compréhensible. Il respecte le temps, les choix, les habitudes, la liberté.</p>
+          <p>BoutchSoftware croit en une technologie à visage humain. Une technologie patiente, utile, sincère. Une technologie qui sait que derrière chaque écran, il y a une personne ; derrière chaque clic, une intention ; derrière chaque besoin, parfois une inquiétude, une fatigue, un besoin.</p>
+          <p>Écrire du code, ce n’est pas seulement assembler des fonctions. C’est mettre un peu de soin dans le quotidien. C’est créer de petits compagnons silencieux, capables d’alléger une charge, de clarifier une pensée, de rappeler l’important, de rendre une tâche moins pesante.</p>
+          <p>BoutchSoftware avance avec cette conviction simple : la technologie est notre alliée, si elle nous aide à prendre de meilleures décisions et à économiser ce que nous avons de plus précieux : le temps.</p>
+          <p>Voilà l’esprit de BoutchSoftware.</p>
+        </div>
+      </div></div>
+      <div class="en"><div class="shell spirit-layout">
+        <div class="spirit-heading"><p class="section-kicker">Our manifesto</p><h2>The spirit of <strong>BoutchSoftware</strong></h2><p class="spirit-lead">The founding philosophy, restored in full.</p></div>
+        <div class="spirit-copy">
+          <p>BoutchSoftware carries a quiet source within its name: a tenderness, a strength, a way of inhabiting the world.</p>
+          <p>Boutch is not just a name. It is a presence. A warmth at the heart of things. A way of looking at life without needless noise — with attention, with integrity, with that intelligence of the heart that recognizes what matters before words even come to explain it.</p>
+          <p>In the spirit of Boutch there is the calm of a cat purring beside us, the light grace of birds singing in the morning, the music that soothes the heaviest hours, the song that gives back breath and courage. There is the love of what is simple, of what is true, of what does not cheat. There is frankness, kindness, a taste for justice, and that rare way of staying fully human in a world that moves too fast.</p>
+          <p>Sometimes we spare ourselves forty years of philosophy when we understand, in a single inner movement, that happiness is not far away. It lies in the love of what we already have. In the quiet joy of doing things ourselves. In accepting what does not depend on us. And above all, in the immense good fortune of being surrounded by those we love.</p>
+          <p>It is from this intuition that BoutchSoftware is born.</p>
+          <p>Good software should feel like a hand laid gently on your shoulder: it reassures, it guides, it helps you get things done, and then it steps aside. It does not needlessly capture your attention. It does not turn the user into a servant of the machine. It stays clear, faithful, understandable. It respects your time, your choices, your habits, your freedom.</p>
+          <p>BoutchSoftware believes in technology with a human face. Technology that is patient, useful, sincere. Technology that knows there is a person behind every screen; an intention behind every click; behind every need, sometimes a worry, a weariness, a need.</p>
+          <p>Writing code is not just about assembling functions. It is about bringing a little care into everyday life. It is about creating small, silent companions, able to lighten a load, clarify a thought, recall what matters, make a task less heavy.</p>
+          <p>BoutchSoftware moves forward with this simple conviction: technology is our ally, if it helps us make better decisions and save what we hold most precious — time.</p>
+          <p>This is the spirit of BoutchSoftware.</p>
+        </div>
+      </div></div>
     </section>
 
     <section class="contribute" aria-labelledby="contribute-title">

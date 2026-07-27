@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Serene Decisions aide à choisir simplement grâce à un hasard transparent, local et sans publicité." />
+  <title>Serene Decisions — Laissez le destin choisir</title>
+  <style>
+    :root { --brand:#7da7bb; --brand-dark:#35566a; --text:#1a2830; --muted:#667983; --bg:#eef3f5; --card:#fff; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Segoe UI",system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.65; }
+    .site-nav { display:flex; justify-content:center; gap:22px; padding:12px; background:#fff; }
+    .site-nav a { color:var(--brand-dark); text-decoration:none; }
+    .site-nav .nav-en { display:none; } body.show-en .site-nav .nav-fr { display:none; } body.show-en .site-nav .nav-en { display:inline; }
+    .product-hero-grid { width:100%; display:grid; grid-template-columns:minmax(0,1fr) minmax(320px,.75fr); gap:clamp(36px,7vw,100px); align-items:center; }
+    .serene-visual { min-height:350px; position:relative; overflow:hidden; border:1px solid rgba(216,239,248,.2); border-radius:30px; background:radial-gradient(circle at 50% 45%,rgba(167,208,224,.2),transparent 34%),linear-gradient(145deg,rgba(72,109,127,.42),rgba(5,19,25,.82)); box-shadow:0 30px 80px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.08); }
+    .serene-ring { position:absolute; left:50%; top:48%; width:190px; height:190px; border:1px solid rgba(220,245,255,.19); border-radius:50%; transform:translate(-50%,-50%); box-shadow:0 0 0 34px rgba(220,245,255,.035),0 0 0 72px rgba(220,245,255,.022); animation:breathe 4.5s ease-in-out infinite; }
+    .serene-pebble { position:absolute; left:50%; top:48%; min-width:128px; min-height:84px; display:grid; place-items:center; padding:16px 24px; border:1px solid rgba(255,255,255,.55); border-radius:50% 46% 52% 44%; color:#17313d; background:linear-gradient(145deg,#fafdff,#c7dce6); box-shadow:0 22px 48px rgba(0,0,0,.3),inset 0 2px 7px rgba(255,255,255,.8); font-weight:800; transform:translate(-50%,-50%) rotate(-3deg); }
+    .option { position:absolute; padding:7px 11px; border:1px solid rgba(255,255,255,.13); border-radius:999px; color:#bcd4de; background:rgba(255,255,255,.045); font-size:.75rem; }
+    .option-a { left:10%; top:19%; transform:rotate(-7deg); }.option-b { right:9%; top:22%; transform:rotate(6deg); }.option-c { left:12%; bottom:14%; transform:rotate(4deg); }.option-d { right:10%; bottom:16%; transform:rotate(-5deg); }
+    main { max-width:900px; margin:auto; padding:30px 18px 80px; }
+    .promise { padding:30px; border-radius:20px; background:#fff; }
+    h2 { margin:42px 0 16px; color:var(--brand-dark); }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; counter-reset:step; }
+    .step { position:relative; padding:65px 22px 22px; border-radius:18px; background:#fff; counter-increment:step; }
+    .step::before { content:counter(step,decimal-leading-zero); position:absolute; left:22px; top:20px; width:30px; height:30px; display:grid; place-items:center; border-radius:50%; color:#16313d; background:#b9d5e1; font-weight:800; }
+    .features { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .feature { padding:22px; border-radius:18px; background:#fff; }
+    .feature .emoji { font:800 .67rem/1 ui-monospace,Consolas,monospace; letter-spacing:.04em; }
+    .feature h3 { margin:10px 0 4px; } .feature p,.step p { color:var(--muted); }
+    .intention { margin-top:8px; padding:26px; border-left:4px solid var(--brand); background:#dce9ee; }
+    .intention p + p { margin-top:12px; }
+    .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+    .btn { min-height:46px; display:inline-flex; align-items:center; padding:0 18px; border:1px solid var(--brand); border-radius:999px; color:#dff5ff; text-decoration:none; font-weight:750; }
+    .lang-switch { text-align:right; padding:12px 18px; }.lang-switch a { color:var(--brand-dark); }
+    .en { display:none; } body.show-en .fr { display:none; } body.show-en .en { display:block; }
+    footer { padding:28px; color:var(--muted); text-align:center; } footer a { color:var(--brand-dark); }
+    @keyframes breathe { 50% { transform:translate(-50%,-50%) scale(1.08); opacity:.76; } }
+    @media(max-width:760px){ .product-hero-grid,.steps,.features{grid-template-columns:1fr}.serene-visual{min-height:310px}.product-hero-grid{gap:30px}.feature{min-height:0} }
+    @media(prefers-reduced-motion:reduce){.serene-ring{animation:none}}
+  </style>
+  <link rel="stylesheet" href="../assets/site-shell.css?v=2" />
+  <script src="../assets/site-shell.js?v=2" defer></script>
+</head>
+<body>
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+<nav class="site-nav">
+  <a href="../index.html"><span class="nav-fr">Accueil</span><span class="nav-en">Home</span></a>
+  <a href="../index.html#produits"><span class="nav-fr">Applications</span><span class="nav-en">Apps</span></a>
+  <a href="index.html" aria-current="page">Serene Decisions</a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
+</nav>
+<header class="hero">
+  <div class="product-hero-grid">
+    <div><img class="icon" src="../assets/serene-icon.svg" alt="Icône Serene Decisions" width="108" height="108" /><h1>Serene Decisions</h1><p class="tagline fr">Optez pour la sérénité en laissant faire le destin.</p><p class="tagline en">Find serenity by letting chance decide.</p></div>
+    <div class="serene-visual" aria-hidden="true"><span class="option option-a fr">Restaurant</span><span class="option option-a en">Restaurant</span><span class="option option-b fr">Cinéma</span><span class="option option-b en">Cinema</span><span class="option option-c fr">Concert</span><span class="option option-c en">Concert</span><span class="option option-d fr">Balade</span><span class="option option-d en">Walk</span><div class="serene-ring"></div><div class="serene-pebble"><span class="fr">Balade</span><span class="en">Walk</span></div></div>
+  </div>
+</header>
+<div class="lang-switch"><a href="#" onclick="toggleLang(event)">English version</a></div>
+<main>
+  <div class="fr">
+    <div class="promise">Il est parfois difficile de prendre une décision. Entrez les possibilités, touchez <strong>Choisir</strong> et laissez Serene Decisions révéler un résultat impartial avec calme.</div>
+    <h2>Décider sans tourner en rond</h2>
+    <div class="steps"><article class="step"><h3>Entrez vos choix</h3><p>Restaurant, activité, film ou grande liste importée : une possibilité par ligne suffit.</p></article><article class="step"><h3>Lancez le tirage</h3><p>Le résultat est choisi mathématiquement avant l’animation, uniformément ou selon les poids définis.</p></article><article class="step"><h3>Laissez-le apparaître</h3><p>Galet, constellation et mouvements mesurés donnent au résultat le temps de se poser.</p></article></div>
+    <h2>La confiance fait partie du produit</h2>
+    <div class="features"><article class="feature"><div class="emoji">RNG</div><h3>Hasard transparent</h3><p>Le fonctionnement du tirage est expliqué. L’animation révèle le résultat ; elle ne le manipule pas.</p></article><article class="feature"><div class="emoji">LOC</div><h3>Local, sans compte</h3><p>Les choix et l’historique restent sur l’appareil. Aucun profil publicitaire, aucun espionnage.</p></article><article class="feature"><div class="emoji">0 AD</div><h3>Sans publicité</h3><p>Le cœur de l’application reste utilisable sans interruption publicitaire ni mécanisme de captation.</p></article><article class="feature"><div class="emoji">A11Y</div><h3>Accessible par conception</h3><p>TalkBack, taille du texte et réduction des animations font partie de l’expérience.</p></article></div>
+    <h2>Simple d’abord, puissant si nécessaire</h2>
+    <div class="intention"><p>La première impression doit rester celle d’une simplicité immédiate. Les possibilités avancées — pondération, plusieurs gagnants, import, historique et personnalisation — se découvrent ensuite, sans encombrer le premier geste.</p><p>Serene Decisions ne cherche pas à décider à votre place : il aide à sortir d’une hésitation lorsque plusieurs choix conviennent.</p></div>
+    <div class="cta"><span class="btn">Bientôt sur Google Play</span><a class="btn" href="privacy.html">Confidentialité</a><a class="btn" href="terms.html">Conditions d’utilisation</a></div>
+  </div>
+  <div class="en">
+    <div class="promise">Decisions can be difficult. Enter the possibilities, tap <strong>Choose</strong>, and let Serene Decisions reveal an impartial result calmly.</div>
+    <h2>Decide without going in circles</h2>
+    <div class="steps"><article class="step"><h3>Enter your options</h3><p>A restaurant, activity, movie or a large imported list: one option per line is enough.</p></article><article class="step"><h3>Start the draw</h3><p>The result is chosen mathematically before the animation, uniformly or using the weights you define.</p></article><article class="step"><h3>Let it appear</h3><p>Pebble, constellation and measured movement give the result time to settle.</p></article></div>
+    <h2>Trust is part of the product</h2>
+    <div class="features"><article class="feature"><div class="emoji">RNG</div><h3>Transparent randomness</h3><p>The draw is explained. The animation reveals the result; it never manipulates it.</p></article><article class="feature"><div class="emoji">LOC</div><h3>Local, no account</h3><p>Choices and history remain on the device. No advertising profile and no tracking.</p></article><article class="feature"><div class="emoji">0 AD</div><h3>No advertising</h3><p>The heart of the app remains usable without ad interruptions or attention traps.</p></article><article class="feature"><div class="emoji">A11Y</div><h3>Accessible by design</h3><p>TalkBack, text sizing and reduced motion are part of the experience.</p></article></div>
+    <h2>Simple first, powerful when needed</h2>
+    <div class="intention"><p>The first impression must remain immediately simple. Advanced possibilities — weighting, multiple winners, imports, history and customization — are discovered later without cluttering the first gesture.</p><p>Serene Decisions does not try to make important choices for you. It helps move past hesitation when several options would work.</p></div>
+    <div class="cta"><span class="btn">Coming soon on Google Play</span><a class="btn" href="privacy.html">Privacy</a><a class="btn" href="terms.html">Terms of Use</a></div>
+  </div>
+</main>
+<footer>Serene Decisions · <a href="../index.html">BoutchSoftware</a> · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></footer>
+<script>function updateLabel(){var a=document.querySelector('.lang-switch a');if(a)a.textContent=document.body.classList.contains('show-en')?'Version française':'English version'}function toggleLang(e){e.preventDefault();var en=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',en?'en':'fr')}catch(err){}updateLabel()}updateLabel();</script>
+</body>
+</html>
