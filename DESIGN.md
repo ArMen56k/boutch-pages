@@ -7,9 +7,10 @@ Inferred from the rendered site on 2026-05-29 and locked in after the design rev
 > any change to **both** `boutch-pages/` and `docs/`. See the repo's structure note.
 
 ## Voice
-Calm, honest, hand-made. Not corporate, not flashy. "Software at human scale."
-The product comes first on every page; brand prose is secondary (lives at the
-bottom of the home page, not the top).
+Calm, exact, human — with a distinctly contemporary presentation. The home page
+may use a dark, immersive visual system and restrained generative motion to show
+technical care. It must never become a noisy sales pitch: the products and their
+daily usefulness remain the proof.
 
 ## Color tokens
 Shared neutrals:
@@ -53,7 +54,13 @@ per page. No purple/gradient slop. Footer/inline links use the accent-dark color
   swap glyph, never a directional scroll arrow.
 - One job per section. Cards only when the card is the content (an app, a kit).
 
+## Motion and accessibility
+- Motion must add meaning, not distract. Respect `prefers-reduced-motion`.
+- Canvas or other rich visual effects must be progressive enhancement: all content
+  remains available without them.
+- Preserve visible keyboard focus, semantic landmarks, contrast and 44px touch targets.
+
 ## Avoid (slop blacklist)
 Purple/indigo gradients, 3-column icon-in-circle feature grids, centered-everything,
 decorative blobs, emoji as primary design elements, generic "Unlock the power of…"
-hero copy.
+hero copy, fake metrics or stock-tech jargon.

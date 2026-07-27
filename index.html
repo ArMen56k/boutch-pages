@@ -3,415 +3,279 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BoutchSoftware</title>
+  <meta name="description" content="BoutchSoftware conçoit des applications Android attentives, simples et respectueuses." />
+  <meta name="theme-color" content="#071511" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23071511'/%3E%3Cpath d='M18 17h28v30H18z' fill='%238ee68b'/%3E%3Cpath d='M23 26h18M23 34h18M23 42h11' stroke='%23071511' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <title>BoutchSoftware — La technologie qui laisse de la place à l’essentiel</title>
   <style>
     :root {
-      --green:      #5BB65A;
-      --green-dark: #3D8C3C;
-      --text:       #212121;
-      --muted:      #757575;
-      --bg:         #F5FBF5;
-      --card:       #FFFFFF;
-      --radius:     14px;
+      --ink: #eaf7f1;
+      --muted: #9fb8ae;
+      --line: rgba(214, 255, 234, .16);
+      --surface: rgba(15, 39, 31, .7);
+      --deep: #071511;
+      --green: #8ee68b;
+      --green-strong: #55ba66;
+      --aqua: #70dfc4;
+      --paper: #f4f8f5;
+      --paper-ink: #10231b;
+      --radius: 24px;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
+      margin: 0;
+      background: var(--deep);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
     }
-    header {
-      background: var(--green);
-      color: #fff;
-      padding: 48px 24px 40px;
-      text-align: center;
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--aqua); outline-offset: 4px; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .skip-link { position: absolute; left: -10000px; top: auto; }
+    .skip-link:focus { left: 20px; top: 20px; z-index: 100; padding: 12px 18px; color: var(--paper-ink); background: #fff; border-radius: 12px; }
+    .topbar {
+      position: fixed; inset: 0 0 auto; z-index: 20;
+      border-bottom: 1px solid transparent;
+      transition: background .25s, border-color .25s, backdrop-filter .25s;
     }
-    header h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -1px; }
-    header p  { margin-top: 10px; opacity: .88; font-size: 1rem; }
-    main {
-      max-width: 920px;
-      margin: 40px auto;
-      padding: 0 20px 60px;
-    }
-    section { margin-bottom: 36px; }
-    h2 {
-      font-size: .82rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--green-dark);
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .spirit-image {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      border-radius: var(--radius);
-      box-shadow: 0 2px 12px rgba(0,0,0,.10);
-    }
-    .spirit-content {
-      max-width: 760px;
-      margin: 18px auto 0;
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 28px 30px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.08);
-    }
-    .spirit-title {
-      font-size: 1.55rem;
-      text-transform: none;
-      letter-spacing: 0;
-      color: var(--text);
-      margin-bottom: 18px;
-    }
-    .spirit-content p {
-      color: var(--text);
-      line-height: 1.75;
-      margin-bottom: 14px;
-    }
-    .spirit-content p:last-child { margin-bottom: 0; }
-    .app-card {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 24px 28px;
-      margin-bottom: 16px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.08);
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-    }
-    .app-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 14px;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      flex-shrink: 0;
-    }
-    img.app-icon { object-fit: cover; background: transparent; }
-    .app-info { flex: 1; }
-    .app-info h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 4px; }
-    .app-info h3 a { color: inherit; text-decoration: none; }
-    .app-info h3 a:hover { color: var(--green-dark); }
-    .app-icon-link { flex-shrink: 0; line-height: 0; }
-    .app-info p  { color: var(--muted); font-size: .9rem; line-height: 1.5; margin-bottom: 14px; }
-    .app-links { display: flex; gap: 10px; flex-wrap: wrap; }
-    .app-links a {
-      color: var(--green-dark);
-      text-decoration: none;
-      font-size: .88rem;
-      font-weight: 600;
-      border: 1.5px solid var(--green);
-      padding: 5px 14px;
-      border-radius: 20px;
-      transition: background .15s, color .15s;
-    }
-    .app-links a:hover { background: var(--green); color: #fff; }
-    .app-links a:first-child {
-      background: var(--green);
-      color: #fff;
-      border-color: var(--green);
-    }
-    .app-links a:first-child:hover {
-      background: var(--green-dark);
-      border-color: var(--green-dark);
-    }
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-size: .82rem;
-      padding: 20px;
-    }
-    footer a { color: var(--green-dark); }
-    .site-nav {
-      background: var(--card);
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4px 20px;
-      padding: 11px 16px;
-      border-bottom: 1px solid #E0EFE0;
-      box-shadow: 0 1px 3px rgba(0,0,0,.06);
-    }
-    .site-nav a {
-      color: var(--green-dark);
-      text-decoration: none;
-      font-size: .92rem;
-      padding: 3px 4px;
-    }
-    .site-nav a:hover { text-decoration: underline; }
-    .site-nav a[aria-current="page"] {
-      font-weight: 700;
-      color: var(--text);
-      border-bottom: 2px solid var(--green);
-    }
+    .topbar.is-scrolled { background: rgba(7, 21, 17, .76); border-color: var(--line); backdrop-filter: blur(18px); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; font-weight: 760; letter-spacing: -.04em; text-decoration: none; }
+    .brand-mark { width: 27px; height: 27px; border: 1px solid rgba(255,255,255,.6); border-radius: 9px 9px 9px 2px; background: linear-gradient(135deg, var(--green), var(--aqua)); box-shadow: 0 0 28px rgba(112,223,196,.35); }
+    .site-nav { display: flex; align-items: center; gap: clamp(14px, 3vw, 31px); }
+    .site-nav a { color: var(--muted); font-size: .9rem; font-weight: 650; text-decoration: none; transition: color .2s; }
+    .site-nav a:hover, .site-nav a[aria-current="page"] { color: #fff; }
     .lang-switch {
-      text-align: right;
-      margin-bottom: 24px;
+      min-height: 40px; padding: 0 13px; border: 1px solid var(--line); border-radius: 999px;
+      color: #fff; background: rgba(255,255,255,.05); font: inherit; font-size: .84rem; cursor: pointer;
     }
-    .lang-switch a {
-      color: var(--green-dark);
-      text-decoration: none;
-      font-size: .9rem;
-      border: 1px solid var(--green);
-      padding: 4px 12px;
-      border-radius: 20px;
-    }
-    .lang-switch a:hover { background: var(--green); color: #fff; }
-
-    /* ── Section anglaise ── */
+    .hero { position: relative; min-height: min(810px, 100svh); display: grid; align-items: center; isolation: isolate; overflow: hidden; }
+    #signal-field { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; opacity: .88; }
+    .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 51% 42%, transparent 0 12%, rgba(7,21,17,.15) 40%, var(--deep) 91%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); gap: 48px; align-items: center; padding: 142px 0 78px; }
+    .eyebrow { display: flex; align-items: center; gap: 9px; margin: 0 0 19px; color: var(--aqua); font-size: .76rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 27px; height: 1px; background: currentColor; }
+    h1 { max-width: 720px; margin: 0; color: #fff; font-size: clamp(3.25rem, 7vw, 6.4rem); font-weight: 720; line-height: .93; letter-spacing: -.075em; text-wrap: balance; }
+    h1 em { color: var(--green); font-style: normal; }
+    .hero-copy { max-width: 570px; margin: 26px 0 0; color: #d1e0d9; font-size: clamp(1.06rem, 1.8vw, 1.25rem); line-height: 1.65; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 33px; }
+    .button { min-height: 49px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 0 19px; border: 1px solid transparent; border-radius: 999px; font-size: .93rem; font-weight: 750; text-decoration: none; transition: transform .2s, background .2s, border-color .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #082017; background: var(--green); box-shadow: 0 10px 28px rgba(94,213,114,.19); }
+    .button-primary:hover { background: #b2f5a8; }
+    .button-secondary { color: #fff; border-color: var(--line); background: rgba(255,255,255,.06); }
+    .button-secondary:hover { background: rgba(255,255,255,.13); border-color: rgba(255,255,255,.35); }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 46px; color: var(--muted); font-size: .82rem; }
+    .live-dot { width: 8px; height: 8px; border-radius: 99px; background: var(--green); box-shadow: 0 0 0 6px rgba(142,230,139,.12); animation: pulse 2s infinite; }
+    .experience-card { justify-self: end; width: min(100%, 390px); padding: 20px; border: 1px solid rgba(214,255,234,.19); border-radius: var(--radius); background: linear-gradient(145deg, rgba(26,68,54,.67), rgba(9,29,22,.65)); box-shadow: 0 28px 80px rgba(0,0,0,.23), inset 0 1px 0 rgba(255,255,255,.12); backdrop-filter: blur(14px); transform: perspective(900px) rotateY(-7deg) rotateX(2deg); }
+    .card-bar { display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .status { display: inline-flex; align-items: center; gap: 6px; color: var(--green); }
+    .status::before { content: ""; width: 6px; height: 6px; border-radius: 99px; background: currentColor; }
+    .interface { margin-top: 18px; padding: 22px; border-radius: 18px; background: rgba(4,16,12,.6); }
+    .interface h2 { margin: 0; color: #fff; font-size: 1.3rem; letter-spacing: -.04em; }
+    .interface p { margin: 6px 0 19px; color: var(--muted); font-size: .87rem; }
+    .progress { display: flex; gap: 6px; margin-bottom: 20px; }
+    .progress i { height: 4px; flex: 1; border-radius: 99px; background: rgba(255,255,255,.13); }
+    .progress i.done { background: var(--green); }
+    .task { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-top: 1px solid rgba(255,255,255,.08); color: #dae9e1; font-size: .86rem; }
+    .check { width: 19px; height: 19px; display: grid; place-items: center; flex: 0 0 auto; border: 1px solid rgba(255,255,255,.2); border-radius: 6px; color: #052015; font-size: .78rem; }
+    .done .check { border-color: var(--green); background: var(--green); }
+    .task time { margin-left: auto; color: var(--muted); font-size: .72rem; }
+    .scroll-hint { position: absolute; bottom: 29px; left: 50%; display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: .72rem; letter-spacing: .07em; text-transform: uppercase; transform: translateX(-50%); }
+    .scroll-hint::before { content: ""; width: 30px; height: 1px; background: var(--muted); }
+    .light-section { color: var(--paper-ink); background: var(--paper); padding: clamp(72px, 10vw, 135px) 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 28px; margin-bottom: 40px; }
+    .section-kicker { margin: 0 0 10px; color: #348649; font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .section-head h2, .manifesto h2 { max-width: 650px; margin: 0; font-size: clamp(2.2rem, 4.5vw, 4.2rem); font-weight: 720; line-height: .99; letter-spacing: -.06em; text-wrap: balance; }
+    .section-head p { max-width: 315px; margin: 0 0 3px; color: #557065; font-size: .96rem; line-height: 1.6; }
+    .products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+    .product { position: relative; min-height: 368px; display: flex; flex-direction: column; justify-content: end; overflow: hidden; padding: 29px; border-radius: var(--radius); color: #f6fffa; background: #113528; text-decoration: none; isolation: isolate; transition: transform .26s, box-shadow .26s; }
+    .product:hover { transform: translateY(-7px); box-shadow: 0 24px 43px rgba(16,43,32,.2); }
+    .product::before { content: ""; position: absolute; width: 290px; height: 290px; top: -96px; right: -54px; z-index: -1; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; box-shadow: 0 0 0 32px rgba(255,255,255,.04), 0 0 0 73px rgba(255,255,255,.035); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .product:hover::before { transform: scale(1.18) rotate(20deg); }
+    .product-prep { background: linear-gradient(145deg, #045e55, #072d29); }
+    .product-touch { background: linear-gradient(145deg, #315637, #122b1d); }
+    .product-tag { position: absolute; top: 28px; left: 29px; display: inline-flex; align-items: center; min-height: 29px; padding: 0 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: .7rem; font-weight: 760; letter-spacing: .08em; text-transform: uppercase; }
+    .product-icon { width: 72px; height: 72px; position: absolute; top: 76px; left: 29px; border-radius: 18px; box-shadow: 0 12px 28px rgba(0,0,0,.24); }
+    .product h3 { margin: 0; font-size: 2rem; letter-spacing: -.055em; }
+    .product p { max-width: 360px; margin: 7px 0 0; color: rgba(245,255,249,.8); font-size: .98rem; line-height: 1.55; }
+    .product-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 19px; color: var(--aqua); font-size: .86rem; font-weight: 800; }
+    .product-touch .product-link { color: #b8efa8; }
+    .manifesto { position: relative; padding: clamp(82px, 11vw, 150px) 0; overflow: hidden; background: #0b2119; }
+    .manifesto::before { content: ""; position: absolute; width: 620px; height: 620px; top: -360px; right: -160px; border: 1px solid rgba(112,223,196,.18); border-radius: 50%; box-shadow: 0 0 0 70px rgba(112,223,196,.025), 0 0 0 150px rgba(112,223,196,.025); }
+    .manifesto-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .62fr); gap: clamp(36px, 8vw, 128px); }
+    .manifesto h2 { color: #fff; }
+    .manifesto h2 strong { color: var(--green); font-weight: inherit; }
+    .manifesto-copy { padding-top: 10px; color: #bfd1c7; font-size: 1.04rem; line-height: 1.75; }
+    .manifesto-copy p { margin: 0 0 18px; }
+    .principles { display: grid; gap: 13px; margin-top: 35px; }
+    .principle { display: grid; grid-template-columns: 31px 1fr; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+    .principle b { color: var(--aqua); font-size: .78rem; }
+    .principle h3 { margin: 0; color: #fff; font-size: .98rem; }
+    .principle p { margin: 4px 0 0; color: var(--muted); font-size: .86rem; line-height: 1.5; }
+    .contribute { color: var(--paper-ink); background: #dcefe1; padding: clamp(64px, 9vw, 108px) 0; }
+    .contribute-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 30px; align-items: center; padding: clamp(28px, 5vw, 58px); border-radius: var(--radius); background: #fff; box-shadow: 0 18px 45px rgba(24,64,41,.1); }
+    .contribute h2 { max-width: 640px; margin: 0; font-size: clamp(1.95rem, 4vw, 3.5rem); line-height: 1; letter-spacing: -.06em; }
+    .contribute p { max-width: 590px; margin: 15px 0 0; color: #547066; }
+    .contribute .button { color: #fff; background: #177342; white-space: nowrap; }
+    .contribute .button:hover { background: #0f5730; }
+    footer { padding: 33px 0 40px; background: var(--deep); }
+    .footer-content { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .82rem; }
+    footer a { color: #d9eee2; text-underline-offset: 3px; }
     .en { display: none; }
     body.show-en .fr { display: none; }
     body.show-en .en { display: block; }
-    body.show-en header p.fr-sub { display: none; }
-    body.show-en header p.en-sub { display: block !important; }
-    header p.en-sub { display: none; }
-
-    /* ── Libellés de menu bilingues (inline) ── */
-    .site-nav .nav-en { display: none; }
-    body.show-en .site-nav .nav-fr { display: none; }
-    body.show-en .site-nav .nav-en { display: inline; }
-  
-    /* FINDING-002 — touch targets >=44px (WCAG) */
-    .site-nav { padding-top: 3px; padding-bottom: 3px; }
-    .site-nav a, .lang-switch a, .app-links a {
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    body.show-en .fr.inline { display: none; }
+    body.show-en .en.inline { display: inline; }
+    .en.inline { display: none; }
+    @keyframes pulse { 50% { opacity: .42; box-shadow: 0 0 0 10px rgba(142,230,139,0); } }
+    @media (max-width: 760px) {
+      .nav { min-height: 67px; }
+      .site-nav { display: none; }
+      .hero { min-height: 790px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 36px; padding: 115px 0 82px; }
+      .experience-card { justify-self: start; width: min(100%, 360px); transform: none; }
+      .scroll-hint { display: none; }
+      .section-head, .contribute-card, .manifesto-grid { grid-template-columns: 1fr; display: grid; align-items: start; }
+      .products { grid-template-columns: 1fr; }
+      .contribute .button { justify-self: start; }
     }
+    @media (max-width: 460px) { .shell { width: min(100% - 28px, 1180px); } .hero { min-height: 755px; } h1 { font-size: 3.15rem; } .experience-card { padding: 13px; } .interface { padding: 17px; } .product { min-height: 338px; padding: 23px; } .product-tag { top: 23px; left: 23px; } .product-icon { top: 66px; left: 23px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
   </style>
 </head>
 <body>
-<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+  <a class="skip-link fr" href="#contenu">Aller au contenu</a><a class="skip-link en" href="#contenu">Skip to content</a>
+  <header class="topbar" id="topbar">
+    <div class="shell nav">
+      <a class="brand" href="index.html" aria-label="BoutchSoftware, accueil"><span class="brand-mark" aria-hidden="true"></span>BoutchSoftware</a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="#produits" aria-current="page"><span class="fr inline">Applications</span><span class="en inline">Apps</span></a>
+        <a href="#approche"><span class="fr inline">Notre approche</span><span class="en inline">Our approach</span></a>
+        <a href="translations.html"><span class="fr inline">Traductions</span><span class="en inline">Translations</span></a>
+      </nav>
+      <button class="lang-switch" type="button" onclick="toggleLang()"><span aria-hidden="true">FR / EN</span><span class="fr inline"> · English</span><span class="en inline"> · Français</span></button>
+    </div>
+  </header>
 
-<header>
-  <h1>BoutchSoftware</h1>
-  <p class="fr-sub">Applications Android simples et bienveillantes</p>
-  <p class="en-sub">Simple, caring Android apps</p>
-</header>
-
-<nav class="site-nav">
-  <a href="index.html" aria-current="page"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
-  <a href="prepcalm/index.html">PrepCalm</a>
-  <a href="https://boutchsoftware.github.io/touchefait/">Touché, c'est fait</a>
-  <a href="translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
-</nav>
-
-<main>
-
-  <div class="lang-switch">
-    <a href="#" onclick="toggleLang(event)">⇄ English version</a>
-  </div>
-
-  <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
-  <div class="fr">
-
-  <section>
-    <h2>Nos applications</h2>
-
-    <div class="app-card">
-      <a class="app-icon-link" href="prepcalm/index.html"><img class="app-icon" src="assets/prepcalm-icon.png" alt="Icône PrepCalm" width="64" height="64" /></a>
-      <div class="app-info">
-        <h3><a href="prepcalm/index.html">PrepCalm</a></h3>
-        <p>Listes de préparation réutilisables.<br>
-           Prépare au calme, coche et pars.</p>
-        <div class="app-links">
-          <a href="prepcalm/index.html">Découvrir</a>
-          <a href="prepcalm/privacy.html">Confidentialité</a>
-          <a href="prepcalm/terms.html">CGU</a>
+  <main id="contenu">
+    <section class="hero" aria-labelledby="hero-title">
+      <canvas id="signal-field" aria-hidden="true"></canvas>
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow fr">BoutchSoftware · applications attentives</p><p class="eyebrow en">BoutchSoftware · thoughtful apps</p>
+          <h1 id="hero-title" class="fr">La technologie qui laisse de la place <em>à l’essentiel.</em></h1>
+          <h1 class="en">Technology that makes room for <em>what matters.</em></h1>
+          <p class="hero-copy fr">Nous concevons des applications Android claires, locales et apaisantes. Des outils qui vous accompagnent juste assez — puis s’effacent.</p>
+          <p class="hero-copy en">We make clear, local and calming Android apps. Tools that support you just enough — then step aside.</p>
+          <div class="hero-actions">
+            <a class="button button-primary fr" href="#produits">Explorer les applications <span aria-hidden="true">→</span></a><a class="button button-primary en" href="#produits">Explore the apps <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary fr" href="#approche">Notre façon de faire</a><a class="button button-secondary en" href="#approche">How we work</a>
+          </div>
+          <p class="hero-note"><span class="live-dot" aria-hidden="true"></span><span class="fr">Conçu pour les personnes, jamais pour capter leur attention.</span><span class="en">Made for people, never to capture their attention.</span></p>
+        </div>
+        <div class="experience-card" aria-label="Aperçu d’une interface simple et apaisée">
+          <div class="card-bar"><span class="fr">L’essentiel, maintenant</span><span class="en">What matters, now</span><span class="status"><span class="fr">local</span><span class="en">local</span></span></div>
+          <div class="interface">
+            <h2 class="fr">Prêt à partir</h2><h2 class="en">Ready to go</h2>
+            <p class="fr">Votre liste est déjà pensée.</p><p class="en">Your list is already thought through.</p>
+            <div class="progress" aria-label="Progression : deux tâches sur trois"><i class="done"></i><i class="done"></i><i></i></div>
+            <div class="task done"><span class="check">✓</span><span class="fr">Les indispensables</span><span class="en">The essentials</span><time>09:12</time></div>
+            <div class="task done"><span class="check">✓</span><span class="fr">Prévenir l’équipe</span><span class="en">Tell the team</span><time>09:16</time></div>
+            <div class="task"><span class="check"></span><span class="fr">Fermer, et partir</span><span class="en">Close it, and go</span><time>…</time></div>
+          </div>
         </div>
       </div>
-    </div>
+      <span class="scroll-hint"><span class="fr">Découvrir</span><span class="en">Discover</span></span>
+    </section>
 
-    <div class="app-card">
-      <a class="app-icon-link" href="https://boutchsoftware.github.io/touchefait/"><img class="app-icon" src="assets/touchefait-icon.png" alt="Icône Touché, c'est fait" width="64" height="64" /></a>
-      <div class="app-info">
-        <h3><a href="https://boutchsoftware.github.io/touchefait/">Touché, c'est fait</a></h3>
-        <p>Les tâches de la maison, sans liste à ouvrir.<br>
-           On fait la tâche, on touche l'étiquette, c'est enregistré.</p>
-        <div class="app-links">
-          <a href="https://boutchsoftware.github.io/touchefait/">Découvrir</a>
-          <a href="touchefait/privacy.html">Confidentialité</a>
-          <a href="touchefait/terms.html">CGU</a>
+    <section class="light-section" id="produits" aria-labelledby="products-title">
+      <div class="shell">
+        <div class="section-head">
+          <div><p class="section-kicker fr">Les applications</p><p class="section-kicker en">The apps</p><h2 id="products-title" class="fr">Moins de charge mentale. Plus de vie.</h2><h2 class="en">Less mental load. More life.</h2></div>
+          <p class="fr">Chaque produit part d’un geste quotidien, puis enlève tout ce qui est superflu.</p><p class="en">Every product starts with an everyday gesture, then removes everything unnecessary.</p>
+        </div>
+        <div class="products">
+          <a class="product product-prep" href="prepcalm/index.html">
+            <span class="product-tag fr">Préparer</span><span class="product-tag en">Prepare</span>
+            <img class="product-icon" src="assets/prepcalm-icon.png" alt="" width="72" height="72" />
+            <div><h3>PrepCalm</h3><p class="fr">Vos listes de préparation, prêtes quand vous en avez besoin. Préparez au calme, cochez et partez.</p><p class="en">Your preparation lists, ready when you need them. Prepare calmly, check, and go.</p><span class="product-link"><span class="fr">Découvrir PrepCalm</span><span class="en">Discover PrepCalm</span> <span aria-hidden="true">↗</span></span></div>
+          </a>
+          <a class="product product-touch" href="https://boutchsoftware.github.io/touchefait/">
+            <span class="product-tag fr">Faire</span><span class="product-tag en">Do</span>
+            <img class="product-icon" src="assets/touchefait-icon.png" alt="" width="72" height="72" />
+            <div><h3>Touché, c’est fait</h3><p class="fr">Les tâches de la maison, sans liste à ouvrir. Vous faites, vous touchez : c’est enregistré.</p><p class="en">Household tasks, with no list to open. You do it, you tap: it’s recorded.</p><span class="product-link"><span class="fr">Découvrir l’application</span><span class="en">Discover the app</span> <span aria-hidden="true">↗</span></span></div>
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- Future apps go here -->
-  </section>
-
-  <section>
-    <h2>Contribuer</h2>
-
-    <div class="app-card">
-      <svg class="app-icon" style="background:transparent;display:block" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traductions">
-        <defs><linearGradient id="tgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6CC76B"/><stop offset="1" stop-color="#3D8C3C"/></linearGradient></defs>
-        <rect width="64" height="64" rx="15" fill="url(#tgrad)"/>
-        <text x="21" y="34" font-size="24" font-weight="800" fill="#fff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">A</text>
-        <text x="42" y="50" font-size="22" font-weight="800" fill="#fff" opacity=".92" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">文</text>
-      </svg>
-      <div class="app-info">
-        <h3>Aider à traduire</h3>
-        <p>Proposez une langue qui n'existe pas encore.<br>
-           Chaque proposition est relue avant d'être publiée.</p>
-        <div class="app-links">
-          <a href="translations.html">Page de traduction</a>
+    <section class="manifesto" id="approche" aria-labelledby="approach-title">
+      <div class="shell manifesto-grid">
+        <div><p class="eyebrow fr">Une ambition discrète</p><p class="eyebrow en">A quiet ambition</p><h2 id="approach-title" class="fr">Utiliser la modernité pour rendre le quotidien <strong>plus simple.</strong></h2><h2 class="en">Use modern technology to make daily life <strong>simpler.</strong></h2></div>
+        <div class="manifesto-copy">
+          <p class="fr">La démonstration technologique la plus convaincante n’est pas celle qui fait du bruit. C’est celle qui répond instantanément, reste disponible hors ligne et ne vous demande jamais plus d’attention que nécessaire.</p>
+          <p class="en">The most convincing technology demo is not the loudest one. It responds instantly, stays available offline and never asks for more attention than it needs.</p>
+          <div class="principles">
+            <div class="principle"><b>01</b><div><h3 class="fr">Local avant tout</h3><h3 class="en">Local first</h3><p class="fr">Vos informations restent là où elles sont utiles : avec vous.</p><p class="en">Your information stays where it is useful: with you.</p></div></div>
+            <div class="principle"><b>02</b><div><h3 class="fr">Clair dès le premier geste</h3><h3 class="en">Clear from the first gesture</h3><p class="fr">Une bonne interface n’explique pas longuement : elle se laisse comprendre.</p><p class="en">A good interface does not need a long explanation: it makes itself understood.</p></div></div>
+            <div class="principle"><b>03</b><div><h3 class="fr">Accessible par choix</h3><h3 class="en">Accessible by design</h3><p class="fr">Contrastes, clavier, taille de texte et mouvements mesurés font partie du produit.</p><p class="en">Contrast, keyboard support, text size and measured motion are part of the product.</p></div></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="spirit">
-    <img
-      class="spirit-image"
-      src="assets/boutchsoftware-colibri.jpg"
-      alt="Colibri près d'une fleur, symbole de simplicité et d'attention"
-    />
-    <div class="spirit-content">
-      <h2 class="spirit-title">L’esprit de BoutchSoftware</h2>
+    <section class="contribute" aria-labelledby="contribute-title">
+      <div class="shell"><div class="contribute-card"><div><p class="section-kicker fr">Une langue de plus, c’est une porte qui s’ouvre</p><p class="section-kicker en">One more language opens a door</p><h2 id="contribute-title" class="fr">Aidez-nous à rendre les applications accessibles à davantage de monde.</h2><h2 class="en">Help us make the apps accessible to more people.</h2><p class="fr">Vous pouvez proposer une traduction. Chaque contribution est relue avec soin avant publication.</p><p class="en">You can suggest a translation. Every contribution is carefully reviewed before publication.</p></div><a class="button" href="translations.html"><span class="fr">Participer aux traductions</span><span class="en">Contribute translations</span> <span aria-hidden="true">→</span></a></div></div>
+    </section>
+  </main>
 
-      <p>BoutchSoftware porte dans son nom une source discrète : une tendresse, une force, une manière d’habiter le monde.</p>
+  <footer><div class="shell footer-content"><span>BoutchSoftware · France</span><a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></div></footer>
+  <script>
+    (function () {
+      var root = document.body;
+      try { if (localStorage.getItem('bs-lang') === 'en') root.classList.add('show-en'); } catch (e) {}
+      window.toggleLang = function () { var english = root.classList.toggle('show-en'); try { localStorage.setItem('bs-lang', english ? 'en' : 'fr'); } catch (e) {} };
+      var topbar = document.getElementById('topbar');
+      function updateTopbar() { topbar.classList.toggle('is-scrolled', window.scrollY > 18); }
+      window.addEventListener('scroll', updateTopbar, { passive: true }); updateTopbar();
 
-      <p>Boutch, ce n’est pas seulement un nom. C’est une présence. Une chaleur au cœur des choses. Une façon de regarder la vie sans bruit inutile, avec attention, avec droiture, avec cette intelligence du cœur qui reconnaît l’essentiel avant même que les mots ne viennent l’expliquer.</p>
-
-      <p>Il y a, dans l’esprit de Boutch, le calme d’un félin qui ronronne près de nous, la grâce légère des oiseaux qui chantent au matin, la musique qui apaise les heures trop lourdes, le chant qui redonne souffle et courage. Il y a l’amour de ce qui est simple, de ce qui est vrai, de ce qui ne triche pas. Il y a la franchise, la bonté, le goût de la justice, et cette manière rare de rester pleinement humaine dans un monde qui va trop vite.</p>
-
-      <p>On s’épargne parfois quarante ans de philosophie lorsqu’on comprend, d’un seul mouvement intérieur, que le bonheur n’est pas très loin. Il est dans l’amour de ce que l’on a déjà. Dans la joie tranquille de faire les choses soi-même. Dans l’acceptation de ce qui ne dépend pas de nous. Et surtout, dans la chance immense d’être entouré de ceux que l’on aime.</p>
-
-      <p>C’est de cette intuition que naît BoutchSoftware.</p>
-
-      <p>Un bon logiciel devrait ressembler à une main posée doucement sur l’épaule : il rassure, il guide, il aide à faire, puis il s’efface. Il ne capte pas inutilement l’attention. Il ne transforme pas l’utilisateur en serviteur de la machine. Il reste clair, loyal, compréhensible. Il respecte le temps, les choix, les habitudes, la liberté.</p>
-
-      <p>BoutchSoftware croit en une technologie à visage humain. Une technologie patiente, utile, sincère. Une technologie qui sait que derrière chaque écran, il y a une personne ; derrière chaque clic, une intention ; derrière chaque besoin, parfois une inquiétude, une fatigue, un besoin.</p>
-
-      <p>Écrire du code, ce n’est pas seulement assembler des fonctions. C’est mettre un peu de soin dans le quotidien. C’est créer de petits compagnons silencieux, capables d’alléger une charge, de clarifier une pensée, de rappeler l’important, de rendre une tâche moins pesante.</p>
-
-      <p>BoutchSoftware avance avec cette conviction simple : la technologie est notre alliée, si elle nous aide à prendre de meilleures décisions et à économiser ce que nous avons de plus précieux : le temps.</p>
-
-      <p>Voilà l’esprit de BoutchSoftware.</p>
-    </div>
-  </section>
-
-  </div><!-- /fr -->
-
-  <!-- ═══════════════ ENGLISH VERSION ═══════════════ -->
-  <div class="en">
-
-  <section>
-    <h2>Our apps</h2>
-
-    <div class="app-card">
-      <a class="app-icon-link" href="prepcalm/index.html"><img class="app-icon" src="assets/prepcalm-icon.png" alt="PrepCalm app icon" width="64" height="64" /></a>
-      <div class="app-info">
-        <h3><a href="prepcalm/index.html">PrepCalm</a></h3>
-        <p>Reusable preparation checklists.<br>
-           Prepare calmly, check, and go.</p>
-        <div class="app-links">
-          <a href="prepcalm/index.html">Discover</a>
-          <a href="prepcalm/privacy.html">Privacy</a>
-          <a href="prepcalm/terms.html">Terms</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <a class="app-icon-link" href="https://boutchsoftware.github.io/touchefait/"><img class="app-icon" src="assets/touchefait-icon.png" alt="Touché, c'est fait app icon" width="64" height="64" /></a>
-      <div class="app-info">
-        <h3><a href="https://boutchsoftware.github.io/touchefait/">Touché, c'est fait</a></h3>
-        <p>Household tasks, without opening a list.<br>
-           Do the task, tap the sticker, it's logged.</p>
-        <div class="app-links">
-          <a href="https://boutchsoftware.github.io/touchefait/">Discover</a>
-          <a href="touchefait/privacy.html">Privacy</a>
-          <a href="touchefait/terms.html">Terms</a>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <section>
-    <h2>Contribute</h2>
-
-    <div class="app-card">
-      <svg class="app-icon" style="background:transparent;display:block" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Traductions">
-        <defs><linearGradient id="tgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6CC76B"/><stop offset="1" stop-color="#3D8C3C"/></linearGradient></defs>
-        <rect width="64" height="64" rx="15" fill="url(#tgrad)"/>
-        <text x="21" y="34" font-size="24" font-weight="800" fill="#fff" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">A</text>
-        <text x="42" y="50" font-size="22" font-weight="800" fill="#fff" opacity=".92" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif">文</text>
-      </svg>
-      <div class="app-info">
-        <h3>Help translate</h3>
-        <p>Suggest a language that doesn't exist yet.<br>
-           Every proposal is reviewed before being published.</p>
-        <div class="app-links">
-          <a href="translations.html">Translation page</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="spirit">
-    <img
-      class="spirit-image"
-      src="assets/boutchsoftware-colibri.jpg"
-      alt="A hummingbird near a flower, a symbol of simplicity and care"
-    />
-    <div class="spirit-content">
-      <h2 class="spirit-title">The spirit of BoutchSoftware</h2>
-
-      <p>BoutchSoftware carries a quiet source within its name: a tenderness, a strength, a way of inhabiting the world.</p>
-
-      <p>Boutch is not just a name. It is a presence. A warmth at the heart of things. A way of looking at life without needless noise — with attention, with integrity, with that intelligence of the heart that recognizes what matters before words even come to explain it.</p>
-
-      <p>In the spirit of Boutch there is the calm of a cat purring beside us, the light grace of birds singing in the morning, the music that soothes the heaviest hours, the song that gives back breath and courage. There is the love of what is simple, of what is true, of what does not cheat. There is frankness, kindness, a taste for justice, and that rare way of staying fully human in a world that moves too fast.</p>
-
-      <p>Sometimes we spare ourselves forty years of philosophy when we understand, in a single inner movement, that happiness is not far away. It lies in the love of what we already have. In the quiet joy of doing things ourselves. In accepting what does not depend on us. And above all, in the immense good fortune of being surrounded by those we love.</p>
-
-      <p>It is from this intuition that BoutchSoftware is born.</p>
-
-      <p>Good software should feel like a hand laid gently on your shoulder: it reassures, it guides, it helps you get things done, and then it steps aside. It does not needlessly capture your attention. It does not turn the user into a servant of the machine. It stays clear, faithful, understandable. It respects your time, your choices, your habits, your freedom.</p>
-
-      <p>BoutchSoftware believes in technology with a human face. Technology that is patient, useful, sincere. Technology that knows there is a person behind every screen; an intention behind every click; behind every need, sometimes a worry, a weariness, a need.</p>
-
-      <p>Writing code is not just about assembling functions. It is about bringing a little care into everyday life. It is about creating small, silent companions, able to lighten a load, clarify a thought, recall what matters, make a task less heavy.</p>
-
-      <p>BoutchSoftware moves forward with this simple conviction: technology is our ally, if it helps us make better decisions and save what we hold most precious — time.</p>
-
-      <p>This is the spirit of BoutchSoftware.</p>
-    </div>
-  </section>
-
-  </div><!-- /en -->
-
-</main>
-
-<footer>
-  <p>BoutchSoftware · France</p>
-  <p style="margin-top:6px">
-    <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>
-  </p>
-</footer>
-
-<script>
-  function applyLangLabel() {
-    var isEn = document.body.classList.contains('show-en');
-    var link = document.querySelector('.lang-switch a');
-    if (link) link.textContent = isEn ? '⇄ Version française' : '⇄ English version';
-  }
-  function toggleLang(e) {
-    e.preventDefault();
-    var isEn = document.body.classList.toggle('show-en');
-    try { localStorage.setItem('bs-lang', isEn ? 'en' : 'fr'); } catch (err) {}
-    applyLangLabel();
-  }
-  applyLangLabel();
-</script>
+      var canvas = document.getElementById('signal-field');
+      var context = canvas.getContext('2d');
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var pointer = { x: .5, y: .45 };
+      var particles = [];
+      function resize() {
+        var ratio = Math.min(window.devicePixelRatio || 1, 2); var rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * ratio; canvas.height = rect.height * ratio; context.setTransform(ratio, 0, 0, ratio, 0, 0);
+        var count = Math.max(34, Math.min(78, Math.floor(rect.width / 16)));
+        particles = Array.from({ length: count }, function (_, i) { return { x: Math.random() * rect.width, y: Math.random() * rect.height, r: 1 + Math.random() * 1.5, speed: .12 + Math.random() * .32, phase: i * .45 }; });
+      }
+      function draw(time) {
+        var rect = canvas.getBoundingClientRect(), w = rect.width, h = rect.height;
+        context.clearRect(0, 0, w, h);
+        var glow = context.createRadialGradient(pointer.x * w, pointer.y * h, 0, pointer.x * w, pointer.y * h, Math.min(w, h) * .55);
+        glow.addColorStop(0, 'rgba(112,223,196,.14)'); glow.addColorStop(1, 'rgba(7,21,17,0)'); context.fillStyle = glow; context.fillRect(0, 0, w, h);
+        particles.forEach(function (p, index) {
+          var drift = reduced ? 0 : time * p.speed * .00032;
+          var x = (p.x + Math.sin(drift + p.phase) * 37 + w) % w;
+          var y = (p.y + Math.cos(drift * 1.3 + p.phase) * 25 + h) % h;
+          context.beginPath(); context.fillStyle = index % 4 ? 'rgba(142,230,139,.62)' : 'rgba(112,223,196,.72)'; context.arc(x, y, p.r, 0, Math.PI * 2); context.fill();
+          for (var j = index + 1; j < particles.length; j++) {
+            var q = particles[j], qx = (q.x + Math.sin((reduced ? 0 : time * q.speed * .00032) + q.phase) * 37 + w) % w, qy = (q.y + Math.cos((reduced ? 0 : time * q.speed * .000416) + q.phase) * 25 + h) % h;
+            var dx = x - qx, dy = y - qy, distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 103) { context.beginPath(); context.strokeStyle = 'rgba(112,223,196,' + (0.13 * (1 - distance / 103)) + ')'; context.lineWidth = .7; context.moveTo(x, y); context.lineTo(qx, qy); context.stroke(); }
+          }
+        });
+        if (!reduced) requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', resize); window.addEventListener('pointermove', function (event) { var rect = canvas.getBoundingClientRect(); pointer.x = (event.clientX - rect.left) / rect.width; pointer.y = (event.clientY - rect.top) / rect.height; }, { passive: true });
+      resize(); requestAnimationFrame(draw);
+    }());
+  </script>
 </body>
 </html>
