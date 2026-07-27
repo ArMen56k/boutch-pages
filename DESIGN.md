@@ -33,11 +33,13 @@ Tokens principaux :
 
 La barre globale est flottante, translucide et compacte. Son architecture est
 identique sur toutes les pages : un accès direct à **Accueil** et un menu
-déroulant **Toutes les pages**. Ce panneau regroupe les applications, les pages
-pratiques, la philosophie, les traductions et chaque document juridique ; aucune
-page publique ne doit rester inaccessible depuis cette navigation. La page
+déroulant **Découvrir**. Ce panneau met en avant les applications, la philosophie
+et les traductions. Les pages pratiques et juridiques restent accessibles dans le
+contexte de chaque application, sans encombrer la navigation globale. La section
 courante y est signalée. Le menu s’ouvre au survol, au clic et au clavier sur
-ordinateur, puis devient un panneau tactile imbriqué sous 760 px. Le changement
+ordinateur, puis devient un panneau tactile imbriqué sous 760 px. Une courte
+temporisation permet de déplacer le pointeur du bouton vers le panneau sans que
+celui-ci disparaisse. Le changement
 de langue reste toujours accessible, les cibles interactives font au minimum
 42 px de haut et le focus clavier reste visible.
 
