@@ -92,7 +92,7 @@
     .section-kicker { margin: 0 0 10px; color: #348649; font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
     .section-head h2, .manifesto h2 { max-width: 650px; margin: 0; font-size: clamp(2.2rem, 4.5vw, 4.2rem); font-weight: 720; line-height: .99; letter-spacing: -.06em; text-wrap: balance; }
     .section-head p { max-width: 315px; margin: 0 0 3px; color: #557065; font-size: .96rem; line-height: 1.6; }
-    .products { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px; }
+    .products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
     .product { position: relative; min-height: 368px; display: flex; flex-direction: column; justify-content: end; overflow: hidden; padding: 29px; border-radius: var(--radius); color: #f6fffa; background: #113528; text-decoration: none; isolation: isolate; transition: transform .26s, box-shadow .26s; }
     .product:hover { transform: translateY(-7px); box-shadow: 0 24px 43px rgba(16,43,32,.2); }
     .product::before { content: ""; position: absolute; width: 290px; height: 290px; top: -96px; right: -54px; z-index: -1; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; box-shadow: 0 0 0 32px rgba(255,255,255,.04), 0 0 0 73px rgba(255,255,255,.035); transition: transform .6s cubic-bezier(.2,.7,.2,1); }
@@ -100,7 +100,11 @@
     .product-prep { background: linear-gradient(145deg, #045e55, #072d29); }
     .product-touch { background: linear-gradient(145deg, #315637, #122b1d); }
     .product-proof { background: linear-gradient(145deg, #315da8, #102d5a); }
-    .product-serene { background: linear-gradient(145deg, #668da1, #263f4c); }
+    .product-serene { grid-column: 1 / -1; min-height: 430px; background: radial-gradient(circle at 83% 27%, rgba(35,148,236,.46), transparent 18rem), radial-gradient(circle at 70% 110%, rgba(92,68,173,.28), transparent 24rem), linear-gradient(145deg, #071a3a, #020817 72%); }
+    .product-serene::before { width: 390px; height: 390px; top: -96px; right: 3%; border-color: rgba(241,191,87,.48); box-shadow: 0 0 0 42px rgba(241,191,87,.04), 0 0 0 94px rgba(70,171,245,.035); }
+    .product-serene::after { content: ""; position: absolute; inset: 0; z-index: -1; opacity: .7; background: radial-gradient(circle at 69% 24%, #f7d985 0 1px, transparent 2px), radial-gradient(circle at 92% 62%, #65c7ff 0 1px, transparent 2px), radial-gradient(circle at 58% 78%, #fff 0 1px, transparent 2px); background-size: 132px 132px, 181px 181px, 215px 215px; }
+    .product-serene h3 { font: 500 clamp(2.4rem, 5vw, 4.2rem)/.96 Georgia, "Times New Roman", serif; letter-spacing: -.05em; }
+    .product-serene p { max-width: 610px; }
     .product-tag { position: absolute; top: 28px; left: 29px; display: inline-flex; align-items: center; min-height: 29px; padding: 0 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: .7rem; font-weight: 760; letter-spacing: .08em; text-transform: uppercase; }
     .product-icon { width: 72px; height: 72px; position: absolute; top: 76px; left: 29px; border-radius: 18px; box-shadow: 0 12px 28px rgba(0,0,0,.24); }
     .product h3 { margin: 0; font-size: 2rem; letter-spacing: -.055em; }
@@ -108,7 +112,8 @@
     .product-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 19px; color: var(--aqua); font-size: .86rem; font-weight: 800; }
     .product-touch .product-link { color: #b8efa8; }
     .product-proof .product-link { color: #c6dcff; }
-    .product-serene .product-link { color: #d8eff8; }
+    .product-serene .product-tag { border-color: rgba(241,191,87,.42); color: #f7d985; background: rgba(241,191,87,.06); }
+    .product-serene .product-link { color: #f7d985; }
     .manifesto { position: relative; padding: clamp(82px, 11vw, 150px) 0; overflow: hidden; background: #0b2119; }
     .manifesto::before { content: ""; position: absolute; width: 620px; height: 620px; top: -360px; right: -160px; border: 1px solid rgba(112,223,196,.18); border-radius: 50%; box-shadow: 0 0 0 70px rgba(112,223,196,.025), 0 0 0 150px rgba(112,223,196,.025); }
     .manifesto-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(250px, .62fr); gap: clamp(36px, 8vw, 128px); }
@@ -148,6 +153,7 @@
     body.show-en .en.inline { display: inline; }
     .en.inline { display: none; }
     @keyframes pulse { 50% { opacity: .42; box-shadow: 0 0 0 10px rgba(142,230,139,0); } }
+    @media (max-width: 980px) and (min-width: 761px) { .products { grid-template-columns: repeat(2, minmax(0, 1fr)); } .product-proof { grid-column: 1 / -1; } }
     @media (max-width: 760px) {
       .nav { min-height: 67px; }
       .site-nav { display: none; }
@@ -219,6 +225,11 @@
           <p class="fr">Chaque produit part d’un geste quotidien, puis enlève tout ce qui est superflu.</p><p class="en">Every product starts with an everyday gesture, then removes everything unnecessary.</p>
         </div>
         <div class="products">
+          <a class="product product-serene" href="serene/index.html">
+            <span class="product-tag fr">Produit phare</span><span class="product-tag en">Flagship app</span>
+            <img class="product-icon" src="serene/android_icons/icon-512.png" alt="" width="72" height="72" />
+            <div><h3>Serene Decisions</h3><p class="fr">Une liste, un tirage honnête, l’esprit plus léger. Décidez sans compte, sans publicité et sans collecte de données.</p><p class="en">One list, one honest draw, a lighter mind. Decide with no account, no ads and no data collection.</p><span class="product-link"><span class="fr">Découvrir Serene Decisions</span><span class="en">Discover Serene Decisions</span> <span aria-hidden="true">↗</span></span></div>
+          </a>
           <a class="product product-prep" href="prepcalm/index.html">
             <span class="product-tag fr">Préparer</span><span class="product-tag en">Prepare</span>
             <img class="product-icon" src="assets/prepcalm-icon.png" alt="" width="72" height="72" />
@@ -233,11 +244,6 @@
             <span class="product-tag fr">Documenter</span><span class="product-tag en">Document</span>
             <img class="product-icon" src="assets/preuve-icon.svg" alt="" width="72" height="72" />
             <div><h3>Preuve à l’appui</h3><p class="fr">La photo qui fait foi. Constituez un dossier photographique complet, ordonné et vérifiable.</p><p class="en">The photo that stands as evidence. Build a complete, ordered and verifiable photographic record.</p><span class="product-link"><span class="fr">Découvrir Preuve à l’appui</span><span class="en">Discover Preuve à l’appui</span> <span aria-hidden="true">↗</span></span></div>
-          </a>
-          <a class="product product-serene" href="serene/index.html">
-            <span class="product-tag fr">Décider</span><span class="product-tag en">Decide</span>
-            <img class="product-icon" src="serene/android_icons/icon-512.png" alt="" width="72" height="72" />
-            <div><h3>Serene Decisions</h3><p class="fr">Il est parfois difficile de prendre une décision. Optez pour la sérénité en laissant faire le destin !</p><p class="en">Decisions can be difficult. Find serenity by letting chance make the choice.</p><span class="product-link"><span class="fr">Découvrir Serene Decisions</span><span class="en">Discover Serene Decisions</span> <span aria-hidden="true">↗</span></span></div>
           </a>
         </div>
       </div>
