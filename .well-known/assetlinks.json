@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.boutch.serene",
+      "sha256_cert_fingerprints": [
+        "00:0B:CE:7D:B2:AC:D8:12:24:B9:88:53:0B:4A:79:6E:CF:C9:F9:4C:1F:03:2C:9C:F7:97:F1:13:BD:9D:03:A0"
+      ]
+    }
+  }
+]

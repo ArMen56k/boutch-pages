@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="theme-color" content="#020817" />
+  <meta name="description" content="Ouvrez une liste partagée avec Serene Decisions, sans compte et sans envoyer son contenu à un serveur." />
+  <link rel="icon" type="image/png" sizes="512x512" href="../android_icons/icon-512.png" />
+  <link rel="apple-touch-icon" href="../android_icons/icon-512.png" />
+  <title>Liste partagée — Serene Decisions</title>
+  <link rel="stylesheet" href="../../assets/site-shell.css?v=6" />
+  <link rel="stylesheet" href="../assets/serene.css?v=2" />
+  <script src="../../assets/site-shell.js?v=6" defer></script>
+  <script src="share.js?v=1" defer></script>
+</head>
+<body class="serene-theme serene-share">
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+
+<nav class="site-nav">
+  <a href="../../index.html"><span class="nav-fr">Accueil</span><span class="nav-en">Home</span></a>
+  <a href="../index.html">Serene Decisions</a>
+</nav>
+
+<div class="lang-switch"><a href="#" onclick="toggleLang(event)">English version</a></div>
+
+<main>
+  <header class="share-heading">
+    <img src="../android_icons/icon-512.png" alt="" width="78" height="78" />
+    <div>
+      <p class="serene-kicker">Serene Decisions</p>
+      <p class="share-heading-title fr">Une liste vous attend.</p>
+      <p class="share-heading-title en">A list is waiting for you.</p>
+    </div>
+  </header>
+
+  <section id="share-loading" class="share-state" aria-live="polite">
+    <span class="share-loader" aria-hidden="true"></span>
+    <p class="fr">Ouverture de la liste…</p>
+    <p class="en">Opening the list…</p>
+  </section>
+
+  <section id="share-error" class="share-state is-hidden" aria-live="assertive">
+    <p class="serene-kicker fr">Lien inutilisable</p>
+    <p class="serene-kicker en">Link unavailable</p>
+    <h1 class="fr">Cette liste ne peut pas être ouverte.</h1>
+    <h1 class="en">This list cannot be opened.</h1>
+    <p class="fr">Le lien est incomplet, endommagé ou provient d’une version non reconnue. Demandez à son expéditeur de le partager à nouveau.</p>
+    <p class="en">The link is incomplete, damaged or comes from an unsupported version. Ask the sender to share it again.</p>
+    <a class="serene-button" href="../index.html"><span class="fr">Découvrir Serene Decisions</span><span class="en">Discover Serene Decisions</span></a>
+  </section>
+
+  <article id="share-content" class="share-card is-hidden" aria-live="polite">
+    <div class="share-summary">
+      <div>
+        <p class="serene-kicker fr">Liste reçue</p>
+        <p class="serene-kicker en">Shared list</p>
+        <h1 id="shared-title">Liste partagée</h1>
+      </div>
+      <p id="shared-count" class="share-count"></p>
+    </div>
+
+    <ol id="shared-options" class="shared-options"></ol>
+
+    <div class="share-actions">
+      <a id="open-app-fr" class="serene-button serene-button-primary app-only fr" href="#">Ouvrir dans Serene</a>
+      <a id="open-app-en" class="serene-button serene-button-primary app-only en" href="#">Open in Serene</a>
+      <button id="copy-list-fr" class="serene-button fr" type="button">Copier la liste</button>
+      <button id="copy-list-en" class="serene-button en" type="button">Copy the list</button>
+      <a class="serene-button" href="https://play.google.com/store/apps/details?id=com.boutch.serene"><span class="fr">Installer sur Android</span><span class="en">Install on Android</span></a>
+    </div>
+
+    <div class="share-privacy">
+      <span aria-hidden="true">✦</span>
+      <p class="fr"><strong>Cette page ne reçoit pas la liste.</strong> Son contenu voyage uniquement dans l’adresse que vous avez ouverte et reste dans votre navigateur.</p>
+      <p class="en"><strong>This page never receives the list.</strong> Its content only travels inside the address you opened and stays in your browser.</p>
+    </div>
+  </article>
+
+  <noscript><p class="share-noscript">JavaScript est nécessaire pour lire localement la liste contenue dans ce lien.</p></noscript>
+</main>
+
+<footer>Serene Decisions · <a href="../../index.html">BoutchSoftware</a> · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></footer>
+<script>function updateLabel(){var a=document.querySelector('.lang-switch a');if(a)a.textContent=document.body.classList.contains('show-en')?'Version française':'English version'}function toggleLang(e){e.preventDefault();var en=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',en?'en':'fr')}catch(err){}updateLabel()}updateLabel();</script>
+</body>
+</html>
