@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0A0E20" />
+  <link rel="icon" type="image/png" sizes="512x512" href="android_icons/icon-512.png" />
+  <link rel="apple-touch-icon" href="android_icons/icon-512.png" />
+  <meta name="description" content="Aide et questions fréquentes sur Serene Decisions : Premium, restauration d'achat, hasard, données et contact." />
+  <title>Serene Decisions — Aide &amp; questions fréquentes</title>
+  <style>
+    :root {
+      --blue:      #3E6B82;
+      --blue-dark: #2A4E60;
+      --text:      #1B252B;
+      --muted:     #6E7F91;
+      --bg:        #EAF1F4;
+      --card:      #FFFFFF;
+      --radius:    12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      padding: 0 0 60px;
+    }
+    header {
+      background: var(--blue);
+      color: #fff;
+      padding: 32px 24px 28px;
+      text-align: center;
+    }
+    header h1 { font-size: 2rem; font-weight: 700; letter-spacing: -0.5px; }
+    header p  { margin-top: 6px; opacity: .88; font-size: .95rem; }
+    main {
+      max-width: 760px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+    .lang-switch { text-align: right; margin-bottom: 24px; }
+    .lang-switch a {
+      color: var(--blue-dark);
+      text-decoration: none;
+      font-size: .9rem;
+      border: 1px solid var(--blue);
+      padding: 4px 12px;
+      border-radius: 20px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lang-switch a:hover { background: var(--blue); color: #fff; }
+    section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    h2 {
+      font-size: 1.15rem;
+      color: var(--blue-dark);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--bg);
+    }
+    p { margin-bottom: 10px; }
+    p:last-child { margin-bottom: 0; }
+    ul { padding-left: 20px; margin-bottom: 10px; }
+    li { margin-bottom: 6px; }
+    .highlight {
+      background: #D6E6EE;
+      border-left: 4px solid var(--blue);
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+      font-weight: 500;
+    }
+    .warning {
+      background: #FFF8E1;
+      border-left: 4px solid #FFB300;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 14px 0;
+    }
+    .muted { color: var(--muted); font-size: .9rem; }
+    a { color: var(--blue-dark); }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    .en { display: none; }
+    body.show-en .fr { display: none; }
+    body.show-en .en { display: block; }
+    body.show-en header p.fr-sub { display: none; }
+    body.show-en header p.en-sub { display: block !important; }
+    header p.en-sub { display: none; }
+    .site-nav {
+      background: var(--card);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 20px;
+      padding: 3px 16px;
+      border-bottom: 1px solid #D3DEE5;
+      box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    }
+    .site-nav a {
+      color: var(--blue-dark);
+      text-decoration: none;
+      font-size: .92rem;
+      padding: 3px 4px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .site-nav a:hover { text-decoration: underline; }
+    .site-nav a[aria-current="page"] {
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 2px solid var(--blue);
+    }
+    .site-nav .nav-en { display: none; }
+    body.show-en .site-nav .nav-fr { display: none; }
+    body.show-en .site-nav .nav-en { display: inline; }
+  </style>
+  <link rel="stylesheet" href="../assets/site-shell.css?v=6" />
+  <link rel="stylesheet" href="assets/serene.css?v=1" />
+  <script src="../assets/site-shell.js?v=6" defer></script>
+</head>
+<body class="serene-theme">
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en');}catch(e){}</script>
+
+<header>
+  <h1 class="serene-legal-title"><img src="android_icons/icon-512.png" alt="" width="68" height="68" />Serene Decisions</h1>
+  <p class="fr-sub">Aide &amp; questions fréquentes</p>
+  <p class="en-sub">Help &amp; frequently asked questions</p>
+</header>
+
+<nav class="site-nav">
+  <a href="../index.html"><span class="nav-fr">🏠 Accueil</span><span class="nav-en">🏠 Home</span></a>
+  <a href="aide.html" aria-current="page"><span class="nav-fr">Aide</span><span class="nav-en">Help</span></a>
+  <a href="privacy.html"><span class="nav-fr">Confidentialité</span><span class="nav-en">Privacy</span></a>
+  <a href="terms.html"><span class="nav-fr">Conditions</span><span class="nav-en">Terms</span></a>
+  <a href="../translations.html"><span class="nav-fr">Traductions</span><span class="nav-en">Translations</span></a>
+</nav>
+
+<main>
+  <div class="lang-switch">
+    <a href="#" onclick="toggleLang(event)">⇄ English version</a>
+  </div>
+
+  <!-- ═══════════════ VERSION FRANÇAISE ═══════════════ -->
+  <div class="fr">
+
+  <section>
+    <h2>💬 Une question ? Écrivez-nous</h2>
+    <p>
+      Serene Decisions est développé par une seule personne, et chaque message reçoit une réponse.
+      Le plus simple est d'ouvrir <strong>À propos &amp; aide</strong> dans l'application, puis
+      <strong>Nous écrire</strong> : votre message joint automatiquement le modèle de téléphone,
+      la version d'Android et celle de l'application, ce qui suffit souvent à identifier la cause.
+    </p>
+    <div class="highlight">
+      Vous pouvez aussi écrire directement à
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+    </div>
+    <p class="muted">
+      Les réponses ci-dessous couvrent les questions les plus fréquentes. Si la vôtre n'y figure
+      pas, écrivez-nous : elle finira probablement sur cette page.
+    </p>
+  </section>
+
+  <section>
+    <h2>1. J'ai acheté Premium, mais il n'est pas actif</h2>
+    <p>
+      Premium est un <strong>achat unique</strong>, attaché au compte Google Play qui a servi à
+      l'achat. Après une réinstallation, un changement de téléphone, ou si plusieurs comptes Google
+      cohabitent sur l'appareil, il faut le réassocier :
+    </p>
+    <ul>
+      <li>ouvrez <strong>Serene Premium</strong> dans l'application ;</li>
+      <li>touchez <strong>Restaurer mes achats</strong> ;</li>
+      <li>vérifiez que le Play Store est connecté au compte qui a servi à l'achat.</li>
+    </ul>
+    <p>
+      Si rien n'est retrouvé, écrivez-nous : nous vérifions avec vous, avec le justificatif d'achat
+      et sans jamais demander de donnée bancaire.
+    </p>
+    <div class="warning">
+      <strong>Vous étiez testeur fermé ?</strong> L'accès offert aux testeurs était lié à
+      l'appareil et disparaît à la réinstallation. Utilisez
+      <strong>Associer à Google Play ou utiliser un code</strong> pour rattacher votre code
+      promotionnel à votre compte : il sera alors conservé définitivement.
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Qu'est-ce qui est gratuit, exactement ?</h2>
+    <p>
+      Le cœur de l'application est gratuit, sans publicité, sans traqueur et sans compte. Créer des
+      listes, lancer autant de tirages que vous voulez, utiliser les modèles prêts à l'emploi, la
+      pondération et le hasard prouvable : tout cela ne coûte rien et ne coûtera jamais rien.
+    </p>
+    <p>
+      L'offre gratuite permet de conserver <strong>3 listes sauvegardées</strong>. Premium, en achat
+      unique et non en abonnement, ajoute uniquement du confort : sauvegardes illimitées,
+      personnalisation des options, thèmes supplémentaires, export et duplication.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Le tirage est-il vraiment aléatoire ?</h2>
+    <p>
+      Oui. Le tirage s'appuie sur <strong>SecureRandom</strong>, le générateur aléatoire
+      cryptographique fourni par Android — celui-là même qui sert à produire des clés de chiffrement.
+      L'application n'a aucun favori et ne garde aucune mémoire d'un tirage à l'autre.
+    </p>
+    <p>
+      Si un même résultat revient souvent, deux explications simples :
+    </p>
+    <ul>
+      <li>
+        <strong>La liste est courte.</strong> Sur trois options, la même sort une fois sur trois en
+        moyenne, et deux fois d'affilée une fois sur neuf. C'est le hasard, pas un défaut.
+      </li>
+      <li>
+        <strong>Une pondération est réglée.</strong> Si vous avez donné plus de poids à une option,
+        le tirage n'est volontairement plus uniforme.
+      </li>
+    </ul>
+    <p>
+      L'écran <strong>Comment fonctionne le hasard ?</strong>, dans À propos &amp; aide, détaille la
+      méthode.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. Je souhaite un remboursement</h2>
+    <p>
+      Le paiement et les remboursements sont traités par Google Play. La demande se fait depuis
+      l'application Play Store, rubrique <strong>Historique des commandes</strong>, ou sur
+      <a href="https://play.google.com/store/account/orderhistory">play.google.com/store/account/orderhistory</a>.
+    </p>
+    <p>
+      Écrivez-nous avec votre justificatif d'achat si vous souhaitez que nous appuyions la demande.
+      Vos droits légaux de consommateur restent entiers ; le détail figure dans nos
+      <a href="terms.html">Conditions d'utilisation</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. J'ai perdu mes listes</h2>
+    <p>
+      Serene Decisions ne stocke rien en ligne. Vos listes et votre historique vivent uniquement sur
+      votre téléphone, sans compte et sans cloud : c'est ce qui nous permet de ne collecter
+      absolument aucune donnée.
+    </p>
+    <p>
+      La contrepartie est réelle : désinstaller l'application ou effacer ses données supprime les
+      listes définitivement, et rien ne suit automatiquement vers un nouveau téléphone. Si vous
+      changez d'appareil, utilisez <strong>l'export</strong> (inclus dans Premium) pour en garder
+      une copie au préalable.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. Une traduction est incorrecte</h2>
+    <p>
+      L'application est traduite en 15 langues et certaines tournures méritent encore une relecture
+      par un locuteur natif. Signalez-nous la phrase concernée et nous la corrigeons — c'est
+      exactement le genre de retour qui améliore l'application.
+    </p>
+    <p>
+      En attendant, le menu <strong>Langue</strong> des Paramètres permet de forcer une autre langue
+      que celle du téléphone. Si vous souhaitez relire une langue entière, la page
+      <a href="../translations.html">Traductions</a> explique comment contribuer.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. Il manque une fonction dont j'ai besoin</h2>
+    <p>
+      Dites-le-nous. Nous ajoutons les fonctions au compte-gouttes pour que l'application reste
+      simple et calme, donc nous ne promettons jamais de date. En revanche, une description de
+      l'usage que vous en feriez pèse très concrètement dans nos choix.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. L'application plante ou s'affiche mal</h2>
+    <p>
+      Passez par <strong>À propos &amp; aide</strong> puis <strong>Nous écrire</strong> : le message
+      joint automatiquement les informations techniques nécessaires, que vous pouvez d'ailleurs
+      consulter avant l'envoi. Décrivez simplement ce que vous faisiez au moment du problème.
+    </p>
+    <p>
+      Deux réglages provoquent parfois un affichage inattendu : une <strong>taille de texte</strong>
+      système très grande, et le <strong>mode paysage</strong> sur un petit écran. Nous répondons à
+      chaque signalement.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. Quelles données collectez-vous ?</h2>
+    <p>
+      Aucune. Serene Decisions ne demande aucun compte, n'affiche aucune publicité et n'embarque
+      aucun traqueur. Vos listes, vos tirages et votre historique restent sur votre téléphone.
+    </p>
+    <p>
+      La seule connexion possible est celle de Google Play, uniquement si vous achetez Premium ou
+      restaurez un achat. Le détail complet figure dans notre
+      <a href="privacy.html">politique de confidentialité</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. Mon fichier importé est refusé ou tronqué</h2>
+    <p>
+      L'import accepte un fichier texte jusqu'à <strong>1 Mo</strong> et
+      <strong>10 000 options</strong>. Au-delà, il s'arrête volontairement pour ne pas saturer la
+      mémoire du téléphone. Un libellé de plus de 300 caractères est raccourci, jamais coupé au
+      milieu d'un mot.
+    </p>
+    <p>
+      Si votre fichier est refusé sans raison visible, envoyez-le-nous : nous regardons et nous vous
+      répondons.
+    </p>
+  </section>
+
+  </div><!-- /.fr -->
+
+  <!-- ═══════════════ ENGLISH VERSION ═══════════════ -->
+  <div class="en">
+
+  <section>
+    <h2>💬 A question? Write to us</h2>
+    <p>
+      Serene Decisions is built by one person, and every message gets an answer. The easiest way is
+      to open <strong>About &amp; help</strong> in the app, then <strong>Write to us</strong>: your
+      message automatically attaches your phone model, Android version and app version, which is
+      often enough to pin down the cause.
+    </p>
+    <div class="highlight">
+      You can also write directly to
+      <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a>.
+    </div>
+    <p class="muted">
+      The answers below cover the most frequent questions. If yours is not here, write to us — it
+      will probably end up on this page.
+    </p>
+  </section>
+
+  <section>
+    <h2>1. I bought Premium, but it is not active</h2>
+    <p>
+      Premium is a <strong>one-time purchase</strong>, tied to the Google Play account used to buy
+      it. After a reinstall, a change of phone, or if several Google accounts share the device, you
+      need to reconnect it:
+    </p>
+    <ul>
+      <li>open <strong>Serene Premium</strong> in the app;</li>
+      <li>tap <strong>Restore my purchases</strong>;</li>
+      <li>check that the Play Store is signed in to the account used for the purchase.</li>
+    </ul>
+    <p>
+      If nothing is found, write to us: we will check it with you, using your proof of purchase and
+      never asking for bank details.
+    </p>
+    <div class="warning">
+      <strong>Were you a closed tester?</strong> Tester access was tied to the device and disappears
+      on reinstall. Use <strong>Link to Google Play or use a code</strong> to attach your promotional
+      code to your account, and it will be kept for good.
+    </div>
+  </section>
+
+  <section>
+    <h2>2. What exactly is free?</h2>
+    <p>
+      The core of the app is free, with no ads, no trackers and no account. Creating lists, running
+      as many draws as you like, using the ready-made templates, weighting and provable randomness:
+      all of it costs nothing and never will.
+    </p>
+    <p>
+      The free tier keeps <strong>3 saved lists</strong>. Premium, a one-time purchase and not a
+      subscription, only adds comfort: unlimited saves, per-option customisation, extra themes,
+      export and duplication.
+    </p>
+  </section>
+
+  <section>
+    <h2>3. Is the draw really random?</h2>
+    <p>
+      Yes. Draws rely on <strong>SecureRandom</strong>, the cryptographic random generator provided
+      by Android — the very one used to produce encryption keys. The app has no favourite and keeps
+      no memory between draws.
+    </p>
+    <p>
+      If the same result keeps coming up, there are two simple explanations:
+    </p>
+    <ul>
+      <li>
+        <strong>The list is short.</strong> With three options, the same one comes up once in three
+        on average, and twice in a row once in nine. That is randomness, not a bug.
+      </li>
+      <li>
+        <strong>Weighting is set.</strong> If you gave one option more weight, the draw is
+        deliberately no longer uniform.
+      </li>
+    </ul>
+    <p>
+      The <strong>How does randomness work?</strong> screen, in About &amp; help, explains the
+      method in detail.
+    </p>
+  </section>
+
+  <section>
+    <h2>4. I would like a refund</h2>
+    <p>
+      Payment and refunds are handled by Google Play. You can request one from the Play Store app
+      under <strong>Order history</strong>, or at
+      <a href="https://play.google.com/store/account/orderhistory">play.google.com/store/account/orderhistory</a>.
+    </p>
+    <p>
+      Write to us with your proof of purchase if you would like us to support the request. Your
+      statutory consumer rights are unaffected; the details are in our
+      <a href="terms.html">Terms of Use</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>5. I lost my lists</h2>
+    <p>
+      Serene Decisions stores nothing online. Your lists and history live only on your phone, with
+      no account and no cloud: that is what allows us to collect absolutely no data.
+    </p>
+    <p>
+      The trade-off is real: uninstalling the app or clearing its data deletes your lists for good,
+      and nothing follows automatically to a new phone. If you are changing device, use
+      <strong>export</strong> (included in Premium) to keep a copy beforehand.
+    </p>
+  </section>
+
+  <section>
+    <h2>6. A translation is wrong</h2>
+    <p>
+      The app is translated into 15 languages and some wordings still deserve a native review. Send
+      us the sentence and we will correct it — this is exactly the kind of feedback that improves
+      the app.
+    </p>
+    <p>
+      In the meantime, the <strong>Language</strong> menu in Settings lets you force a language
+      other than your phone's. If you would like to review a whole language, the
+      <a href="../translations.html">Translations</a> page explains how to contribute.
+    </p>
+  </section>
+
+  <section>
+    <h2>7. A feature I need is missing</h2>
+    <p>
+      Tell us. We add features sparingly so the app stays simple and calm, so we never promise a
+      date. That said, a description of how you would use it weighs very concretely on what we
+      build next.
+    </p>
+  </section>
+
+  <section>
+    <h2>8. The app crashes or displays badly</h2>
+    <p>
+      Go through <strong>About &amp; help</strong> then <strong>Write to us</strong>: the message
+      automatically attaches the technical information we need, which you can review before sending.
+      Just describe what you were doing when the problem happened.
+    </p>
+    <p>
+      Two settings sometimes cause unexpected layouts: a very large system <strong>text size</strong>,
+      and <strong>landscape mode</strong> on a small screen. We answer every report.
+    </p>
+  </section>
+
+  <section>
+    <h2>9. What data do you collect?</h2>
+    <p>
+      None. Serene Decisions asks for no account, shows no ads and ships no trackers. Your lists,
+      your draws and your history stay on your phone.
+    </p>
+    <p>
+      The only possible connection is Google Play, and only if you buy Premium or restore a
+      purchase. Full details are in our <a href="privacy.html">privacy policy</a>.
+    </p>
+  </section>
+
+  <section>
+    <h2>10. My imported file is rejected or truncated</h2>
+    <p>
+      Import accepts a text file up to <strong>1 MB</strong> and <strong>10,000 options</strong>.
+      Beyond that it deliberately stops, to avoid exhausting the phone's memory. A label longer than
+      300 characters is shortened, never cut mid-word.
+    </p>
+    <p>
+      If your file is rejected for no visible reason, send it to us: we will look and get back to
+      you.
+    </p>
+  </section>
+
+  </div><!-- /.en -->
+
+  <footer>
+    <p>Serene Decisions · BoutchSoftware · <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></p>
+    <p style="margin-top:6px"><a href="privacy.html">Politique de confidentialité / Privacy Policy</a> · <a href="terms.html">Conditions / Terms</a></p>
+  </footer>
+</main>
+
+<script>
+  function applyLangLabel() {
+    var isEn = document.body.classList.contains('show-en');
+    var link = document.querySelector('.lang-switch a');
+    if (link) link.textContent = isEn ? '⇄ Version française' : '⇄ English version';
+  }
+  function toggleLang(e) {
+    e.preventDefault();
+    var isEn = document.body.classList.toggle('show-en');
+    try { localStorage.setItem('bs-lang', isEn ? 'en' : 'fr'); } catch (err) {}
+    applyLangLabel();
+  }
+  applyLangLabel();
+</script>
+</body>
+</html>
