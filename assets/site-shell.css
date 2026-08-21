@@ -160,6 +160,29 @@ body.studio-legal-compact { padding: 118px 18px 54px !important; background: rad
 body.studio-legal-compact > main { width: min(940px,100%); margin: 0 auto !important; padding: clamp(26px,5vw,52px) !important; border: 1px solid rgba(189,255,218,.14) !important; border-radius: 28px !important; background: #fff !important; box-shadow: 0 28px 90px rgba(0,0,0,.3) !important; }
 body.studio-legal-compact > main > h1:first-child { margin: 0 0 12px !important; color: #102f23 !important; font-size: clamp(2rem,5vw,3.5rem) !important; line-height: 1.03; letter-spacing: -.055em; }
 
+/* Help centre */
+body.studio-help { min-height: 100vh; color: var(--studio-ink) !important; background: linear-gradient(180deg,var(--studio-night) 0 410px,var(--studio-paper) 410px) !important; }
+body.studio-help > header { min-height: 390px; padding: 142px max(20px,calc((100vw - 940px) / 2)) 100px !important; color: #fff !important; background: radial-gradient(circle at 80% 18%,rgba(88,230,189,.18),transparent 22rem),radial-gradient(circle at 13% 92%,rgba(167,249,111,.1),transparent 20rem),var(--studio-night) !important; }
+body.studio-help > header h1 { max-width: 760px; margin: 0 !important; color: #fff !important; font-size: clamp(2.65rem,6vw,5.4rem) !important; line-height: .96 !important; letter-spacing: -.065em; }
+body.studio-help > header p { max-width: 620px; margin: 18px 0 0 !important; color: #b6ccbe !important; font-size: clamp(1rem,2vw,1.2rem) !important; }
+body.studio-help > main { position: relative; width: min(940px,calc(100% - 32px)); max-width: none !important; margin: -54px auto 0 !important; padding: 0 0 90px !important; }
+body.studio-help .lang-switch { display: none !important; }
+body.studio-help .help-lead, body.studio-help section { margin: 0 0 15px !important; padding: clamp(24px,4vw,42px) !important; border: 1px solid #dbe6df; border-radius: 24px; color: var(--studio-ink) !important; background: rgba(255,255,255,.97) !important; box-shadow: 0 16px 45px rgba(17,48,32,.08); }
+body.studio-help .help-lead { display: grid; grid-template-columns: 1fr auto; gap: 26px; align-items: center; border-color: rgba(88,230,189,.35); background: linear-gradient(135deg,#f7fffa,#e8f8ef) !important; }
+body.studio-help h2 { margin: 0 0 16px !important; padding: 0 !important; border: 0 !important; color: #173b2c !important; font-size: clamp(1.25rem,2.3vw,1.65rem) !important; letter-spacing: -.04em; }
+body.studio-help h2::before { content: ""; width: 28px; height: 2px; display: inline-block; margin: 0 12px 7px 0; background: linear-gradient(90deg,#1b8d66,var(--studio-mint)); }
+body.studio-help p, body.studio-help li { color: #425d50 !important; }
+body.studio-help p { margin: 0 0 12px !important; }
+body.studio-help p:last-child { margin-bottom: 0 !important; }
+body.studio-help ul, body.studio-help ol { margin: 0; padding-left: 1.35rem; }
+body.studio-help li + li { margin-top: 8px; }
+body.studio-help a { color: #087555 !important; }
+body.studio-help .help-contact { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 18px; border: 1px solid #087555; border-radius: 999px; color: #fff !important; background: #087555; font-weight: 800; text-decoration: none; }
+body.studio-help .help-contact:hover { background: #065e45; }
+body.studio-help .help-note { padding: 16px 18px; border-left: 3px solid #1aa97a; border-radius: 0 14px 14px 0; background: #e4f3eb; }
+body.studio-help footer { padding: 0 20px 44px; color: #63796e !important; text-align: center; }
+@media (max-width: 760px) { body.studio-help > header { min-height: 370px; padding: 112px 22px 94px !important; } body.studio-help > main { width: calc(100% - 20px); } body.studio-help .help-lead { grid-template-columns: 1fr; } }
+
 /* Translation and compact utility pages */
 body.studio-translation .hero { min-height: 690px; }
 body.studio-translation .content { color: var(--studio-ink); background: var(--studio-paper); }

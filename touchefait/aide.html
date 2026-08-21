@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Aide de Touché, c’est fait : étiquettes NFC, tâches, synchronisation et données.">
+  <title>Touché, c’est fait — Aide</title>
+  <link rel="stylesheet" href="../assets/site-shell.css?v=7">
+  <script src="../assets/site-shell.js?v=7" defer></script>
+</head>
+<body class="studio-help">
+<script>try{if(localStorage.getItem('bs-lang')==='en')document.body.classList.add('show-en')}catch(e){}</script>
+<header>
+  <h1>Touché, c’est fait</h1>
+  <p class="fr">Aide pour les tâches du foyer et les étiquettes NFC.</p>
+  <p class="en">Help for household tasks and NFC tags.</p>
+</header>
+<main>
+  <div class="lang-switch"><a href="#" onclick="toggleLang(event)">English version</a></div>
+  <div class="fr">
+    <section class="help-lead"><div><h2>Besoin d’aide ?</h2><p>Écrivez-nous en indiquant le modèle du téléphone, la version d’Android, et si le problème concerne une étiquette, un rappel ou la synchronisation.</p></div><a class="help-contact" href="mailto:boutchsoftware@gmail.com?subject=Touch%C3%A9%2C%20c%27est%20fait%20%E2%80%94%20aide">Nous écrire</a></section>
+    <section><h2>Créer une tâche et une étiquette</h2><p>Créez d’abord la tâche, son rythme et sa prochaine échéance. Vous pouvez ensuite programmer une étiquette NFC et la placer là où le geste doit être fait.</p><p>L’étiquette ne contient pas le nom de la tâche ni de donnée personnelle : elle contient seulement un identifiant aléatoire.</p></section>
+    <section><h2>Valider une tâche</h2><p>Après avoir réalisé la tâche, approchez le téléphone de l’étiquette. L’application confirme l’action et vous laisse quelques secondes pour annuler une manipulation involontaire.</p><p>Sans NFC ou sans étiquette à portée, le bouton <strong>C’est fait</strong> dans l’application reste le repli prévu.</p></section>
+    <section><h2>Hors connexion et synchronisation</h2><p>Une action effectuée hors connexion est enregistrée sur le téléphone, puis synchronisée quand la connexion revient. Vérifiez que les membres du foyer utilisent la même invitation et que la synchronisation est activée.</p></section>
+    <section><h2>Étiquette inconnue ou qui ne répond pas</h2><p>Vérifiez que le NFC est activé dans les réglages Android et que l’étiquette est bien programmée pour cette tâche. Une étiquette perdue peut être désactivée depuis l’application puis remplacée.</p><div class="help-note">Une étiquette NFC est un geste pratique ; elle ne prouve pas à elle seule la présence d’une personne ni l’exécution certaine d’une tâche.</div></section>
+    <section><h2>Vos données</h2><p>Le mode local reste utilisable sans serveur. Si vous choisissez un foyer synchronisé, les données nécessaires à ce partage sont traitées pour ce service. Consultez la <a href="privacy.html">politique de confidentialité</a> et la page de <a href="delete-account.html">suppression du compte</a>.</p></section>
+  </div>
+  <div class="en">
+    <section class="help-lead"><div><h2>Need help?</h2><p>Write to us with your phone model, Android version, and whether the issue concerns a tag, reminder, or synchronisation.</p></div><a class="help-contact" href="mailto:boutchsoftware@gmail.com?subject=Touch%C3%A9%2C%20c%27est%20fait%20%E2%80%94%20help">Write to us</a></section>
+    <section><h2>Create a task and tag</h2><p>First create the task, its schedule, and its next due date. You can then program an NFC tag and place it where the action happens.</p><p>The tag contains neither the task name nor personal data: only a random identifier.</p></section>
+    <section><h2>Mark a task done</h2><p>Once the task is complete, bring the phone close to the tag. The app confirms the action and gives you a few seconds to undo an accidental tap.</p><p>Without NFC or a nearby tag, the <strong>Done</strong> button in the app remains the intended fallback.</p></section>
+    <section><h2>Offline and synchronisation</h2><p>An action performed offline is saved on the phone and synchronised when the connection returns. Check that household members use the same invitation and that synchronisation is enabled.</p></section>
+    <section><h2>Unknown or unresponsive tag</h2><p>Check that NFC is enabled in Android settings and that the tag was programmed for this task. A lost tag can be disabled in the app and replaced.</p><div class="help-note">An NFC tag is a practical gesture; by itself it does not prove that someone was present or that a task was certainly completed.</div></section>
+    <section><h2>Your data</h2><p>Local mode remains usable without a server. If you choose a synchronised household, the data needed for sharing is processed for that service. See the <a href="privacy.html">privacy policy</a> and <a href="delete-account.html">account deletion</a> page.</p></section>
+  </div>
+</main>
+<footer><span class="fr">Touché, c’est fait · BoutchSoftware · </span><span class="en">Touché, c’est fait · BoutchSoftware · </span><a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a></footer>
+<script>function toggleLang(e){e.preventDefault();var on=document.body.classList.toggle('show-en');try{localStorage.setItem('bs-lang',on?'en':'fr')}catch(err){}}</script>
+</body>
+</html>

@@ -11,6 +11,7 @@
   const body = document.body;
   if (body.querySelector('.products')) body.classList.add('studio-home');
   else if (title.includes('traduction')) body.classList.add('studio-translation');
+  else if (title.includes('aide') || title.includes('help') || title.includes('support')) body.classList.add('studio-help');
   else if (title.includes('confidential') || title.includes('conditions') || title.includes('suppression')) {
     body.classList.add('studio-legal');
     if (!body.querySelector(':scope > header')) body.classList.add('studio-legal-compact');
@@ -44,6 +45,22 @@
     key: 'home', href: new URL('index.html', primaryRoot).href, fr: 'Accueil', en: 'Home'
   }, 'studio-top-link');
   menu.append(homeLink);
+
+  const helpPages = [
+    { path: '/prepcalm/', href: new URL('prepcalm/aide.html', primaryRoot).href },
+    { path: '/preuve-a-lappui/', href: new URL('preuve-a-lappui/aide.html', primaryRoot).href },
+    { path: '/serene/', href: new URL('serene/aide.html', primaryRoot).href },
+    { path: '/touchefait/', href: new URL('touchefait/aide.html', primaryRoot).href },
+    { path: '/pilulo/', href: new URL('pilulo/aide.html', root).href }
+  ];
+  const currentHelp = helpPages.find((item) => location.pathname.toLowerCase().includes(item.path));
+  if (currentHelp) {
+    const helpLink = createLink({
+      key: 'help', href: currentHelp.href, fr: 'Aide', en: 'Help'
+    }, 'studio-top-link studio-help-link');
+    if (location.pathname.toLowerCase().endsWith('/aide.html')) helpLink.setAttribute('aria-current', 'page');
+    menu.append(helpLink);
+  }
 
   const dropdown = document.createElement('div');
   dropdown.className = 'studio-dropdown';

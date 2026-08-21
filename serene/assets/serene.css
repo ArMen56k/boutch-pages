@@ -184,6 +184,21 @@ body.serene-theme.studio-legal .warning { border-left-color: var(--serene-gold) 
 body.serene-theme.studio-legal .lang-switch a { border-color: rgba(97, 197, 255, .38) !important; color: #d8efff !important; background: rgba(5, 22, 48, .86) !important; }
 body.serene-theme.studio-legal footer { color: #60778b !important; }
 
+/* The support page uses the same readable long-form layout as legal pages. */
+body.serene-theme.studio-help { color: #10233a !important; background: linear-gradient(180deg,var(--serene-night) 0 410px,#eaf3fa 410px) !important; }
+body.serene-theme.studio-help > header { background: radial-gradient(circle at 76% 18%,rgba(39,143,220,.32),transparent 27rem),radial-gradient(circle at 18% 100%,rgba(75,62,157,.22),transparent 24rem),linear-gradient(145deg,#020817,#071936) !important; }
+body.serene-theme.studio-help > header h1 { color: var(--serene-ivory) !important; font-family: Georgia,"Times New Roman",serif !important; }
+body.serene-theme.studio-help > header p { color: #a9c8dc !important; }
+body.serene-theme.studio-help section, body.serene-theme.studio-help .help-lead { border-color: #d3e3ee !important; color: #10233a !important; background: rgba(255,255,255,.97) !important; box-shadow: 0 18px 48px rgba(24,62,94,.09) !important; }
+body.serene-theme.studio-help .help-lead { background: linear-gradient(135deg,#f8fcff,#e8f4fc) !important; }
+body.serene-theme.studio-help h2 { color: #102b50 !important; }
+body.serene-theme.studio-help h2::before { background: linear-gradient(90deg,var(--serene-blue),var(--serene-gold)); }
+body.serene-theme.studio-help p, body.serene-theme.studio-help li { color: #3f586d !important; }
+body.serene-theme.studio-help a { color: #086eaf !important; }
+body.serene-theme.studio-help .highlight, body.serene-theme.studio-help .warning { padding: 16px 18px !important; border-radius: 0 14px 14px 0 !important; }
+body.serene-theme.studio-help .highlight { border-left-color: var(--serene-blue) !important; background: #e8f4fc !important; }
+body.serene-theme.studio-help .warning { border-left-color: var(--serene-gold) !important; background: #fff6df !important; }
+
 @media (max-width: 760px) {
   .serene-theme .studio-menu { border-color: var(--serene-line); background: rgba(2, 8, 23, .99); }
   .serene-theme .serene-hero { padding: 92px 12px 38px !important; }
