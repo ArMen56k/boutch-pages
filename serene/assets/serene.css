@@ -290,3 +290,17 @@ html.android .share-actions .app-only { display: inline-flex; }
 @media (prefers-reduced-motion: reduce) {
   .share-loader { animation: none; border-color: var(--serene-gold); }
 }
+
+/* Démonstration vidéo : fichier auto-hébergé, jamais d'iframe YouTube — une iframe
+   chargerait des traceurs Google et contredirait « aucun outil de suivi », affirmation
+   écrite dans la politique de confidentialité comme dans la description de la fiche. */
+.serene-demo video {
+  display: block;
+  width: min(320px, 78vw);
+  height: auto;
+  margin: 28px auto 0;
+  border-radius: 26px;
+  border: 1px solid rgba(216, 239, 248, .18);
+  background: #050e14;
+  box-shadow: 0 26px 60px rgba(0, 0, 0, .38);
+}
