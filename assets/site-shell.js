@@ -12,7 +12,7 @@
   if (body.querySelector('.products')) body.classList.add('studio-home');
   else if (title.includes('traduction')) body.classList.add('studio-translation');
   else if (title.includes('aide') || title.includes('help') || title.includes('support')) body.classList.add('studio-help');
-  else if (title.includes('confidential') || title.includes('conditions') || title.includes('suppression')) {
+  else if (title.includes('confidential') || title.includes('conditions') || title.includes('suppression') || title.includes('mentions légales') || title.includes('legal notice')) {
     body.classList.add('studio-legal');
     if (!body.querySelector(':scope > header')) body.classList.add('studio-legal-compact');
   }
@@ -111,6 +111,13 @@
   dropdownPanel.append(dropdownGrid);
   dropdown.append(dropdownTrigger, dropdownPanel);
   menu.append(dropdown);
+
+  const legalLink = createLink({
+    key: 'legal', href: new URL('mentions-legales.html', primaryRoot).href,
+    fr: 'Mentions légales', en: 'Legal notice'
+  }, 'studio-top-link studio-legal-link');
+  if (location.pathname.toLowerCase().endsWith('/mentions-legales.html')) legalLink.setAttribute('aria-current', 'page');
+  menu.append(legalLink);
 
   const currentPath = decodeURI(location.pathname).toLowerCase().replace(/\/index\.html$/, '/');
   const getActiveKey = () => {
