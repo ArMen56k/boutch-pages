@@ -83,7 +83,7 @@
         { key: 'apps', href: new URL('index.html#produits', primaryRoot).href, fr: 'Toutes les applications', en: 'All applications' },
         { key: 'prepcalm', href: new URL('prepcalm/index.html', primaryRoot).href, fr: 'PrepCalm', en: 'PrepCalm' },
         { key: 'touch', href: new URL('index.html', touchRoot).href, fr: 'Touché, c’est fait', en: 'Touché, c’est fait' },
-        { key: 'preuve', href: new URL('preuve-a-lappui/index.html', primaryRoot).href, fr: 'Preuve à l’appui', en: 'Preuve à l’appui' },
+        { key: 'preuve', href: new URL('preuve-a-lappui/index.html', primaryRoot).href, fr: 'D’un commun accord', en: 'D’un commun accord' },
         { key: 'serene', href: new URL('serene/index.html', primaryRoot).href, fr: 'Serene Decisions', en: 'Serene Decisions' }
       ]
     },

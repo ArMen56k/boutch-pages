@@ -64,7 +64,7 @@ annoncées correctement aux technologies d’assistance.
 - Ne jamais réécrire les textes métier lors d’une évolution visuelle.
 - Le manifeste « L’esprit de BoutchSoftware » reste publié intégralement en français et
   en anglais : ce contenu fondateur ne doit jamais être remplacé par un résumé.
-- La vitrine référence les produits actifs PrepCalm, Touché c’est fait, Preuve à l’appui
+- La vitrine référence les produits actifs PrepCalm, Touché c’est fait, D’un commun accord
   et Serene Decisions, chacun avec une page produit dédiée.
 - Toute nouvelle page charge le shell partagé avant d’ajouter ses exceptions.
 - Répliquer chaque changement du site public dans `docs/`.
