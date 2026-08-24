@@ -13,6 +13,7 @@
       --bg: #F4F7FD;
       --card: #FFFFFF;
       --ok: #247447;
+      --warning: #9A5A00;
       --bad: #B3261E;
       --border: #D8E1F2;
     }
@@ -37,8 +38,25 @@
     button:hover { background: var(--brand-dark); }
     button:disabled { background: #A7B3C9; cursor: default; }
     #summary { margin-top: 18px; }
+    .drop-zone { display: block; border: 2px dashed #7890BC; border-radius: 18px; padding: 30px 20px; text-align: center; background: #F7FAFF; cursor: pointer; transition: border-color .2s, background .2s, transform .2s; }
+    .drop-zone:hover, .drop-zone:focus-within, .drop-zone.dragging { border-color: var(--brand); background: #EAF1FF; transform: translateY(-1px); }
+    .drop-zone strong { display: block; color: var(--brand-dark); font-size: 1.2rem; }
+    .drop-zone span { display: block; color: var(--muted); margin-top: 5px; }
+    .drop-zone input { position: absolute; inline-size: 1px; block-size: 1px; opacity: 0; pointer-events: none; }
+    .verdict { border: 2px solid; border-radius: 18px; padding: 22px; margin-top: 20px; }
+    .verdict h2 { color: inherit !important; font-size: 1.5rem; margin: 0 0 6px; }
+    .verdict .symbol { font-size: 2rem; line-height: 1; }
+    .verdict.green { color: #0D512E; background: #DDF5E6; border-color: #247447; }
+    .verdict.orange { color: #704000; background: #FFF0D1; border-color: #B56A00; }
+    .verdict.red { color: #7D1712; background: #FCE3E1; border-color: #B3261E; }
+    .verdict.loading { color: #273B60; background: #E8EFFC; border-color: #7890BC; }
+    .verdict-facts { display: grid; gap: 6px; margin-top: 14px; font-weight: 650; }
+    details.panel { border-top: 1px solid var(--border); margin-top: 18px; padding-top: 14px; }
+    details.panel summary { min-height: 44px; display: flex; align-items: center; color: var(--brand-dark); font-weight: 700; cursor: pointer; }
+    details.panel summary::marker { color: var(--brand); }
     .status { border-radius: 12px; padding: 12px 14px; margin: 8px 0; overflow-wrap: anywhere; }
     .status.ok { background: #E1F4E8; color: #135C35; }
+    .status.warning { background: #FFF0D1; color: #704000; }
     .status.bad { background: #FCE8E6; color: #8C1D18; }
     .status.info { background: #EDF2FA; color: #34425A; }
     .file-result { border-top: 1px solid var(--border); padding: 13px 0; }
@@ -84,39 +102,49 @@
       <p>Tout le contrôle se déroule dans ce navigateur. Les photos, le manifeste et la signature ne sont envoyés à aucun serveur.</p>
     </section>
     <section class="card">
-      <h2>Fichiers à sélectionner</h2>
-      <p>Choisissez directement l'archive ZIP produite par l'application, ou décompressez-la puis choisissez les éléments ci-dessous.</p>
-      <div class="fields">
-        <label>Archive ZIP (recommandé)
-          <span>Le fichier <code>.zip</code> exporté par l'application. Il est lu uniquement dans ce navigateur.</span>
-          <input id="archive" type="file" accept="application/zip,.zip" />
-        </label>
-        <label>1. Manifeste
-          <span>Le fichier <code>manifest.json</code>.</span>
-          <input id="manifest" type="file" accept="application/json,.json" />
-        </label>
-        <label>2. Signature
-          <span>Le fichier <code>manifest-signature.json</code> (facultatif pour les empreintes).</span>
-          <input id="signature" type="file" accept="application/json,.json" />
-        </label>
-        <label>3. Horodatage
-          <span>Le fichier <code>manifest-signature.tsr</code> (facultatif, mais nécessaire pour l'antériorité).</span>
-          <input id="timestamp" type="file" accept="application/timestamp-reply,.tsr" />
-        </label>
-        <label>4. Fichiers originaux
-          <span>Sélectionnez toutes les photos du dossier <code>originals</code>.</span>
-          <input id="originals" type="file" accept="image/*" multiple />
-        </label>
-      </div>
-      <p style="margin-top:18px"><button id="verify" disabled>Vérifier le dossier</button></p>
+      <h2>Déposez l'archive du dossier</h2>
+      <p>Le contrôle démarre automatiquement dès que vous choisissez le ZIP exporté par l'application.</p>
+      <label class="drop-zone" id="drop-zone">
+        <strong>Choisir ou déposer le fichier ZIP</strong>
+        <span>Un seul fichier suffit. Rien ne quitte votre appareil.</span>
+        <input id="archive" type="file" accept="application/zip,.zip" />
+      </label>
       <div id="summary" aria-live="polite"></div>
-      <div id="results"></div>
+      <details class="panel" id="technical-details" hidden>
+        <summary>Afficher les détails techniques</summary>
+        <div id="checks"></div>
+        <div id="results"></div>
+      </details>
+      <details class="panel">
+        <summary>Mode manuel pour une archive déjà décompressée</summary>
+        <div class="fields">
+          <label>Manifeste
+            <span>Le fichier <code>manifest.json</code>.</span>
+            <input id="manifest" type="file" accept="application/json,.json" />
+          </label>
+          <label>Signature
+            <span>Le fichier <code>manifest-signature.json</code>.</span>
+            <input id="signature" type="file" accept="application/json,.json" />
+          </label>
+          <label>Horodatage
+            <span>Le fichier <code>manifest-signature.tsr</code>, s'il est présent.</span>
+            <input id="timestamp" type="file" accept="application/timestamp-reply,.tsr" />
+          </label>
+          <label>Fichiers originaux
+            <span>Sélectionnez toutes les photos du dossier <code>originals</code>.</span>
+            <input id="originals" type="file" accept="image/*" multiple />
+          </label>
+        </div>
+        <p style="margin-top:18px"><button id="verify" disabled>Vérifier ces fichiers</button></p>
+      </details>
     </section>
     <section class="card">
-      <h2>Ce que ce contrôle signifie</h2>
-      <p>Une empreinte identique confirme que le fichier sélectionné est exactement celui référencé par le manifeste. Une signature ECDSA valide établit la cohérence interne du manifeste.</p>
-      <p>Elle n'authentifie pas l'émetteur : l'attestation d'appareil n'est pas incluse dans cette version. Un jeton RFC 3161 FreeTSA valide établit que l'enveloppe de signature existait avant sa date, contre l'ancre TSA embarquée.</p>
-      <p>Ce contrôle ne garantit pas l'authenticité de la scène photographiée et ne détermine pas, à lui seul, la valeur juridique du dossier.</p>
+      <details class="panel" style="border-top:0;margin-top:0;padding-top:0">
+        <summary>Comprendre la portée du contrôle</summary>
+        <p>Une empreinte identique confirme que le fichier est exactement celui référencé par le manifeste. Une signature ECDSA valide confirme la cohérence interne du manifeste.</p>
+        <p>Un jeton RFC 3161 FreeTSA valide établit que l'enveloppe de signature existait avant sa date, contre l'ancre TSA embarquée.</p>
+        <p>Ces résultats portent sur l'intégrité des fichiers et leur antériorité éventuelle. Leur portée juridique dépend du contexte et des autres éléments disponibles.</p>
+      </details>
     </section>
   </main>
   <footer>BoutchSoftware - <a href="mailto:boutchsoftware@gmail.com">boutchsoftware@gmail.com</a> · <a href="../../mentions-legales.html">Mentions légales / Legal notice</a></footer>
@@ -129,7 +157,10 @@
     const archiveInput = document.getElementById('archive');
     const verifyButton = document.getElementById('verify');
     const summary = document.getElementById('summary');
+    const checks = document.getElementById('checks');
     const results = document.getElementById('results');
+    const technicalDetails = document.getElementById('technical-details');
+    const dropZone = document.getElementById('drop-zone');
 
     function updateButton() {
       verifyButton.disabled = !(archiveInput.files.length || (manifestInput.files.length && originalsInput.files.length));
@@ -137,19 +168,41 @@
     manifestInput.addEventListener('change', updateButton);
     originalsInput.addEventListener('change', updateButton);
     archiveInput.addEventListener('change', updateButton);
+    archiveInput.addEventListener('change', () => {
+      if (archiveInput.files[0]) verifyAll(archiveInput.files[0]);
+    });
+    for (const eventName of ['dragenter', 'dragover']) {
+      dropZone.addEventListener(eventName, event => {
+        event.preventDefault();
+        dropZone.classList.add('dragging');
+      });
+    }
+    for (const eventName of ['dragleave', 'drop']) {
+      dropZone.addEventListener(eventName, event => {
+        event.preventDefault();
+        dropZone.classList.remove('dragging');
+      });
+    }
+    dropZone.addEventListener('drop', event => {
+      const file = event.dataTransfer.files[0];
+      if (file) verifyAll(file);
+    });
     verifyButton.addEventListener('click', verifyAll);
 
-    async function verifyAll() {
+    async function verifyAll(droppedArchive = null) {
       verifyButton.disabled = true;
-      summary.innerHTML = '<div class="status info">Vérification en cours…</div>';
+      renderVerdict('loading', 'Vérification en cours…', 'Lecture locale de l’archive et contrôle de chaque fichier.', []);
+      checks.innerHTML = '';
       results.innerHTML = '';
+      technicalDetails.hidden = true;
       try {
         let manifestBytes;
         let signatureBytes = null;
         let timestampBytes = null;
         let selected;
-        if (archiveInput.files.length) {
-          const entries = await readZip(await archiveInput.files[0].arrayBuffer());
+        const archiveFile = droppedArchive instanceof File ? droppedArchive : archiveInput.files[0];
+        if (archiveFile) {
+          const entries = await readZip(await archiveFile.arrayBuffer());
           manifestBytes = requiredEntry(entries, 'manifest.json');
           signatureBytes = entries.get('manifest-signature.json') || null;
           timestampBytes = entries.get('manifest-signature.tsr') || null;
@@ -167,7 +220,11 @@
         let altered = 0;
         for (const expected of manifest.files) {
           const expectedName = String(expected.fileName || '').replaceAll('\\', '/');
-          const file = selected.find(candidate => candidate.name === expectedName || candidate.name === expectedName.split('/').pop());
+          const expectedBaseName = expectedName.split('/').pop();
+          const file = selected.find(candidate => {
+            const candidateName = String(candidate.name || '').replaceAll('\\', '/');
+            return candidateName === expectedName || candidateName.split('/').pop() === expectedBaseName;
+          });
           const row = document.createElement('div');
           row.className = 'file-result';
           if (!file) {
@@ -184,18 +241,18 @@
           results.appendChild(row);
         }
 
-        let signatureText = 'Intégrité interne non contrôlée : aucun fichier de signature sélectionné. Émetteur : non authentifié.';
+        let signatureText = 'Signature interne non contrôlée : fichier manifest-signature.json absent.';
         let signatureOk = null;
         if (signatureBytes) {
           try {
             const signature = JSON.parse(new TextDecoder().decode(signatureBytes));
             signatureOk = await verifyManifestSignature(manifestBytes, signature);
             signatureText = signatureOk
-              ? 'Intégrité interne : OK (signature ECDSA). Émetteur : non authentifié (attestation non incluse).'
-              : 'Intégrité interne : échec (signature ECDSA invalide). Émetteur : non authentifié.';
+              ? 'Signature du manifeste : valide (ECDSA).'
+              : 'Signature du manifeste : invalide.';
           } catch (error) {
             signatureOk = false;
-            signatureText = 'Intégrité interne impossible à vérifier : ' + error.message + '. Émetteur : non authentifié.';
+            signatureText = 'Signature du manifeste impossible à vérifier : ' + error.message + '.';
           }
         }
         let timestampText = 'Antériorité non établie : aucun jeton RFC 3161 sélectionné.';
@@ -216,15 +273,66 @@
           }
         }
         const allHashesOk = altered === 0 && missing === 0 && valid === manifest.files.length;
-        summary.innerHTML =
+        const hasFailure = !allHashesOk || signatureOk === false || timestampOk === false;
+        const fullyVerified = allHashesOk && signatureOk === true && timestampOk === true;
+        const facts = [
+          (allHashesOk ? '✓ ' : '✕ ') + valid + ' fichier(s) conforme(s) sur ' + manifest.files.length,
+          signatureOk === true ? '✓ Signature interne valide' : signatureOk === false ? '✕ Signature interne invalide' : '• Signature interne absente',
+          timestampOk === true ? '✓ Horodatage indépendant vérifié' : timestampOk === false ? '✕ Horodatage invalide' : '• Horodatage absent',
+        ];
+        if (hasFailure) {
+          renderVerdict(
+            'red',
+            'Dossier altéré ou incomplet',
+            'Au moins un contrôle a échoué. N’utilisez pas cette archive comme copie intacte.',
+            facts,
+          );
+        } else if (fullyVerified) {
+          renderVerdict(
+            'green',
+            'Dossier intact et horodaté',
+            'Les originaux, la signature du manifeste et l’horodatage correspondent.',
+            facts,
+          );
+        } else {
+          renderVerdict(
+            'orange',
+            signatureOk === true ? 'Dossier intact - horodatage absent' : 'Photos intactes - contrôle incomplet',
+            signatureOk === true
+              ? 'Les fichiers et la signature correspondent, mais aucune antériorité indépendante n’est établie.'
+              : 'Les fichiers correspondent au manifeste, mais sa signature interne n’a pas pu être contrôlée.',
+            facts,
+          );
+        }
+        checks.innerHTML =
           '<div class="status ' + (allHashesOk ? 'ok' : 'bad') + '">' + valid + ' fichier(s) intègre(s), ' + altered + ' modifié(s), ' + missing + ' manquant(s).</div>' +
           '<div class="status ' + (signatureOk === true ? 'ok' : signatureOk === false ? 'bad' : 'info') + '">' + escapeHtml(signatureText) + '</div>' +
-          '<div class="status ' + (timestampOk === true ? 'ok' : timestampOk === false ? 'bad' : 'info') + '">' + escapeHtml(timestampText) + '</div>';
+          '<div class="status ' + (timestampOk === true ? 'ok' : timestampOk === false ? 'bad' : 'warning') + '">' + escapeHtml(timestampText) + '</div>';
+        technicalDetails.hidden = false;
       } catch (error) {
-        summary.innerHTML = '<div class="status bad">' + escapeHtml(error.message || String(error)) + '</div>';
+        const message = error.message || String(error);
+        renderVerdict(
+          'red',
+          'Archive illisible ou incomplète',
+          'Le contrôle n’a pas pu être mené à son terme.',
+          ['✕ ' + message],
+        );
+        checks.innerHTML = '<div class="status bad">' + escapeHtml(message) + '</div>';
+        technicalDetails.hidden = false;
       } finally {
         updateButton();
       }
+    }
+
+    function renderVerdict(level, title, message, facts) {
+      const symbols = { green: '✓', orange: '!', red: '✕', loading: '…' };
+      summary.innerHTML =
+        '<div class="verdict ' + level + '">' +
+          '<div class="symbol" aria-hidden="true">' + symbols[level] + '</div>' +
+          '<h2>' + escapeHtml(title) + '</h2>' +
+          '<p>' + escapeHtml(message) + '</p>' +
+          (facts.length ? '<div class="verdict-facts">' + facts.map(fact => '<div>' + escapeHtml(fact) + '</div>').join('') + '</div>' : '') +
+        '</div>';
     }
 
     async function sha256(value) {
