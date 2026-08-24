@@ -49,9 +49,30 @@
     footer a { color: var(--brand-dark); }
   </style>
   <link rel="stylesheet" href="../../assets/site-shell.css?v=8" />
+  <style>
+    body.verifier-page main .card {
+      color: var(--text) !important;
+      background: var(--card) !important;
+    }
+    body.verifier-page main .card.privacy { background: #E4EDFF !important; }
+    body.verifier-page main .card h2 { color: var(--brand-dark) !important; }
+    body.verifier-page main .card p,
+    body.verifier-page main .card label,
+    body.verifier-page main .card code,
+    body.verifier-page main .file-result { color: var(--text) !important; }
+    body.verifier-page main .card label span { color: #465064 !important; }
+    body.verifier-page input[type=file] {
+      color: var(--text) !important;
+      background: #F8FAFE !important;
+      border-color: #9BA9C1 !important;
+    }
+    body.verifier-page button:disabled { background: #65738C; color: #FFFFFF; }
+    body.verifier-page footer { color: #B7C9C0 !important; }
+    body.verifier-page footer a { color: #8FF4A0 !important; }
+  </style>
   <script src="../../assets/site-shell.js?v=8" defer></script>
 </head>
-<body>
+<body class="verifier-page">
   <nav class="site-nav"><a href="../../index.html">BoutchSoftware</a></nav>
   <header class="hero">
     <h1>Vérifier un dossier photo</h1>
