@@ -50,8 +50,7 @@
     { path: '/prepcalm/', href: new URL('prepcalm/aide.html', primaryRoot).href },
     { path: '/preuve-a-lappui/', href: new URL('preuve-a-lappui/aide.html', primaryRoot).href },
     { path: '/serene/', href: new URL('serene/aide.html', primaryRoot).href },
-    { path: '/touchefait/', href: new URL('touchefait/aide.html', primaryRoot).href },
-    { path: '/pilulo/', href: new URL('pilulo/aide.html', root).href }
+    { path: '/touchefait/', href: new URL('touchefait/aide.html', primaryRoot).href }
   ];
   const currentHelp = helpPages.find((item) => location.pathname.toLowerCase().includes(item.path));
   if (currentHelp) {
